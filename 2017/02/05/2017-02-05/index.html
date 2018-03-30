@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="上一篇博文介绍了getComputedStyle方法，接下来，我们就来实现一个简易版的小插件，能够在不借助jQuery的情况下实现css属性的获取和设置。">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手带你用原生js实现css属性的set和get">
+<meta property="og:url" content="http://xdlrt.github.io/2017/02/05/2017-02-05/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="上一篇博文介绍了getComputedStyle方法，接下来，我们就来实现一个简易版的小插件，能够在不借助jQuery的情况下实现css属性的获取和设置。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手带你用原生js实现css属性的set和get">
+<meta name="twitter:description" content="上一篇博文介绍了getComputedStyle方法，接下来，我们就来实现一个简易版的小插件，能够在不借助jQuery的情况下实现css属性的获取和设置。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2017/02/05/2017-02-05/"/>
+
+
+  <title> 手把手带你用原生js实现css属性的set和get | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                手把手带你用原生js实现css属性的set和get
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-05T17:07:20+08:00" content="2017-02-05">
+              2017-02-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/02/05/2017-02-05/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/05/2017-02-05/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一篇博文介绍了getComputedStyle方法，接下来，我们就来实现一个简易版的小插件，能够在不借助jQuery的情况下实现css属性的获取和设置。<br><a id="more"></a><br>作者：Icarus<br>原文链接：<a href="https://xdlrt.github.io/2017/02/05/2017-02-05">手把手带你用原生js实现css属性的set和get</a></p>
+<h1 id="Let’s-start"><a href="#Let’s-start" class="headerlink" title="Let’s start"></a>Let’s start</h1><p>首先创建一个 <code>css-tool.js</code> 文件，一开始他是这个样子的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params">window,undefined</span>) </span>&#123;</div><div class="line"><span class="meta">  "use strict"</span>;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> cssTool = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> cssTool.prototype.init();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cssTool.prototype = &#123;</div><div class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'init success'</span>);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;,</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cssTool.prototype.init.prototype = cssTool.prototype;</div><div class="line">  <span class="comment">// 暴露接口</span></div><div class="line">  <span class="built_in">window</span>.cssTool = cssTool;</div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>);</div></pre></td></tr></table></figure>
+<p>全局作用域可以看作是一栋公寓楼，我们创建一个立即执行的匿名函数，相当于是公寓楼中的一间公寓，我们在屋子里做的事情就都是隐秘的，也就是起到隔离作用域的作用，避免和外部变量产生冲突。把 <code>window</code> 作为参数拿到屋子里来，以后就不用再重复去外面找 <code>window</code> 来用。最前面的分号是为了保证在文件合并压缩后不产生语法错误。 <code>undefined</code> 在老版本浏览器中不被支持，因此考虑到兼容性添加一个形参。</p>
+<p>我们创建了一个叫 <code>cssTool</code> 的私有方法，相当于我们在屋子里找了一个小房间来放 <code>get</code> 和 <code>set</code> 等方法。接下来我们在原型上新增一个 <code>init</code> 方法，用于初始化。之后我们仿照 <code>jQuery</code> 的方式，将<code>init</code>的 <code>prototype</code> 指向 <code>cssTool</code> 的 <code>prototype</code> ，这样我们在用<code>init</code>作为构造函数创造实例时，可以使插件拥有两种调用方式：</p>
+<ul>
+<li><code>var ct = new cssTool()</code>构建 <code>cssTool</code> 实例</li>
+<li>直接调用<code>cssTool()</code>，一样返回 <code>cssTool</code> 实例</li>
+</ul>
+<h1 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h1><h2 id="通用方式"><a href="#通用方式" class="headerlink" title="通用方式"></a>通用方式</h2><h3 id="现代浏览器和IE9"><a href="#现代浏览器和IE9" class="headerlink" title="现代浏览器和IE9+"></a>现代浏览器和IE9+</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(elem,<span class="literal">null</span>).getPropertyValue(attr)</div></pre></td></tr></table></figure>
+<h3 id="IE678"><a href="#IE678" class="headerlink" title="IE678"></a>IE678</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">elem<span class="selector-class">.currentStyle</span><span class="selector-class">.getAttribute</span>(camelCase(attr))</div></pre></td></tr></table></figure>
+<h2 id="兼容处理"><a href="#兼容处理" class="headerlink" title="兼容处理"></a>兼容处理</h2><h3 id="驼峰命名法转换-camelCase"><a href="#驼峰命名法转换-camelCase" class="headerlink" title="驼峰命名法转换-camelCase"></a>驼峰命名法转换-camelCase</h3><p>对 <code>currentStyle</code> 来说，在IE6浏览器中他很专一，只喜欢以驼峰命名法命名的变量，而IE78中就有点朝三暮四，驼峰命名法和中间带’-‘的都照单全收，为了兼容和操作的简便，我们统一转换为驼峰命名法。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 驼峰命名法转换，IE678使用</span></div><div class="line"><span class="comment"> * font-size --&gt; fontSize</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;String&#125; attr</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;String&#125; match  匹配到的字符串，如-c</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;String&#125; originText (\w)是一个捕获，这里是捕获到的字符，如c</span></div><div class="line"><span class="comment"> * <span class="doctag">@return</span> 返回驼峰命名方式的css属性名</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">camelCase</span> <span class="params">(attr)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> attr.replace(/\-(\w)/g, <span class="function"><span class="keyword">function</span> <span class="params">(match,originText)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> originText.toUpperCase();</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="透明度获取-getFilter"><a href="#透明度获取-getFilter" class="headerlink" title="透明度获取-getFilter"></a>透明度获取-getFilter</h3><p>IE678的透明度是通过 <code>filter:alpha(opacity=0)</code> 来设置的，我们利用正则表达式匹配到此时透明度的值，由于此时得到的是0-100之间的数值，所以需要换算为我们常见的0-1的形式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * IE678下获取透明度的值</span></div><div class="line"><span class="comment"> * @param  elem 获取值的 dom</span></div><div class="line"><span class="comment"> * @return &#123;Number&#125; 透明度的值，默认为1</span></div><div class="line"><span class="comment"> * IE678下设置透明度 filter: alpha(opacity=0) 取值为0-100</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFilter</span>(<span class="params">elem</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> _filter = elem.currentStyle.getAttribute(<span class="string">'filter'</span>).match(<span class="regexp">/alpha\(opacity=(.*)\)/i</span>);</div><div class="line">  <span class="keyword">var</span> value = <span class="built_in">parseFloat</span>(_filter[<span class="number">1</span>]);</div><div class="line">  <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(value))&#123;</div><div class="line">    <span class="comment">// 转化为0-1</span></div><div class="line">    <span class="keyword">return</span> value ? value/<span class="number">100</span> : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="float-值的获取"><a href="#float-值的获取" class="headerlink" title="float 值的获取"></a>float 值的获取</h3><p>上一篇博客中提到，由于 <code>float</code> 是 ECMAScript 的一个保留字。所以在各浏览器中都会有代替的写法，比如说在现代浏览器中为 <code>cssFloat</code>，而在 IE678 中为 <code>styleFloat</code> 。经测试，在现代浏览器中直接使用 <code>getPropertyValue(&quot;float&quot;)</code> 也可以获取到 <code>float</code> 的值。而 IE678 则不行，所以针对 <code>float</code> ，需要简单的hack。</p>
+<h3 id="width-height-样式的获取"><a href="#width-height-样式的获取" class="headerlink" title="width | height 样式的获取"></a>width | height 样式的获取</h3><p>对于一个没有设定高宽的元素而言，在 IE678 下直接获取得到的值是 <code>auto</code> 。而现代浏览器会直接返回它的 px 值，我们的目标就是在 IE 下也返回 px 值。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 直接获取外部样式表未设置的 width 和 height 返回值为 auto</span></div><div class="line"><span class="comment">// 为了获取精确的 px 值，使用 getBoundingClientRect 方法</span></div><div class="line"><span class="comment">// getBoundingClientRect 可以获得元素四个点相对于文档视图左上角</span></div><div class="line"><span class="comment">// 的 top、left、bottom、right值，进行简单计算即可</span></div><div class="line"><span class="keyword">var</span> condition = attr === <span class="string">'width'</span></div><div class="line">             || attr === <span class="string">'height'</span></div><div class="line">             &amp;&amp; elem.currentStyle[attr] === <span class="string">'auto'</span>;</div><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">  <span class="keyword">var</span> clientRect = elem.getBoundingClientRect();</div><div class="line">  <span class="keyword">return</span> (attr === <span class="string">'width'</span> ?</div><div class="line">          clientRect.right - clientRect.left :</div><div class="line">          clientRect.bottom - clientRect.top</div><div class="line">         ) + <span class="string">'px'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="set方法"><a href="#set方法" class="headerlink" title="set方法"></a>set方法</h1><p> set 方法相较于 get 方法要简便的多，因为我们有 <code>cssText</code> 这个跨越 IE6+ 和现代浏览器的神器。<br>通过<code>elem.style.cssText</code>可以对元素的样式进行读写，实际上操作的是 html 标签上的 <code>style</code> 属性的值。因此不能直接对其赋值，不然就把整个 <code>style</code> 属性的值给覆盖掉了。我们采用累加的方式来修改属性。<br>另外，在IE浏览器还有个小坑，如果 cssText 不为空，返回值最后一个分号会被删掉，因此我们需要在累加的属性前加上一个分号。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 设置元素css样式值</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> elem 设置值的dom元素</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;String&#125; attr 设置样式名称，如font-size</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;String&#125; value 设置样式的值，如16px</span></div><div class="line"><span class="comment"> */</span></div><div class="line">set: <span class="function"><span class="keyword">function</span> <span class="params">(elem, attr, value)</span></span>&#123;</div><div class="line">  <span class="comment">// IE78 设置透明度需特殊处理</span></div><div class="line">  <span class="keyword">if</span>(attr === <span class="string">'opacity'</span>)&#123;</div><div class="line">    <span class="comment">// 针对 IE7 的 hack</span></div><div class="line">    <span class="comment">// filter 滤镜要求 hasLFooout=true 才能执行</span></div><div class="line">    <span class="comment">// IE浏览器且 hasLFooout=false 时执行</span></div><div class="line">    <span class="keyword">if</span>(!!elem.currentStyle &amp;&amp; !elem.currentStyle.hasLFooout)&#123;</div><div class="line">      elem.style.zoom = <span class="number">1</span>;</div><div class="line">      attr = <span class="string">'filter'</span>;</div><div class="line">      value = <span class="string">'alpha(opacity='</span> + value * <span class="number">100</span> + <span class="string">')'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 通用方式</span></div><div class="line">  elem.style.cssText += <span class="string">';'</span> + (attr + <span class="string">':'</span> + value) + <span class="string">';'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h2 id="简单解释new操作符的作用"><a href="#简单解释new操作符的作用" class="headerlink" title="简单解释new操作符的作用"></a>简单解释new操作符的作用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Foo.prototype.init();</div><div class="line">&#125;</div><div class="line"></div><div class="line">Foo.prototype = &#123;</div><div class="line">  init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">18</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;,</div><div class="line">  age: <span class="number">20</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(Foo().age); <span class="comment">// 18</span></div><div class="line"><span class="built_in">console</span>.log(Foo.prototype.age); <span class="comment">// 20</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> Foo.prototype.init();</div><div class="line">&#125;</div><div class="line"></div><div class="line">Foo.prototype = &#123;</div><div class="line">  init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">18</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;,</div><div class="line">  age: <span class="number">20</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(Foo().age); <span class="comment">// 18</span></div><div class="line"><span class="built_in">console</span>.log(Foo.prototype.age); <span class="comment">// 18</span></div></pre></td></tr></table></figure>
+<p>使用 new 操作符时，是把 <code>init</code> 当成构造函数来调用，在 <code>init</code> 内部会创建一个隐式对象并用 <code>this</code> 指向它，此时的 <code>this.age=18</code> 表示在这个隐式对象上增加一个 age 属性，最后 <code>return this</code> 不是必需的，构造函数默认会返回 <code>this</code>。此时<code>Foo.prototype.age</code>不受影响。<br>当不使用 new 操作符时，相当于一个​普通对象上的函数调用，<code>this</code> 指向了 <code>init</code> 所属的对象，即 <code>Foo.prototype</code>，<code>this.age=18</code>相当于对 <code>Foo.prototype.age</code> 赋值，和使用 new 操作符是有本质区别的。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>到这里，教程也就要告一段落了。一个 jQuery 中常见的 <code>css()</code> 方法背后涵盖了非常多的知识点，跨浏览器的兼容性也是我们此次讨论的重点，这次只是实现了一个非常简易的 css 操作插件。学问尚浅，如果有不清楚或者有错误的地方，欢迎各位留言或者提issue来帮助我改进这个小插件。<br>最后，完整的项目地址：<a href="https://github.com/xdlrt/css-tool" target="_blank" rel="external">https://github.com/xdlrt/css-tool</a><br>求一波star~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/30/2017-01-30/" rel="next" title="我们来翻翻元素样式的族谱-getComputedStyle">
+                <i class="fa fa-chevron-left"></i> 我们来翻翻元素样式的族谱-getComputedStyle
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/2017-03-13/" rel="prev" title="工欲善其事必先利其器-前端实习简历篇">
+                工欲善其事必先利其器-前端实习简历篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/05/2017-02-05/"
+           data-title="手把手带你用原生js实现css属性的set和get" data-url="http://xdlrt.github.io/2017/02/05/2017-02-05/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Let’s-start"><span class="nav-number">1.</span> <span class="nav-text">Let’s start</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get方法"><span class="nav-number">2.</span> <span class="nav-text">get方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用方式"><span class="nav-number">2.1.</span> <span class="nav-text">通用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#现代浏览器和IE9"><span class="nav-number">2.1.1.</span> <span class="nav-text">现代浏览器和IE9+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE678"><span class="nav-number">2.1.2.</span> <span class="nav-text">IE678</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容处理"><span class="nav-number">2.2.</span> <span class="nav-text">兼容处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#驼峰命名法转换-camelCase"><span class="nav-number">2.2.1.</span> <span class="nav-text">驼峰命名法转换-camelCase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透明度获取-getFilter"><span class="nav-number">2.2.2.</span> <span class="nav-text">透明度获取-getFilter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-值的获取"><span class="nav-number">2.2.3.</span> <span class="nav-text">float 值的获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#width-height-样式的获取"><span class="nav-number">2.2.4.</span> <span class="nav-text">width | height 样式的获取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set方法"><span class="nav-number">3.</span> <span class="nav-text">set方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单解释new操作符的作用"><span class="nav-number">4.1.</span> <span class="nav-text">简单解释new操作符的作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

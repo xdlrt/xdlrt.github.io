@@ -1,0 +1,714 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css3,box-shadow,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。">
+<meta name="keywords" content="css3,box-shadow,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于css3中box-shadow的研究">
+<meta property="og:url" content="http://xdlrt.github.io/2016/03/06/2016-03-06/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xdlrt.github.io/images/2016-03-06/2016-03-06-1.png">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于css3中box-shadow的研究">
+<meta name="twitter:description" content="最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。">
+<meta name="twitter:image" content="http://xdlrt.github.io/images/2016-03-06/2016-03-06-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/03/06/2016-03-06/"/>
+
+
+  <title> 关于css3中box-shadow的研究 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于css3中box-shadow的研究
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-06T23:10:45+08:00" content="2016-03-06">
+              2016-03-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/css3/" itemprop="url" rel="index">
+                    <span itemprop="name">css3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/06/2016-03-06/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/06/2016-03-06/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。<br><a id="more"></a></p>
+<h1 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h1><p>兼容性对于前端来说是老生常谈却又不可忽视的一个重要属性，就算一个属性功能再强大，如果兼容性无法满足需求，再去写很多的hack，反而得不偿失了。<br>查询结果如下图所示(点击查看大图)：<br><img src="/images/2016-03-06/2016-03-06-1.png" alt=""><br>除去可怜的IE8和operaMini以外的其他现代浏览器基本全部都支持了这一属性。<br>那还等什么？大胆的用吧！</p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>工欲善其事，必先利其器。先别急着用到项目中，先来研究一下这个属性的各种属性和示例，之后用起来也就会更加的得心应手。<br>首先是box-shadow的css语法格式:<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">box-shadow: </span>h-<span class="keyword">shadow </span>v-<span class="keyword">shadow </span><span class="keyword">blur </span>spread color <span class="keyword">inset;</span></div></pre></td></tr></table></figure></p>
+<p>tips：向<strong>边框</strong>添加一个或多个阴影,该属性是由逗号分隔的阴影列表，每个阴影由 2-4 个长度值、可选的颜色值以及可选的 inset 关键词来规定。</p>
+<p><strong>这个属性是与border有关的，针对的是盒模型的边框。</strong></p>
+<h2 id="属性值详解"><a href="#属性值详解" class="headerlink" title="属性值详解"></a>属性值详解</h2><h3 id="h-shadow-v-shadow"><a href="#h-shadow-v-shadow" class="headerlink" title="h-shadow,v-shadow"></a>h-shadow,v-shadow</h3><p>这两个属性是必需的，省略长度的值是0。用来设置阴影偏移量，即以盒模型的左上角为原点，分别以上边框向右和左边框向下为x和y轴的正方向。允许负值。</p>
+<h3 id="blur"><a href="#blur" class="headerlink" title="blur"></a>blur</h3><p>属性可选。指定模糊半径，半径越大模糊效果越明显。此属性不允许负值，但可以为0，此时阴影无模糊效果。</p>
+<h3 id="spread"><a href="#spread" class="headerlink" title="spread"></a>spread</h3><p>属性可选。指定阴影拓展的尺寸，该值可为0，此时不拓展，为正时向外拓展，为负时像内拓展。</p>
+<h3 id="color"><a href="#color" class="headerlink" title="color"></a>color</h3><p>属性可选。指定阴影颜色。</p>
+<h3 id="inset"><a href="#inset" class="headerlink" title="inset"></a>inset</h3><p>属性可选。默认值为外阴影，设定为inset后，阴影变为盒子内。</p>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>光说不练假把式，是骡子是马demo出来遛遛。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 盒子统一样式设置</span></div><div class="line"><span class="attribute">width</span>:<span class="number">200px</span>;</div><div class="line"><span class="attribute">height</span>:<span class="number">50px</span>;</div><div class="line"><span class="attribute">border</span>:<span class="number">10px</span> solid <span class="number">#00f</span>;</div></pre></td></tr></table></figure>
+<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px #000">box-shadow:10px 10px #000 只偏移没有模糊效果</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:-10px 10px #000">box-shadow:-10px 10px #000 水平偏移为负</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000">box-shadow:10px 10px 5px #000 模糊半径为5px</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 0 10px #000">box-shadow:10px 10px 0 10px #000 向外拓展10px</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 0 -10px #000">box-shadow:10px 10px 0 -10px #000 向内收缩10px</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000 inset">box-shadow:10px 10px 5px #000 inset 阴影变为内阴影</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000,-10px -20px 5px #000;">box-shadow:10px 10px 5px #000,-10px -20px 5px #000; 设置两个阴影</div><br><div style="width:200px;height:50px;border:10px solid #00f;box-shadow:0 0 10px 10px #000">box-shadow:0 0 10px 10px #000 无偏移时可设置四周阴影</div>
+
+<p><br></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>一层层的把box-shadow属性剥开来看，理解加深了不少，也深深感到css的强大。</p>
+<p>Keep moving forward!Learn and write more.</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.w3school.com.cn/cssref/pr_box-shadow.asp" target="_blank" rel="external">CSS3 box-shadow 属性</a><br><a href="http://blogread.cn/it/article/7212?f=sr" target="_blank" rel="external">css3：box-shadow边框阴影属性值详解</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css3/" rel="tag">#css3</a>
+          
+            <a href="/tags/box-shadow/" rel="tag">#box-shadow</a>
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/18/2016-02-18/" rel="next" title="第一篇博文及标签、分类页的建立">
+                <i class="fa fa-chevron-left"></i> 第一篇博文及标签、分类页的建立
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/12/2016-03-12/" rel="prev" title="emmet,让你的html飞起来">
+                emmet,让你的html飞起来 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/06/2016-03-06/"
+           data-title="关于css3中box-shadow的研究" data-url="http://xdlrt.github.io/2016/03/06/2016-03-06/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#兼容性"><span class="nav-number">1.</span> <span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用法"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性值详解"><span class="nav-number">2.1.</span> <span class="nav-text">属性值详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h-shadow-v-shadow"><span class="nav-number">2.1.1.</span> <span class="nav-text">h-shadow,v-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#blur"><span class="nav-number">2.1.2.</span> <span class="nav-text">blur</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spread"><span class="nav-number">2.1.3.</span> <span class="nav-text">spread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#color"><span class="nav-number">2.1.4.</span> <span class="nav-text">color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inset"><span class="nav-number">2.1.5.</span> <span class="nav-text">inset</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">3.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

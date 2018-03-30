@@ -1,0 +1,707 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="demo++,前端,offical website," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="第一个正式接手的PC+移动响应式的项目，正好可以补一补之前对于浏览器兼容的不熟悉，把一些重要的点积累下来。">
+<meta name="keywords" content="demo++,前端,offical website">
+<meta property="og:type" content="article">
+<meta property="og:title" content="demo++官网重构">
+<meta property="og:url" content="http://xdlrt.github.io/2016/04/27/2016-04-27/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="第一个正式接手的PC+移动响应式的项目，正好可以补一补之前对于浏览器兼容的不熟悉，把一些重要的点积累下来。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="demo++官网重构">
+<meta name="twitter:description" content="第一个正式接手的PC+移动响应式的项目，正好可以补一补之前对于浏览器兼容的不熟悉，把一些重要的点积累下来。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/04/27/2016-04-27/"/>
+
+
+  <title> demo++官网重构 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                demo++官网重构
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-27T22:19:54+08:00" content="2016-04-27">
+              2016-04-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/27/2016-04-27/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/27/2016-04-27/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第一个正式接手的PC+移动响应式的项目，正好可以补一补之前对于浏览器兼容的不熟悉，把一些重要的点积累下来。<br><a id="more"></a></p>
+<h1 id="万恶的IE"><a href="#万恶的IE" class="headerlink" title="万恶的IE"></a>万恶的IE</h1><p>这个项目需要兼容到IE9，算是不幸中的万幸，大部分css3的属性都可以很好的实现。以下是针对IE浏览器的html代码举例：<br><strong>tips:</strong><br>IE10以上浏览器不支持条件注释。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">条件注释判断浏览器版本</div><div class="line"><span class="comment">&lt;!--[if !IE]&gt;&lt;!--&gt;</span><span class="comment">&lt;!--&lt;![endif]--&gt;</span>除IE外都可识别</div><div class="line"><span class="comment">&lt;!--[if IE]&gt;&lt;![endif]--&gt;</span>所有的IE可识别 </div><div class="line"><span class="comment">&lt;!--[if IE 9]&gt;&lt;![endif]--&gt;</span>仅IE9可识别</div><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;&lt;![endif]--&gt;</span>IE9以及IE9以下版本可识别 </div><div class="line"><span class="comment">&lt;!--[if gte IE 9]&gt;&lt;![endif]--&gt;</span>IE9以及IE9以上版本可识别</div></pre></td></tr></table></figure></p>
+<p>通过这些条件注释，就可以在IE版本过低时选用另一套样式或者是显示提示浏览器升级的页面。<br>关爱前端程序猿，从舍弃低版本IE做起，从升级浏览器做起。</p>
+<h2 id="一行之前没有注意到的meta标签"><a href="#一行之前没有注意到的meta标签" class="headerlink" title="一行之前没有注意到的meta标签"></a>一行之前没有注意到的meta标签</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="attribute">name</span>=<span class="string">"renderer"</span> <span class="attribute">content</span>=<span class="string">"webkit"</span>&gt;</div></pre></td></tr></table></figure>
+<p>用来定义浏览器的渲染模式，对于国产浏览器的双核来说，可以强制使用webkit引擎来渲染页面。</p>
+<h2 id="css3渐变"><a href="#css3渐变" class="headerlink" title="css3渐变"></a>css3渐变</h2><p>很遗憾这个属性只支持IE10及以上的版本，对于IE9及以下版本的浏览器就只能使用图片或者牺牲一下设计效果的纯色背景了。</p>
+<h1 id="图片的小技巧"><a href="#图片的小技巧" class="headerlink" title="图片的小技巧"></a>图片的小技巧</h1><p>对于网页上图片的显示，最基本的有两种方式，一种是img标签，一种是背景图片。<br>img标签中的图片用户是可以进行一些操作的，例如拖拽点击等，而背景图则不可以。</p>
+<h1 id="拼图的实现"><a href="#拼图的实现" class="headerlink" title="拼图的实现"></a>拼图的实现</h1><p>有一个部分是实现几个不规则长宽的拼接，暂时使用纯css利用浮动和定位实现，但是显得不够优雅，复用性也很差，还需要继续研究，必要时利用js实现一个小小的拼图组件。</p>
+<h1 id="对大屏的自适应方案"><a href="#对大屏的自适应方案" class="headerlink" title="对大屏的自适应方案"></a>对大屏的自适应方案</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> screenHeight = <span class="built_in">window</span>.screen.width</span></div><div class="line"><span class="javascript">    <span class="keyword">if</span>(<span class="built_in">window</span>.screen.width &gt; <span class="number">1400</span>) &#123;</span></div><div class="line"><span class="javascript">        <span class="built_in">document</span>.body.style.zoom = (screenHeight * <span class="number">0.874</span>) / <span class="number">1200</span>;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以上代码嵌入<code>body</code>标签之间即可实现高分屏上的自适应，相对媒体查询来说更简洁易用一些。<br>在IE下zoom属性会导致整个页面放大，出现滚动条，不适用。、<br>在FF下无zoom属性，需要更冗杂的hack，经过比较决定采用媒体查询。</p>
+<h1 id="IE图片链接的边框问题"><a href="#IE图片链接的边框问题" class="headerlink" title="IE图片链接的边框问题"></a>IE图片链接的边框问题</h1><p>类似以下代码的图片链接，在IE浏览器下会出现难看的边框，设置img的border属性为0或none即可。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a <span class="attribute">href</span>=<span class="string">"##"</span>&gt;&lt;img <span class="attribute">src</span>=<span class="string">"XX.png"</span> <span class="attribute">alt</span>=<span class="string">""</span>&gt;&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="发送验证码倒计时"><a href="#发送验证码倒计时" class="headerlink" title="发送验证码倒计时"></a>发送验证码倒计时</h1><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> wait = <span class="number">30</span>;</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">countDown</span><span class="params">(button)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (button.html() == <span class="string">'0s后重新发送'</span>) &#123;</div><div class="line">           button.prop(<span class="string">"disabled"</span>, <span class="literal">false</span>);</div><div class="line">           button.html(<span class="string">"发送验证码"</span>);</div><div class="line">           wait = <span class="number">30</span>;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           button.prop(<span class="string">"disabled"</span>, <span class="literal">true</span>);</div><div class="line">           button.html(wait + <span class="string">'s后重新发送'</span>);</div><div class="line">           wait--;</div><div class="line">           setTimeout(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">               countDown(button);</div><div class="line">           &#125;,</div><div class="line">           <span class="number">1000</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h1 id="移动端overflow-x坑"><a href="#移动端overflow-x坑" class="headerlink" title="移动端overflow-x坑"></a>移动端overflow-x坑</h1><p>直接在body上设置是无法阻止原生的touch事件的，如果有图片或内容超出宽度会出现横向滚动的bug，在相应内容的父级div上设置overflow-x即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/demo/" rel="tag">#demo++</a>
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/offical-website/" rel="tag">#offical website</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/06/2016-04-06/" rel="next" title="百度前端学院笔记-复杂排版和sass初识">
+                <i class="fa fa-chevron-left"></i> 百度前端学院笔记-复杂排版和sass初识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/18/2016-05-18/" rel="prev" title="经典三栏布局">
+                经典三栏布局 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/27/2016-04-27/"
+           data-title="demo++官网重构" data-url="http://xdlrt.github.io/2016/04/27/2016-04-27/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#万恶的IE"><span class="nav-number">1.</span> <span class="nav-text">万恶的IE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一行之前没有注意到的meta标签"><span class="nav-number">1.1.</span> <span class="nav-text">一行之前没有注意到的meta标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3渐变"><span class="nav-number">1.2.</span> <span class="nav-text">css3渐变</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片的小技巧"><span class="nav-number">2.</span> <span class="nav-text">图片的小技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拼图的实现"><span class="nav-number">3.</span> <span class="nav-text">拼图的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对大屏的自适应方案"><span class="nav-number">4.</span> <span class="nav-text">对大屏的自适应方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IE图片链接的边框问题"><span class="nav-number">5.</span> <span class="nav-text">IE图片链接的边框问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发送验证码倒计时"><span class="nav-number">6.</span> <span class="nav-text">发送验证码倒计时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端overflow-x坑"><span class="nav-number">7.</span> <span class="nav-text">移动端overflow-x坑</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

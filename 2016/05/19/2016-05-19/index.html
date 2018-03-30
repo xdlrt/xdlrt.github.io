@@ -1,0 +1,739 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PostCSS,译文," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="CSS的发展，像所有的语言一样，是一个不断迭代的过程。">
+<meta name="keywords" content="PostCSS,译文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译计划-浅谈PostCSS">
+<meta property="og:url" content="http://xdlrt.github.io/2016/05/19/2016-05-19/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="CSS的发展，像所有的语言一样，是一个不断迭代的过程。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译计划-浅谈PostCSS">
+<meta name="twitter:description" content="CSS的发展，像所有的语言一样，是一个不断迭代的过程。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/05/19/2016-05-19/"/>
+
+
+  <title> 翻译计划-浅谈PostCSS | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                翻译计划-浅谈PostCSS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T08:00:00+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/翻译计划/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译计划</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/2016-05-19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/2016-05-19/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS的发展，像所有的语言一样，是一个不断迭代的过程。<br><a id="more"></a></p>
+<h1 id="出处"><a href="#出处" class="headerlink" title="出处"></a>出处</h1><p>原始链接：<a href="https://www.smashingmagazine.com/2015/12/introduction-to-postcss/" target="_blank" rel="external">An Introduction To PostCss</a><br>作者：Drew Minns<br>译者：Icarus</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>CSS的发展，像所有的语言一样，是一个不断迭代的过程。伴随着每一次重大的修改发布，我们都会有新的特性和语法来帮助我们去修改样式。CSS3的提出，使我们能够设计之前只可能用javascript来完成的交互特性。每过一段时间就会有让我们编写样式更简单且更灵活的新工具浮现。<br>PostCss是相对最新的并且被样式使用的工具之一。PostCss目标是用一个用户插件和工具的生态系统彻底重构CSS。使用与Sass和LESS这样的预处理器相同的规则，他将延伸出来的CSS语法和特性转换为现代的、对浏览器友好的CSS。<br>你会问如何实现的？Javascript。<br>Javascript有能力将我们的样式转化的比其他预处理器更块。使用诸如Gulp和Grunt的任务执行工具，我们可以将样式表在构建过程中转化，就像是Sass和LESS的编译。诸如React和AngularJS这样的javascript库或框架允许我们直接在javascript里面进行CSS的编写，为javascript转化我们的样式表开辟了途径。</p>
+<h2 id="PostCSS的历史"><a href="#PostCSS的历史" class="headerlink" title="PostCSS的历史"></a>PostCSS的历史</h2><p>PostCSS作为Autoprefixer的作者Andrey Sitnik开发出来的工具，被正式发布作为CSS编译过程中使用javascript的方法。PostCSS本身只有一个简单的API，这个API在使用浩瀚无边的插件生态系统时，展现出非常强大的能力。为了提供有帮助的查错方法，PostCSS会生成source maps，而且一个抽象语法树（AST）会帮助我们理解在代码何处和代码怎样被转化。</p>
+<h2 id="模块化思维的好处"><a href="#模块化思维的好处" class="headerlink" title="模块化思维的好处"></a>模块化思维的好处</h2><p>没有开发者会从随意的开始一个工程。许多从一个拥有变量、mixin、函数和常规的公用组件的SASS样板开始。我们会为变量、mixin、函数和常规的公用组件分别构建样式表，从而使我们的生产变得更加容易。在这一天的末尾，我们以10个或者更多的样式表来保持代码的组织性。<br>维护一个不断增加代码片段的Sass或是LESS库是一项不可避免的工作，同时也会让项目变得十分臃肿。许多包含了”以防万一”代码的项目拥有很多没有用到的mixin和函数。PostCss为我们提供了易安装的即插即用(plug-and-play)的插件模块，使得为项目特殊需要的开发过程更加灵活。<br>PostCSS用我们所有生产环境的样式表来迁移所有需要用到的代码去生成函数、公用组件和mixin并且将他们包装成插件。现在，对每一个项目来说，我们可以通过在我们的构建工具引入插件来选取需要的工具。<br>PostCSS FontPath插件就是展现PostCSS神奇能力的一个例子。我们可以在允许用户使用的webfonts文件中用Sass引入一个mixin。因此我们写入了@font-face标签。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> importfont($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) &#123;</div><div class="line">  @<span class="keyword">font-face</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">'#&#123;$font-family&#125;'</span>;</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'#&#123;$font-filename&#125;.eot'</span>);</div><div class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'#&#123;$font-filename&#125;.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</div><div class="line">    <span class="built_in">url</span>(<span class="string">'#&#123;$font-filename&#125;.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);</div><div class="line">    <span class="attribute">font-weight</span>: $font-weight;</div><div class="line">    <span class="attribute">font-style</span>: $font-style;</div><div class="line">    <span class="attribute">font-stretch</span>: $font-stretch;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">include</span> importfont(<span class="string">'mission script'</span>, <span class="string">'fonts/mission-script-webfont'</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure></p>
+<p>如果在我们的项目中使用PostCSS FontPath插件，我们就不再需要像上面那个例子一样引用Sass mixins。我们可以在我们的CSS中写入如下代码，PostCSS会通过Grunt或者Gulp来将它转化为我们需要的代码。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">font-face</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="string">'My Font'</span>;</div><div class="line">  <span class="attribute">font-path</span>: <span class="string">'/path/to/font/file'</span>;</div><div class="line">  <span class="attribute">font-weight</span>: normal;</div><div class="line">  <span class="attribute">font-style</span>: normal;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>截至到这篇文章发表时，社区中已经有超过100个目前可用的插件，它们允许我们使用未来的CSS语法、缩写、工具和这门语言的拓展。它不仅仅是一个“很酷的工具”，而且在它的用户基数中正计入WordPress、Google和Twittter的团队。</p>
+<h2 id="添加PostCSS到你的工作流中"><a href="#添加PostCSS到你的工作流中" class="headerlink" title="添加PostCSS到你的工作流中"></a>添加PostCSS到你的工作流中</h2><p>由于PostCSS是基于Javascript的，我们在项目中可以使用像Gulp和Grunt这样的构建工具去转化CSS。下面的教程演示了如何通过Gulp或Grunt在你的工作流中添加PostCSS。使用哪种构建工具并不重要，这仅仅取决于个人的偏向或哪种对于我们的项目来说是最好的。</p>
+<p><strong>note：</strong><br>在Github可以找到可用于Gulp和Grunt这两者的完整版。可以将它作为一个初学者的模板随意使用，并且可以按需拓展。</p>
+<h3 id="开始在Gulp中使用PostCSS"><a href="#开始在Gulp中使用PostCSS" class="headerlink" title="开始在Gulp中使用PostCSS"></a>开始在Gulp中使用PostCSS</h3><p>如果你不熟悉Gulp,推荐你阅读Callum Macrae写的”building-with-gulp”来开始使用这个构建工具。<br>在终端运行以下命令来安装PostCSS模块至你的项目：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> gulp-postcss -D</div></pre></td></tr></table></figure></p>
+<p>在你项目的Gulpfile.js中，我们需要去引入安装好的PostCSS模块然后在一个任务中使用它。确认更新你的开发文件路径和转化过的输出文件的目录。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> postcss = <span class="built_in">require</span>(<span class="string">'gulp-postcss'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'path/to/dev/style.css'</span>)</div><div class="line">        .pipe(postcss([]))</div><div class="line">        .pipe(gulp.dest(path/to/prod))</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在命令行输入<code>gulp styles</code>来运行这个任务。</p>
+<h3 id="开始在Grunt中使用PostCSS"><a href="#开始在Grunt中使用PostCSS" class="headerlink" title="开始在Grunt中使用PostCSS"></a>开始在Grunt中使用PostCSS</h3><p>如果你不熟悉Gulp,推荐你阅读Mike Cunsolo写的”Get Up and Running With Grunt”来开始使用这个构建工具。<br>在终端中运行以下命令来在你的项目中安装PostCSS模块：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> grunt-postcss -D</div></pre></td></tr></table></figure></p>
+<p>当插件在你的系统中安装完成后，像下面那样将它在Gruntfile中引入并且创建一个任务。确认以你的项目目录结构更新了你的cwd和dest目录值。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="string">module.exports</span> <span class="string">=</span> <span class="string">function(grunt)</span> <span class="string">&#123;</span></div><div class="line">  <span class="string">grunt.initConfig(&#123;</span></div><div class="line"><span class="attr">    pkg:</span> <span class="string">grunt.file.readJSON('package.json'),</span></div><div class="line"><span class="attr">    styles:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">      options:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">        processors:</span> <span class="string">[]</span></div><div class="line">      <span class="string">&#125;,</span></div><div class="line"><span class="attr">      dist:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">        files:</span> <span class="string">[&#123;</span></div><div class="line"><span class="attr">          expand:</span> <span class="literal">true</span><span class="string">,</span></div><div class="line"><span class="attr">          cwd:</span> <span class="string">'dev/'</span><span class="string">,</span></div><div class="line"><span class="attr">          src:</span> <span class="string">['**/*.css'],</span></div><div class="line"><span class="attr">          dest:</span> <span class="string">'prod/'</span></div><div class="line">        <span class="string">&#125;]</span></div><div class="line">      <span class="string">&#125;</span></div><div class="line">    <span class="string">&#125;</span></div><div class="line">  <span class="string">&#125;);</span></div><div class="line"></div><div class="line">  <span class="string">//</span> <span class="string">Load</span> <span class="string">post-css.</span></div><div class="line">  <span class="string">grunt.loadNpmTasks('grunt-postcss');</span></div><div class="line"></div><div class="line"><span class="string">&#125;;</span></div></pre></td></tr></table></figure></p>
+<p>在终端中输入<code>grunt styles</code>来执行这个任务。</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>仅仅使用PostCSS本身并不能体现它的强大之处。它之所以强大是依靠它的插件。你可能已经注意到了在上面的Gulp和Grunt实现中任务声明是空数组。这些数组值就是我们想要在我们工具中引入的特性，也是我们能导入在社区成长起来的PostCSS插件的地方。<br>已获支持的PostCSS插件列表可以在<a href="https://github.com/postcss/postcss" target="_blank" rel="external">PostCSS’ GitHub page</a>找到。像所有的NPM包一样，插件可以通过命令行安装。许多插件只能用于PostCSS的拓展并且对于你正使用的构建工具是未知的。举个例子，我们安装一个<code>PostCSS Focus</code>插件，用来给每个鼠标悬浮状态添加一个<code>:focus</code>。<br>下面所有的例子中的插件，我们都需要用命令行和NPM来在我们的项目中安装插件包。</p>
+<h3 id="PostCSS插件安装示例"><a href="#PostCSS插件安装示例" class="headerlink" title="PostCSS插件安装示例"></a>PostCSS插件安装示例</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> postcss-focus -D</div></pre></td></tr></table></figure>
+<p>插件可以直接传递进之前写好的方法中。但是为了代码简洁，我们可以构造一个数组并把它当做一个参数传递。在这个数组中，我们可以引入必要的<code>require</code>声明，从而返回插件的值并立即调用。如果你想要对这个概念了解更多，浏览一下 Ryan Christiani所写的<a href="http://ryanchristiani.com/functions-as-first-class-citizens-in-javascript/" target="_blank" rel="external">Functions as First-Class Citizens in JavaScript</a>。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">require</span><span class="params">(<span class="string">'postcss-focus'</span>)</span><span class="params">()</span></span></div></pre></td></tr></table></figure></p>
+<p>以下是为Grunt改进过的代码，使用了我们最新构造的<code>processorArray</code>：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var processorArray = [</div><div class="line">    <span class="keyword">require</span>(<span class="string">'postcss-plugin'</span>)()</div><div class="line">];</div><div class="line"></div><div class="line">/<span class="regexp">/ Snipped for brevity</span></div><div class="line"><span class="regexp">styles: &#123;</span></div><div class="line"><span class="regexp">      options: &#123;</span></div><div class="line"><span class="regexp">        processors: processorArray</span></div><div class="line"><span class="regexp">      &#125;,</span></div><div class="line"><span class="regexp">      dist: &#123;</span></div><div class="line"><span class="regexp">        src: 'path/to</span><span class="regexp">/dev/style</span>.css<span class="string">',</span></div><div class="line"><span class="string">        dest: '</span>path/to/prod/style.css<span class="string">'</span></div><div class="line"><span class="string">      &#125;</span></div><div class="line"><span class="string">    &#125;</span></div></pre></td></tr></table></figure></p>
+<p>这里是为Gulp改进过的代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> processorArray = [</div><div class="line">    <span class="built_in">require</span>(<span class="string">'postcss-plugin'</span>)()</div><div class="line">];</div><div class="line"></div><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    gulp.src(<span class="string">'path/to/dev/style.css'</span>)</div><div class="line">        .pipe(postcss(processorArray))</div><div class="line">        .pipe(gulp.dest(<span class="string">'path/to/prod'</span>))</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>当我们已经安装好了一个插件并且我们的构建工具准备好去编译我们的代码时，我们可以用PostCSS和它插件的特色。首要任务是在保存我们开发代码的目录下创建一个带有扩展名为<code>.css</code>的文件。<br>“等一下！你说一个CSS文件吗？”对哒，一个CSS文件。因为PostCSS转换的是CSS，我们不需要去用一个特殊的语法，传统的CSS就可以。如果你熟悉预处理器，那么对你来说将<code>.sass</code>，<code>.scss</code>，<code>.styl</code>or<code>.less</code>文件抛在一遍并且回到<code>.css</code>的怀抱是很不自然的。但是，事实上，这不是改变他的本质，只是形式上的转化。<br>我们可以分别使用<code>grunt styles</code>和<code>gulp styles</code>的命令来运行我们的构建工具，从而使用我们新安装的PostCSS去处理我们的样式表。我们开发环境中的CSS文件会通过PostCSS插件和其它提供的插件进行处理，然后这些CSS文件会被输出到我们指定的生产目录中。<br>底下是一些可能会在你开始使用PostCSS时有所帮助的插件小贴士。包括了插件安装说明和使用说明。</p>
+<h3 id="自动添加前缀"><a href="#自动添加前缀" class="headerlink" title="自动添加前缀"></a>自动添加前缀</h3><p>在整个广袤无垠的浏览器和设备圈子里写可以兼容样式非常令人痛苦，并且保持更新需要浏览器前缀的属性和值本身也是一个挑战。幸运的是，Autoprefixer可以推算出在哪并且在什么情况下需要去添加浏览器前缀。插件可以关注到属性的浏览器的前缀和需要前缀的值，它将我们解放，可以让我们在写样式时只需要写出在脑子里的现代特性和属性。<br>这是我们通过命令行安装插件的方式：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> autoprefixer -D</div></pre></td></tr></table></figure></p>
+<p>当我们将这个插件添加到之前构造好的数组中，我们可以提供一个包含了项目需要支持的浏览器范围的对象。配置项在<a href="https://github.com/ai/browserslist" target="_blank" rel="external">Browserslist Github Account</a>中提供。<br>让我们把Autoprefixer插件添加到我们的处理器中：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var processorsArray = [</div><div class="line">  /<span class="regexp">/ snipped for brevity</span></div><div class="line"><span class="regexp">  require('autoprefixer')(&#123; browsers: ['last 2 versions', 'ie 6-8', 'Firefox &gt; 20']  &#125;)</span></div><div class="line"><span class="regexp">];</span></div></pre></td></tr></table></figure></p>
+<p>根据我们提供的浏览器范围，合适的浏览器前缀会被输出到我们样式中需要的所有CSS属性和值中。<br>这是开发环境的CSS：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是转化后输出的CSS：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">display</span>: -webkit-flex;</div><div class="line">  <span class="attribute">display</span>: -ms-flexbox;</div><div class="line">  <span class="attribute">display</span>: -webkit-box;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">-webkit-flex-flow</span>: row wrap;</div><div class="line">      <span class="attribute">-ms-flex-flow</span>: row wrap;</div><div class="line">          <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="CSSNEXT-使用未来的语法"><a href="#CSSNEXT-使用未来的语法" class="headerlink" title="CSSNEXT-使用未来的语法"></a>CSSNEXT-使用未来的语法</h3><p>CSS4在不久就会出现在我们身边，伴随它而来的是原生变量、定制媒体查询、定制选择器和新的链接地址伪类。截至我在写这篇文章的时候，所有的浏览器都不支持这些新特性，当新的规范得到批准后它们就会在现代浏览器中得到应用。<br>CSSNext是一个转化所有CSS4特点和属性至浏览器可以理解的CSS3的工具。这个工具可以独立使用也可以作为PostCSS的一个插件使用。再一次，我们可以可以将它添加到包含了我们其他PostCSS插件的<code>processorsArray</code>数组中。<br>通过命令行安装CSSNext：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> cssnext -D</div></pre></td></tr></table></figure></p>
+<p>然后将插件添加到处理器中<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var processorsArray = [</div><div class="line">  /<span class="regexp">/ snipped for brevity</span></div><div class="line"><span class="regexp">  require('cssnext')()</span></div><div class="line"><span class="regexp">];</span></div></pre></td></tr></table></figure></p>
+<p>现在，在你的生产环境中可以写带有CSS4特性的代码了，PostCSS会通过构建工具将你的语法转化，从而支持现在的浏览器。当浏览器支持更新的语法时，你可以将生产环境的CSS替换为转化过的CSS。<br>这是生产环境的CSS：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Custom Variables</span></div><div class="line"><span class="selector-pseudo">:root</span> &#123;</div><div class="line">  <span class="attribute">--linkColour</span>: purple;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">a</span> &#123;</div><div class="line">  <span class="attribute">color</span>: var(--linkColour);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Custom media queries with ranges</span></div><div class="line"><span class="variable">@custom-media</span> --only-medium-screen (width &gt;= <span class="number">500px</span>) and (width &lt;= <span class="number">1200px</span>);</div><div class="line"></div><div class="line"><span class="keyword">@media</span> (--only-medium-screen) &#123;</div><div class="line">  <span class="comment">/* Medium viewport styles */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Custom selectors</span></div><div class="line"><span class="variable">@custom-selector :</span><span class="attribute">--enter </span>:hover, :focus;</div><div class="line"><span class="variable">@custom-selector :</span>--input input, .input, .inputField;</div><div class="line"></div><div class="line"><span class="attribute">a</span>:--enter &#123;</div><div class="line">  <span class="comment">/* Enter styles go here */</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-pseudo">:--input</span> &#123;</div><div class="line">  <span class="comment">/* Input field styles go here */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是转换过的输出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span> &#123;</div><div class="line">  <span class="attribute">color</span>: purple;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">media</span> (min-width:<span class="number">500px</span>) and (max-width:<span class="number">1200px</span>)&#123;</div><div class="line">  <span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background</span>:<span class="number">#00f</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:focus</span>,<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">  <span class="attribute">background</span>:<span class="number">#00f</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.input</span>, <span class="selector-class">.inputField</span>, <span class="selector-tag">input</span>&#123;</div><div class="line">  <span class="attribute">background</span>:red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果你想体验更多的CSSNext特性，<a href="http://cssnext.io/playground/" target="_blank" rel="external">这个网站</a>有一个用CSSNext支持的CSS4特性供你消遣的场地。</p>
+<h3 id="Sass语法"><a href="#Sass语法" class="headerlink" title="Sass语法"></a>Sass语法</h3><p>如果你的预处理器语言是Sass，不要怕：你可以用PostCSS来使用它的语法和它的工具。尽管传统的CSS暂时还不支持变量、嵌套和引入外部文件，像PreCSS这样的插件能够让我们使用这些特点并且在我们传统的CSS文件中使用Sass语法。<br>如果我们将插件通过命令行添加到我们的构建工具中并在我们构造的数组中引入，我们就可以立即开始输入Sass的语法了。如果你想从Sass转投到PostCSS的怀抱中，你只需要把文件拓展名改为<code>.css</code>并且立即将它放入你构建工具的工作流中。<br>通过命令行安装PreCSS：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> precss -D</div></pre></td></tr></table></figure></p>
+<p>在处理器中添加你的插件：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var processorsArray = [</div><div class="line">  /<span class="regexp">/ snipped for brevity</span></div><div class="line"><span class="regexp">  require('precss')()</span></div><div class="line"><span class="regexp">];</span></div></pre></td></tr></table></figure></p>
+<p>这里是开发环境的CSS：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*Variables*/</span></div><div class="line"><span class="variable">$blue</span>: <span class="number">#0000ff</span>;</div><div class="line"><span class="variable">$green</span>: <span class="number">#00ff00</span>;</div><div class="line"><span class="variable">$radius</span>: <span class="number">10px</span>;</div><div class="line"></div><div class="line"><span class="selector-class">.square</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="variable">$blue</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*Imports*/</span></div><div class="line">@<span class="keyword">import</span> <span class="string">"partials/_base.css"</span>;</div><div class="line"></div><div class="line"><span class="comment">/*Mixins*/</span></div><div class="line">@define-<span class="keyword">mixin</span> square <span class="variable">$dimension</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="variable">$dimension</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="variable">$dimension</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*Nesting, variables and mixins*/</span></div><div class="line"><span class="selector-class">.button</span> &#123;</div><div class="line">  @<span class="keyword">mixin</span> square 200px;</div><div class="line">  <span class="attribute">background</span>: <span class="variable">$green</span>;</div><div class="line">  &amp;:hover &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="variable">$blue</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是输出后的CSS：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.square</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#0000ff</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.button</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#00ff00</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#0000ff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="使用社区中的插件拓展你的CSS"><a href="#使用社区中的插件拓展你的CSS" class="headerlink" title="使用社区中的插件拓展你的CSS"></a>使用社区中的插件拓展你的CSS</h2><p>尽管可用的插件能够帮助我们更有效率的去编写代码，PostCSS的力量存在于社区中的插件。这些插件给我们提供了编写代码更为快速的途径，或者说至少是更简单的去实现有创造力的样式编写方式。使用PostCSS提供的API，这些插件允许我们在项目中定制属性、选择器和属性值，这让我们更有效的编写样式同时也会减少Google的使用。</p>
+<h3 id="数量查询"><a href="#数量查询" class="headerlink" title="数量查询"></a>数量查询</h3><p>数量查询是非常强大的功能。它允许我们用CSS给元素计数并且基于兄弟节点的数量来应用样式。它们相对你现在用到的CSS来说使用一些更先进的CSS选择器，所以这些选择器写出来有点小花招的感觉。<br>尽管有像QQ这样的在线工具能帮我们去写这些查询，我们也可以运用PostCSS直接在我们的样式中使用定制的选择器。<br>为了使用数量选择器，通过命令行在你的项目中安装数量选择插件像其他所有的插件一样：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> postcss-quantity-queries -D</div></pre></td></tr></table></figure></p>
+<p>添加插件到处理器中：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var processors = [</div><div class="line">  /<span class="regexp">/ Snipped for brevity</span></div><div class="line"><span class="regexp">  require('postcss-quantity-queries')()</span></div><div class="line"><span class="regexp">];</span></div></pre></td></tr></table></figure></p>
+<p>当插件安装完成后，你就可以使用定制的选择器来基于匹配到的元素来应用样式，但仅仅只能通过使用插件来支持。<br>这是开发环境的CSS：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// To apply styles if 'at least' number of sibling elements present</span></div><div class="line"><span class="selector-class">.container</span> &gt; <span class="selector-class">.item</span>:at-least(<span class="number">5</span>) &#123;</div><div class="line">  <span class="attribute">background</span>: blue;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if 'at most' number of sibling elements present</span></div><div class="line"><span class="selector-class">.item</span> &gt; <span class="selector-tag">a</span>:at-most(<span class="number">10</span>) &#123;</div><div class="line">  <span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if number of sibling items 'between' a range is present</span></div><div class="line"><span class="selector-class">.gallery</span> &gt; <span class="selector-tag">img</span>:between(<span class="number">4</span>, <span class="number">7</span>) &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">25%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if 'exactly' number of provided items is present</span></div><div class="line"><span class="selector-class">.profiles</span>:exactly(<span class="number">4</span>) &#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> <span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是转化输出后的CSS：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// To apply styles if 'at least' number of sibling elements present</span></div><div class="line"><span class="selector-class">.container</span> &gt; <span class="selector-class">.item</span>:nth-last-child(n+<span class="number">5</span>), <span class="selector-class">.container</span> &gt; <span class="selector-class">.item</span>:nth-last-child(n+<span class="number">5</span>) ~ <span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">background</span>: blue;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if 'at most' number of sibling elements present</span></div><div class="line"><span class="selector-class">.item</span> &gt; <span class="selector-tag">a</span>:nth-last-child(-n+<span class="number">10</span>):first-child, <span class="selector-class">.item</span> &gt; <span class="selector-tag">a</span>:nth-last-child(-n+<span class="number">10</span>):first-child ~ <span class="selector-tag">a</span> &#123;</div><div class="line">  <span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if number of sibling items 'between' a range is present</span></div><div class="line"><span class="selector-class">.gallery</span> &gt; <span class="selector-tag">img</span>:nth-last-child(n+<span class="number">4</span>):nth-last-child(-n+<span class="number">7</span>):first-child, <span class="selector-class">.gallery</span> &gt; <span class="selector-tag">img</span>:nth-last-child(n+<span class="number">4</span>):nth-last-child(-n+<span class="number">7</span>):first-child ~ <span class="selector-tag">img</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">25%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// To apply styles if 'exactly' number of provided items is present</span></div><div class="line"><span class="selector-class">.profiles</span>:nth-last-child(<span class="number">4</span>):first-child, <span class="selector-class">.profiles</span>:nth-last-child(<span class="number">4</span>):first-child ~ <span class="selector-class">.profiles</span> &#123;</div><div class="line">      <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> <span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用short插件来拓展简写属性"><a href="#使用short插件来拓展简写属性" class="headerlink" title="使用short插件来拓展简写属性"></a>使用short插件来拓展简写属性</h3><p>当你在写样式的时候，你可能有这样的遭遇，遇到一个属性的语法你会说：“这可以更简短一些的。”幸运的是，Short插件帮助我们做了这样一件事：更有逻辑的编写样式。它让我们可以用简写的属性来写<code>position</code>和’size’，更像<code>background</code>和<code>font</code>被压缩成一个声明的方式。<br>简写的声明会通过PostCSS的API被转换为浏览器可接受的样式，能使样式表在开发时更加简洁和有组织性。<br>通过命令行安装Short；<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> postcss-short -D</div></pre></td></tr></table></figure></p>
+<p>添加到你的处理器中：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var processors</span> = [</div><div class="line">  require(<span class="string">'postcss-short'</span>)()</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p><code>text</code>属性包含了这些用于排版的属性：<code>color</code>, <code>font-style</code>, <code>font-variant</code>, <code>font-weight</code>, <code>font-stretch</code>, <code>text-decoration</code>, <code>text-align</code>, <code>text-rendering</code>, <code>text-transform</code>, <code>white-space</code>, <code>font-size</code>, <code>line-height</code>, <code>letter-spacing</code>, <code>word-spacing</code> and <code>font-family</code>.<br>这是开发环境的CSS：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">text</span>: <span class="number">300</span> uppercase dimgrey center <span class="number">1.6rem</span> <span class="number">1.7</span> .<span class="number">05em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是转化后输出的CSS：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">color</span>: dimgrey;</div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">text-transform</span>: uppercase;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">25px</span>;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">1.6rem</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.7</span>;7</div><div class="line">  <span class="attribute">letter-spacing</span>: .<span class="number">05em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>position</code>属性允许在一个声明中包含<code>top</code>,<code>left</code>,<code>right</code>,<code>bottom</code>。这些值的顺序是按顺时针方向。如果有值不需要填写，只需要在该属性值的位置上写一个*即可。<br>这是开发环境的css：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">section</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute <span class="number">10px</span> * *;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.topNav</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed <span class="number">0</span> * * <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.modal</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed <span class="number">40%</span> <span class="number">25%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是转化后输出的css:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">section</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.topNav</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.modal</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed;</div><div class="line">  <span class="attribute">top</span>: <span class="number">40%</span>;</div><div class="line">  <span class="attribute">right</span>: <span class="number">25%</span>;</div><div class="line">  <span class="attribute">bottom</span>: <span class="number">40%</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">25%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="这对我们的生产意味着什么？"><a href="#这对我们的生产意味着什么？" class="headerlink" title="这对我们的生产意味着什么？"></a>这对我们的生产意味着什么？</h2><p>而今使用PostCSS并且完全可以说出它的好处。你可以通过在你的构建工具中处理PostCSS来将其包含在你的工作流中，这更像是我们如何编译Sass和LESS。引入一个像PreCSS的插件能够让你写好的Sass项目可以在不需要任何语法转变的情况下投入PostCSS的怀抱。<br>自我写这篇文章起，一个关于哪里是编写CSS的最好地方的讨论正在进行。当我们使用像React这样日渐流行的框架，组件化编写样式的想法势不可挡，它让我们直接使用javascript来转化样式。尽管这些现在更多的是一个讨论，这也确实是一个用PostCSS来转换样式的方法。<br>另外一个在生产中兴风作浪的项目是CSS模块化，它将样式范围拓展至本地文件并且可以按需加载。这个概念已经在javascript的圈子里很流行了。当前端语言诸如React和JSX的界限持续变模糊，忽视CSS和javascript联合的力量是很难的。<br>尽管PostCSS通过定制语法和属性这样全新的方式来拓展CSS，它对于想要顺畅的使用这种语言和它错综复杂的地方的初学者可能是一个挑战。如果你和一个新手开发者在一个项目中使用PostCSS，尝试去鼓励他们去深层次的理解这个语言并且理解PostCSS这样一个和Sass非常相像的生产工具是怎样让我们的样式更有效率的编写。</p>
+<h2 id="拥抱PostCSS"><a href="#拥抱PostCSS" class="headerlink" title="拥抱PostCSS"></a>拥抱PostCSS</h2><p>在将来的几年内，我们使用CSS的方式会有许多不同的方式。每个项目我们都会有不同的依赖，我们需要这些依赖去适配我们的生产方式。在一个像PostCSS这样模块化的生态系统中工作让我们可以选择我们想要完成项目所要用到的特性。<br>我更乐意你去探索PostCSS的世界和所有已被支持的插件。因为这是一个社区项目，这个生态系统只能在人们使用它并且创造插件中成长。为了去探索更多的插件，可以查看NPM上的<a href="https://www.npmjs.com/browse/keyword/postcss-plugin" target="_blank" rel="external">可用包</a>，也可以在<a href="https://sneakertack.github.io/postcss-playground/" target="_blank" rel="external">PostCSS Playground</a>上测试插件的功能。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PostCSS/" rel="tag">#PostCSS</a>
+          
+            <a href="/tags/译文/" rel="tag">#译文</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/18/2016-05-18/" rel="next" title="经典三栏布局">
+                <i class="fa fa-chevron-left"></i> 经典三栏布局
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/18/2016-06-18/" rel="prev" title="css3模拟原生页面滚动">
+                css3模拟原生页面滚动 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/19/2016-05-19/"
+           data-title="翻译计划-浅谈PostCSS" data-url="http://xdlrt.github.io/2016/05/19/2016-05-19/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#出处"><span class="nav-number">1.</span> <span class="nav-text">出处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PostCSS的历史"><span class="nav-number">2.1.</span> <span class="nav-text">PostCSS的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化思维的好处"><span class="nav-number">2.2.</span> <span class="nav-text">模块化思维的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加PostCSS到你的工作流中"><span class="nav-number">2.3.</span> <span class="nav-text">添加PostCSS到你的工作流中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始在Gulp中使用PostCSS"><span class="nav-number">2.3.1.</span> <span class="nav-text">开始在Gulp中使用PostCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始在Grunt中使用PostCSS"><span class="nav-number">2.3.2.</span> <span class="nav-text">开始在Grunt中使用PostCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-number">2.3.3.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PostCSS插件安装示例"><span class="nav-number">2.3.4.</span> <span class="nav-text">PostCSS插件安装示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-number">2.4.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自动添加前缀"><span class="nav-number">2.4.1.</span> <span class="nav-text">自动添加前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSSNEXT-使用未来的语法"><span class="nav-number">2.4.2.</span> <span class="nav-text">CSSNEXT-使用未来的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sass语法"><span class="nav-number">2.4.3.</span> <span class="nav-text">Sass语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用社区中的插件拓展你的CSS"><span class="nav-number">2.5.</span> <span class="nav-text">使用社区中的插件拓展你的CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数量查询"><span class="nav-number">2.5.1.</span> <span class="nav-text">数量查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用short插件来拓展简写属性"><span class="nav-number">2.5.2.</span> <span class="nav-text">使用short插件来拓展简写属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这对我们的生产意味着什么？"><span class="nav-number">2.6.</span> <span class="nav-text">这对我们的生产意味着什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥抱PostCSS"><span class="nav-number">2.7.</span> <span class="nav-text">拥抱PostCSS</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

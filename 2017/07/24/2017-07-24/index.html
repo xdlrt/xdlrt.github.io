@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MobX,React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="在 Part 1 我们看到如何去建立一个 MobX 状态树并且让它可观察。在这个基础上，我们下一步要做的是开始响应数据的变化。坦白说，有趣的部分是从这里开始的。">
+<meta name="keywords" content="MobX,React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能 MobX 模式（part 2）- 响应变化">
+<meta property="og:url" content="http://xdlrt.github.io/2017/07/24/2017-07-24/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="在 Part 1 我们看到如何去建立一个 MobX 状态树并且让它可观察。在这个基础上，我们下一步要做的是开始响应数据的变化。坦白说，有趣的部分是从这里开始的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T15:47:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高性能 MobX 模式（part 2）- 响应变化">
+<meta name="twitter:description" content="在 Part 1 我们看到如何去建立一个 MobX 状态树并且让它可观察。在这个基础上，我们下一步要做的是开始响应数据的变化。坦白说，有趣的部分是从这里开始的。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2017/07/24/2017-07-24/"/>
+
+
+  <title> 高性能 MobX 模式（part 2）- 响应变化 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                高性能 MobX 模式（part 2）- 响应变化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-24T20:18:19+08:00" content="2017-07-24">
+              2017-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/翻译计划/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译计划</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/24/2017-07-24/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/24/2017-07-24/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在 Part 1 我们看到如何去建立一个 MobX 状态树并且让它可观察。在这个基础上，我们下一步要做的是开始响应数据的变化。坦白说，有趣的部分是从这里开始的。</p>
+<a id="more"></a>
+<blockquote>
+<p>译者：阿里云前端-也树</p>
+</blockquote>
+<p>原文链接：</p>
+<ul>
+<li><a href="https://blog.pixelingene.com/2016/10/effective-mobx-patterns-part-1/" target="_blank" rel="external">Part 1 - Shaping the observables</a></li>
+<li><a href="https://blog.pixelingene.com/2016/10/effective-mobx-patterns-part-2/" target="_blank" rel="external">Part 2 - Reacting to changes</a></li>
+<li><a href="https://blog.pixelingene.com/2016/10/effective-mobx-patterns-part-3/" target="_blank" rel="external">Part 3 - A Cookbook of use cases</a></li>
+</ul>
+<p>MobX 可以保证，无论何时你的响应式数据发生了变化，相应的依赖于 <code>observable</code> 的属性会自动同步更新。这意味着你现在可以专注于响应变化和处理变化带来的副作用，而不需要为数据的同步操心。</p>
+<p>让我们深入一下，看看有哪些方式可以让你处理副作用。</p>
+<h2 id="使用-action-作为入口"><a href="#使用-action-作为入口" class="headerlink" title="使用 @action 作为入口"></a>使用 @action 作为入口</h2><p>默认情况下，当你修改被监听的变量值，MobX 能够发觉并且保持其它依赖这个变量的值同步更新。这个过程是同步发生的。然而在很多情况下，你会想要在一个方法里修改多个被监听的变量值。这会导致许多通知被触发并且有可能会使你的应用运行变慢。</p>
+<p><img src="" alt=""></p>
+<p>将你要触发的方法放在一个 <code>action()</code> 中是一个更好的做法。这会在你的方法上创建一个数据处理的边界，所有受影响被观察的变量会在你的 action 执行后保持同步更新。注意这个延迟后的通知只会对当前函数作用域下被观察的变量生效。如果你有许多会更改被观察变量的异步 action，就需要把他们放在 <code>runInAction()</code> 方法里了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">    @observable firstName;</div><div class="line">    @observable lastName;</div><div class="line"></div><div class="line">    <span class="comment">// 因为我们用 @action 装饰器来装饰这个方法，fullName 只会在 changeName() 执行完成后改变。</span></div><div class="line">    @action</div><div class="line">    changeName(first, last) &#123;</div><div class="line">        <span class="keyword">this</span>.firstName = first;</div><div class="line">        <span class="keyword">this</span>.lastName = last;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @computed get fullName() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.firstName&#125;</span>, <span class="subst">$&#123;<span class="keyword">this</span>.lastName&#125;</span>`</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> Person();</div><div class="line">p.changeName(<span class="string">'Pavan'</span>, <span class="string">'Podila'</span>);</div></pre></td></tr></table></figure>
+<p>action 是 store 产生变化的入口。通过使用 action 方法，你可以让更新多个被观察的变量变成原子性的操作。</p>
+<p><strong>tip：</strong><br>尽可能避免直接从外界操作被观察的变量，同时显式的为你做数据变化的方法添加 <code>@action</code> 装饰器。事实上，你可以通过设置 <code>useStrict(true)</code> 来强制禁止在外界操作。</p>
+<h2 id="使用-autorun-来触发副作用"><a href="#使用-autorun-来触发副作用" class="headerlink" title="使用 autorun 来触发副作用"></a>使用 autorun 来触发副作用</h2><p>MobX 可以保证被观察变量的结构是稳定不变的。但是如果 MobX 的世界里只有被观察到的变量，是不是太无趣了一点。我们需要它们的一个对应产物 <code>observers</code> 来让事情有趣一点。</p>
+<p>事实上，UI 就是 MobX store 美化后的一名观察者。通过使用 <code>mobx-react</code> 可以让你的 React 组件观察对应 store 的变动并且无论何时 store 发生了变化，这些组件会自动重新渲染。</p>
+<p>但是，UI 不是你系统中唯一的观察者。你可以在你的 store 上添加更多的观察者，让它们去做一些有趣的事情。<code>console-logger</code> 可以作为一名最基础的观察者，它的功能就是在观察的变量有变更时，把变更后的值打印出来。</p>
+<p><img src="" alt=""></p>
+<p>通过 <code>autorun</code> 方法我们可以非常容易的创建一名观察者。最快的方式就是给 <code>autorun</code> 方法提供一个函数。无论你在这个函数里用到了哪些被观察的变量，它们都会自动地被 MobX 追踪。一旦这些变量发生变化，你提供的函数会再次执行，也就是 <code>autorun</code> 的功能。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">    @observable firstName = <span class="string">'None'</span>;</div><div class="line">    @observable lastName = <span class="string">'None'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">constructor</span>() &#123;</div><div class="line"></div><div class="line">        <span class="comment">// 一个简单的控制台日志功能</span></div><div class="line">        autorun(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">`Name changed: <span class="subst">$&#123;<span class="keyword">this</span>.firstName&#125;</span>, <span class="subst">$&#123;<span class="keyword">this</span>.lastName&#125;</span>`</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">// 这里也会触发一次 autorun </span></div><div class="line">        <span class="keyword">this</span>.firstName = <span class="string">'Mob'</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 这里又触发了一次 autorun </span></div><div class="line">        <span class="keyword">this</span>.lastName = <span class="string">'X'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 控制台输出: Name changed: None, None</span></div><div class="line"><span class="comment">// 控制台输出: Name changed: Mob, None</span></div><div class="line"><span class="comment">// 控制台输出: Name changed: Mob, X</span></div></pre></td></tr></table></figure>
+<p>上面的日志你也看到了，<code>autorun</code>方法会立即触发，并且每一次的触发都会有追踪的变量发生变化。但如果你仅仅想要在被观察的变量有变化的时候触发，而不想立即去执行 <code>autorun</code>，这个时候要怎么办呢？继续往下读，我们有 <code>reaction</code> 方法来解决这个问题。</p>
+<h2 id="使用-reaction-方法，在初次数据变化后触发副作用"><a href="#使用-reaction-方法，在初次数据变化后触发副作用" class="headerlink" title="使用 reaction 方法，在初次数据变化后触发副作用"></a>使用 reaction 方法，在初次数据变化后触发副作用</h2><p><code>reaction</code> 相较于 <code>autorun</code> 提供了更符合直觉的控制方式。首先，它不会立即执行，而是会等到追踪的被观察变量第一次发生变化后才会执行。它的 API 相较于 <code>autorun</code> 也有微小的区别，最简单的情况你要提供两个参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reaction(<span class="function"><span class="params">()</span>=&gt;</span>data, data=&gt;&#123; <span class="comment">/* side effect */</span>&#125;);</div></pre></td></tr></table></figure>
+<p>第一个函数（追踪函数）需要返回用来追踪的数据 data。data 会被传入第二个函数（效果函数）。效果函数是不会被追踪的，你在这里可以随意的使用其它被追踪的变量。</p>
+<p>!()[]</p>
+<p>默认情况下，<code>reaction</code> 第一次是不会执行的，它会等待追踪函数的变化。只有当追踪函数返回的 data 发生变化，副作用才会被产生。通过把之前的 <code>autorun</code> 分割为追踪函数和效果函数，你可以对真正产生副作用的部分有更好的控制。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;reaction&#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Router</span> </span>&#123;</div><div class="line"></div><div class="line">    @observable page = <span class="string">'main'</span>;</div><div class="line"></div><div class="line">    setupNavigation() &#123;</div><div class="line">        reaction(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">this</span>.page, (page)=&gt;&#123;</div><div class="line">            <span class="keyword">switch</span>(page) &#123;</div><div class="line">                <span class="keyword">case</span> <span class="string">'main'</span>:</div><div class="line">                    <span class="keyword">this</span>.navigateToUrl(<span class="string">'/'</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line"></div><div class="line">                <span class="keyword">case</span> <span class="string">'profile'</span>:</div><div class="line">                    <span class="keyword">this</span>.navigateToUrl(<span class="string">'/profile'</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line"></div><div class="line">                <span class="keyword">case</span> <span class="string">'admin'</span>:</div><div class="line">                    <span class="keyword">this</span>.navigateToUrl(<span class="string">'/admin'</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    navigateToUrl(url) &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上面的示例中，当我加载 <code>main</code> 页面的时候，我不想要触发导航。这是一个使用 <code>reaction</code> 的绝佳示例。只有当 <code>Router</code> 类中的 <code>page</code> 属性发生变化，才会导航到指定的url。</p>
+<p>以上是一个非常简单的路由功能，只包含了几个固定的页面。你可以通过添加一个 <code>page</code> 和 <code>URL</code> 的 map 结构来增强这个路由的可拓展性。通过这种方式，路由（伴随着 URL 改变）变成了更改你 store 中的某个属性产生的副作用。</p>
+<h2 id="使用-when-来触发一次性的副作用"><a href="#使用-when-来触发一次性的副作用" class="headerlink" title="使用 when 来触发一次性的副作用"></a>使用 when 来触发一次性的副作用</h2><p><code>autorun</code> 和 <code>reaction</code> 维护的是长期的副作用。当你初始化应用时你可能会创建一次性的副作用并且会期望它们在应用的生命周期内起作用。</p>
+<p>有件事我之前一直没有提到，<code>autorun</code> 和 <code>reaction</code> 都会返回一个 disposer 函数。你可以触发 disposer 并且在任何时候取消那些副作用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> disposer = autorun(<span class="function"><span class="params">()</span>=&gt;</span>&#123;  </div><div class="line">    <span class="comment">/* 这里是副作用，基于追踪的被观察变量 */</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// .... 之后的某个时间</span></div><div class="line">disposer(); <span class="comment">// 取消 autorun</span></div></pre></td></tr></table></figure>
+<p>现在我们构建的应用有很多使用场景。你可能会仅仅想要在你的应用达到某个条件的时候去触发特定的副作用。同时你想要这些特定的副作用只出现一次，之后再也不出现。</p>
+<p>让我们看一个具体的例子：比如说，你想要在用户达到一个里程碑的时候显示一条信息。这个里程碑对任何用户来说只会出现一次，所以你不想创建一个像 <code>autorun</code> 和 <code>reaction</code>这样的长期维护的副作用。是时候拿出 <code>when</code> 这个 API 来完成这项工作了。</p>
+<p><code>when</code> 需要两个参数，和 <code>reaction</code> 类似。第一个参数（追踪函数）需要返回一个布尔值。当返回值为 true，<code>when</code> 方法的第二个参数（效果函数）会执行。最棒的部分是 <code>when</code> 方法在执行之后会自动 dispose。所以没必要再去定义 disposer 函数同时人工触发它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">when(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">this</span>.reachedMilestone, ()=&gt;&#123;</div><div class="line">    <span class="keyword">this</span>.showMessage(&#123; <span class="attr">title</span>: <span class="string">'Congratulations'</span>, <span class="attr">message</span>: <span class="string">'You did it!'</span>&#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="故意忽略的部分"><a href="#故意忽略的部分" class="headerlink" title="故意忽略的部分"></a>故意忽略的部分</h2><p>虽然我只提到了 <code>action</code>，<code>autorun</code> ，<code>reaction</code> 和 <code>when</code> 方法，还有一些 MobX 提供给我们的 API 可以用来处理更进阶的场景。因为大部分场景下 MobX 只需要使用上面提及的 API，所以我故意暂时忽略了剩下的那些 API。一旦你可以自如的运用上面这些方法，剩下的是非常容易理解和学习的。这些是根基，在开始建设先进和华丽的上层建筑之前，我们要把这些烂熟于心。</p>
+<p>我可能会为高阶 API 单独写一篇文章。也许是 Part-4。:-)</p>
+<h2 id="功能强大的开发套件"><a href="#功能强大的开发套件" class="headerlink" title="功能强大的开发套件"></a>功能强大的开发套件</h2><p>到目前为止，我们已经看到过许多去追踪对象变化并且响应这些变化的技术。Mobx 实现了更高一层的抽象，让我们可以从更高的层级去思考，而不需要去担心追踪和响应变化的意外复杂性。</p>
+<p>我们现在有一个依靠领域模型变化的地基，在这之上，我们可以构建健壮的系统。把所有在领域模型之外的部分都当做副作用，我们可以提供视觉反馈（UI），同时也可以提供像监控、数据分析、日志等等更多的其它功能活动。</p>
+<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2><p>在 Part 3，我们会看到很多示例，以便于我们去练习我们目前学到的东西。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MobX/" rel="tag">#MobX</a>
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/20/2017-05-20/" rel="next" title="技术文章写法浅谈">
+                <i class="fa fa-chevron-left"></i> 技术文章写法浅谈
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/30/2017-07-30/" rel="prev" title="高性能 MobX 模式（part 3）- 用例教程">
+                高性能 MobX 模式（part 3）- 用例教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/24/2017-07-24/"
+           data-title="高性能 MobX 模式（part 2）- 响应变化" data-url="http://xdlrt.github.io/2017/07/24/2017-07-24/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-action-作为入口"><span class="nav-number">1.</span> <span class="nav-text">使用 @action 作为入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-autorun-来触发副作用"><span class="nav-number">2.</span> <span class="nav-text">使用 autorun 来触发副作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-reaction-方法，在初次数据变化后触发副作用"><span class="nav-number">3.</span> <span class="nav-text">使用 reaction 方法，在初次数据变化后触发副作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-when-来触发一次性的副作用"><span class="nav-number">4.</span> <span class="nav-text">使用 when 来触发一次性的副作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故意忽略的部分"><span class="nav-number">5.</span> <span class="nav-text">故意忽略的部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能强大的开发套件"><span class="nav-number">6.</span> <span class="nav-text">功能强大的开发套件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续…"><span class="nav-number">7.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记,sublime插件,emmet," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="sublime作为一款强大的文本编辑器，其诸多特性使得之前用notepad2的我毅然舍弃了旧爱，奔向的新欢。作为一枚程序猿，编码的效率自然也是非常重要的，最初写页面时，全部的标签都是手打，不仅效率底下而且容易出现漏错。之后接触到了emmet这一神器，自然要善加利用。">
+<meta name="keywords" content="笔记,sublime插件,emmet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="emmet,让你的html飞起来">
+<meta property="og:url" content="http://xdlrt.github.io/2016/03/12/2016-03-12/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="sublime作为一款强大的文本编辑器，其诸多特性使得之前用notepad2的我毅然舍弃了旧爱，奔向的新欢。作为一枚程序猿，编码的效率自然也是非常重要的，最初写页面时，全部的标签都是手打，不仅效率底下而且容易出现漏错。之后接触到了emmet这一神器，自然要善加利用。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="emmet,让你的html飞起来">
+<meta name="twitter:description" content="sublime作为一款强大的文本编辑器，其诸多特性使得之前用notepad2的我毅然舍弃了旧爱，奔向的新欢。作为一枚程序猿，编码的效率自然也是非常重要的，最初写页面时，全部的标签都是手打，不仅效率底下而且容易出现漏错。之后接触到了emmet这一神器，自然要善加利用。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/03/12/2016-03-12/"/>
+
+
+  <title> emmet,让你的html飞起来 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                emmet,让你的html飞起来
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-12T16:51:30+08:00" content="2016-03-12">
+              2016-03-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Sublime-Text/" itemprop="url" rel="index">
+                    <span itemprop="name">Sublime Text</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/12/2016-03-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/2016-03-12/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>sublime作为一款强大的文本编辑器，其诸多特性使得之前用notepad2的我毅然舍弃了旧爱，奔向的新欢。作为一枚程序猿，编码的效率自然也是非常重要的，最初写页面时，全部的标签都是手打，不仅效率底下而且容易出现漏错。之后接触到了emmet这一神器，自然要善加利用。<br><a id="more"></a></p>
+<h1 id="emmet是什么"><a href="#emmet是什么" class="headerlink" title="emmet是什么"></a>emmet是什么</h1><p>首先是官网上的介绍。</p>
+<blockquote>
+<p>Emmet is a plugin for many popular text editors which greatly improves HTML &amp; CSS workflow.<br>Emmet 是一个可用在许多流行文本编辑器上的极大简化HTML和CSS工作流程的插件。</p>
+</blockquote>
+<p>前身是Zen coding，他使用仿css选择器的语法来生成代码，极大提高了编写HTML/CSS的效率，之后改名为emmet，但是随之而来的改变不仅限于名字，还增加了许多新的特性。</p>
+<h1 id="emmet怎么用"><a href="#emmet怎么用" class="headerlink" title="emmet怎么用"></a>emmet怎么用</h1><p><strong>tips：以下用法基于Windows下的Sublime Text3</strong></p>
+<h2 id="文档结构初始化"><a href="#文档结构初始化" class="headerlink" title="文档结构初始化"></a>文档结构初始化</h2><p>对于html文档来说，文档类型DOCTYPE，<code>&lt;head&gt;</code>、<code>&lt;html&gt;</code>、<code>&lt;body&gt;</code>这些标签都是必须的，如果每次都手工录入的话效率很低，使用emmet就可以在空白html文档中输入<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// type</div><div class="line">html:5</div><div class="line">// tab</div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="添加类、id、文本和属性"><a href="#添加类、id、文本和属性" class="headerlink" title="添加类、id、文本和属性"></a>添加类、id、文本和属性</h2><p>emmet的一个强大特性，使用类CSS选择器的方式，.是生成类名，#是生成id，{}中生成文本内容，[]中可以设置属性,可以嵌套使用。话不多说，上demo。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type</span></div><div class="line">p</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;p&gt;&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line"><span class="selector-tag">p</span>.bar</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">p</span> class=<span class="string">"bar"</span>&gt;&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="comment">// 添加多个类</span></div><div class="line"><span class="comment">// type</span></div><div class="line"><span class="selector-tag">p</span><span class="selector-class">.bar1</span><span class="selector-class">.bar2</span></div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">p</span> class=<span class="string">"bar1 bar2"</span>&gt;&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line">p#foo</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">p</span> id=<span class="string">"foo"</span>&gt;&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line">p&#123;<span class="number">123</span>&#125;</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;p&gt;<span class="number">123</span>&lt;/p&gt;</div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line"><span class="selector-tag">input</span>[type=radio]</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">input</span> type=<span class="string">"radio"</span>&gt;</div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line"><span class="selector-tag">p</span>.bar#foo&#123;<span class="number">123</span>&#125;</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">p</span> class=<span class="string">"bar"</span> id=<span class="string">"foo"</span>&gt;<span class="number">123</span>&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="嵌套和分组"><a href="#嵌套和分组" class="headerlink" title="嵌套和分组"></a>嵌套和分组</h2><p>emmet又一个强大的特性，也是让你写html速度起飞的关键因素。<br>嵌套语法：</p>
+<blockquote>
+<p>>：子元素符号，表示嵌套的元素<br>+：同级标签符号<br>^：可以使该符号前的标签提升一行</p>
+</blockquote>
+<p>其中^用的不多，容易让人逻辑混乱，这个时候就需要良好的分组来实现。翠花，上demo！</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type</span></div><div class="line">p&gt;span</div><div class="line"><span class="comment">// tab</span></div><div class="line"><span class="params">&lt;p&gt;</span><span class="params">&lt;span&gt;</span><span class="params">&lt;/span&gt;</span><span class="params">&lt;/p&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line">p+span</div><div class="line"><span class="comment">// tab</span></div><div class="line"><span class="params">&lt;p&gt;</span><span class="params">&lt;/p&gt;</span></div><div class="line"><span class="params">&lt;span&gt;</span><span class="params">&lt;/span&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// type</span></div><div class="line">p&gt;h1^span</div><div class="line"><span class="comment">// tab</span></div><div class="line"><span class="params">&lt;p&gt;</span></div><div class="line">  <span class="params">&lt;h1&gt;</span><span class="params">&lt;/h1&gt;</span></div><div class="line"><span class="params">&lt;/p&gt;</span></div><div class="line"><span class="params">&lt;span&gt;</span><span class="params">&lt;/span&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// 以分组的方式来实现,更清晰</span></div><div class="line"><span class="comment">// type</span></div><div class="line">(p&gt;h1)+span</div><div class="line"><span class="comment">// tab</span></div><div class="line"><span class="params">&lt;p&gt;</span></div><div class="line">  <span class="params">&lt;h1&gt;</span><span class="params">&lt;/h1&gt;</span></div><div class="line"><span class="params">&lt;/p&gt;</span></div><div class="line"><span class="params">&lt;span&gt;</span><span class="params">&lt;/span&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="重复添加相同元素"><a href="#重复添加相同元素" class="headerlink" title="重复添加相同元素"></a>重复添加相同元素</h2><p>写页面的时候经常会遇到很多重复的结构用来显示数据，比如无序列表ul，如果列表项很多，手打就显得效率十分低下，好在emmet可以帮我们完美解决这个问题。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type</span></div><div class="line">ul&gt;li*<span class="number">5</span></div><div class="line"><span class="comment">// tab</span></div><div class="line"><span class="params">&lt;ul&gt;</span></div><div class="line">  <span class="params">&lt;li&gt;</span><span class="params">&lt;/li&gt;</span></div><div class="line">  <span class="params">&lt;li&gt;</span><span class="params">&lt;/li&gt;</span></div><div class="line">  <span class="params">&lt;li&gt;</span><span class="params">&lt;/li&gt;</span></div><div class="line">  <span class="params">&lt;li&gt;</span><span class="params">&lt;/li&gt;</span></div><div class="line">  <span class="params">&lt;li&gt;</span><span class="params">&lt;/li&gt;</span></div><div class="line"><span class="params">&lt;/ul&gt;</span></div></pre></td></tr></table></figure>
+<p>加上分组的应用，可以处理更复杂的html结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type</span></div><div class="line">(<span class="selector-tag">div</span>.warp&gt;<span class="selector-tag">p</span>.bar+span#foo)*<span class="number">2</span></div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"warp"</span>&gt;</div><div class="line">  &lt;<span class="selector-tag">p</span> class=<span class="string">"bar"</span>&gt;&lt;/p&gt;</div><div class="line">  &lt;<span class="selector-tag">span</span> id=<span class="string">"foo"</span>&gt;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"warp"</span>&gt;</div><div class="line">  &lt;<span class="selector-tag">p</span> class=<span class="string">"bar"</span>&gt;&lt;/p&gt;</div><div class="line">  &lt;<span class="selector-tag">span</span> id=<span class="string">"foo"</span>&gt;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>一种幸福感油然而生，果然科技是第一生产力。</p>
+<h2 id="列表按序计数"><a href="#列表按序计数" class="headerlink" title="列表按序计数"></a>列表按序计数</h2><p>对于列表项，经常会碰到有顺序的计数，这个时候，如果手工修改，吃力不讨好，且看我们的emmet如何大显神通。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type</span></div><div class="line">ul&gt;<span class="keyword">li</span>.item$*3</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;<span class="keyword">li</span> <span class="keyword">class</span>=<span class="string">"item1"</span>&gt;&lt;/<span class="keyword">li</span>&gt;</div><div class="line">  &lt;<span class="keyword">li</span> <span class="keyword">class</span>=<span class="string">"item2"</span>&gt;&lt;/<span class="keyword">li</span>&gt;</div><div class="line">  &lt;<span class="keyword">li</span> <span class="keyword">class</span>=<span class="string">"item3"</span>&gt;&lt;/<span class="keyword">li</span>&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line"><span class="comment">// 如果想要两位数的序号，添加两个$$即可,依此类推</span></div><div class="line"><span class="comment">// type</span></div><div class="line">ul&gt;<span class="keyword">li</span>&#123;item$$&#125;*3</div><div class="line"><span class="comment">// tab</span></div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;<span class="keyword">li</span>&gt;item01&lt;/<span class="keyword">li</span>&gt;</div><div class="line">  &lt;<span class="keyword">li</span>&gt;item02&lt;/<span class="keyword">li</span>&gt;</div><div class="line">  &lt;<span class="keyword">li</span>&gt;item03&lt;/<span class="keyword">li</span>&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<h2 id="css的用法"><a href="#css的用法" class="headerlink" title="css的用法"></a>css的用法</h2><p>Sublime本身提供的模糊输入已经极大程度的方便了css的输入，因此我没有做过多的研究，感兴趣的同学可以去我提供的参考资料页面自行了解。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>对于程序猿来说，效率是一项非常重要的因素，效率高就意味着可以更快的完成任务，并有更多的时间来发现和解决bug(笑，因此选择合适的工具对于我们来说是不可或缺的，这篇博文既是emmet的介绍，也算是对自己的前段时间的感受做一个总结。<br>最后，吃我一发emmet安利！</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://emmet.io/" target="_blank" rel="external">emmet官网</a><br><a href="http://www.iteye.com/news/27580" target="_blank" rel="external">Emmet：HTML/CSS代码快速编写神器</a><br><a href="http://blog.csdn.net/lmmilove/article/details/9181323" target="_blank" rel="external">sublime text 2中Emmet8个常用的技巧</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+            <a href="/tags/sublime插件/" rel="tag">#sublime插件</a>
+          
+            <a href="/tags/emmet/" rel="tag">#emmet</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/06/2016-03-06/" rel="next" title="关于css3中box-shadow的研究">
+                <i class="fa fa-chevron-left"></i> 关于css3中box-shadow的研究
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/15/2016-03-15/" rel="prev" title="百度前端学院笔记-基础html知识">
+                百度前端学院笔记-基础html知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/12/2016-03-12/"
+           data-title="emmet,让你的html飞起来" data-url="http://xdlrt.github.io/2016/03/12/2016-03-12/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#emmet是什么"><span class="nav-number">1.</span> <span class="nav-text">emmet是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#emmet怎么用"><span class="nav-number">2.</span> <span class="nav-text">emmet怎么用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档结构初始化"><span class="nav-number">2.1.</span> <span class="nav-text">文档结构初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加类、id、文本和属性"><span class="nav-number">2.2.</span> <span class="nav-text">添加类、id、文本和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套和分组"><span class="nav-number">2.3.</span> <span class="nav-text">嵌套和分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复添加相同元素"><span class="nav-number">2.4.</span> <span class="nav-text">重复添加相同元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表按序计数"><span class="nav-number">2.5.</span> <span class="nav-text">列表按序计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css的用法"><span class="nav-number">2.6.</span> <span class="nav-text">css的用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="44年前我们把人送上月球，但在CSS中我们仍然不能很好实现水平垂直居中。">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把简单做好也不简单-css水平垂直居中">
+<meta property="og:url" content="http://xdlrt.github.io/2016/12/15/2016-12-15/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="44年前我们把人送上月球，但在CSS中我们仍然不能很好实现水平垂直居中。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="把简单做好也不简单-css水平垂直居中">
+<meta name="twitter:description" content="44年前我们把人送上月球，但在CSS中我们仍然不能很好实现水平垂直居中。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/12/15/2016-12-15/"/>
+
+
+  <title> 把简单做好也不简单-css水平垂直居中 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                把简单做好也不简单-css水平垂直居中
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-15T23:29:07+08:00" content="2016-12-15">
+              2016-12-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/15/2016-12-15/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/2016-12-15/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>44年前我们把人送上月球，但在CSS中我们仍然不能很好实现水平垂直居中。<br><a id="more"></a></p>
+<style>
+    .md-warp{
+        width: 400px;
+        height: 300px;
+        max-width: 100%;
+        border: 1px solid #000;
+    }
+    .md-main{
+        display: block;
+        width: 100px;
+        height: 100px;
+        background: #f00;
+        color: #fff;
+    }
+</style>
+
+<p>作者：Icarus<br>原文链接：<a href="http://xdlrt.github.io/2016/12/15/2016-12-15">把简单做好也不简单-css水平垂直居中</a></p>
+<p>水平垂直居中有相同点也有不同点，接下来讨论常见的方式。</p>
+<p>如无特殊说明，以下示例html均为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"md-warp"</span>&gt;</div><div class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"md-main"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure></p>
+<p>基础样式为：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">max-width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#f00</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h1><h2 id="margin法"><a href="#margin法" class="headerlink" title="margin法"></a>margin法</h2><p>需要满足三个条件:</p>
+<ul>
+<li>元素定宽</li>
+<li>元素为块级元素或行内元素设置<code>display:block</code></li>
+<li>元素的<code>margin-left</code>和<code>margin-right</code>都必须设置为auto<br>三个条件缺一不可。</li>
+</ul>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo:"></a>demo:</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp"><br>    <span class="md-main" style="margin: 0 auto;"></span><br></div>
+
+<h2 id="定位法"><a href="#定位法" class="headerlink" title="定位法"></a>定位法</h2><p>需要满足三个条件：</p>
+<ul>
+<li>元素定宽</li>
+<li>元素绝对定位，并设置<code>left:50%</code></li>
+<li>元素负左边距<code>margin-left</code>为宽度的一半</li>
+</ul>
+<h3 id="demo1"><a href="#demo1" class="headerlink" title="demo1:"></a>demo1:</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">margin-left</span>: -<span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="position: relative"><br>    <span class="md-main" style="position: absolute;left: 50%;margin-left: -50px;"></span><br></div>
+
+<p>有些时候我们的元素宽度可能不是固定的，不用担心，我们依然可以使用定位法实现水平居中，此时需要用到css3中的<code>transform</code>属性中的<code>translate</code>，可以使元素移动时相对于自身的宽度和高度。<br><strong>需要注意</strong>，这种方法需要IE9+才可以实现。</p>
+<h3 id="demo2"><a href="#demo2" class="headerlink" title="demo2"></a>demo2</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 注意此时md-main不设置width为100px</span></div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">  -webkit-<span class="attribute">transform</span>: translate(-<span class="number">50%</span>,<span class="number">0</span>);</div><div class="line">  -ms-<span class="attribute">transform</span>: translate(-<span class="number">50%</span>,<span class="number">0</span>);</div><div class="line">  -o-<span class="attribute">transform</span>: translate(-<span class="number">50%</span>,<span class="number">0</span>);</div><div class="line">  <span class="attribute">transform</span>: translate(-<span class="number">50%</span>,<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="position: relative"><br>    <span class="md-main" style="position: absolute;left:50%;width: auto;-webkit-transform: translate(-50%,0);-ms-transform: translate(-50%,0);-o-transform: translate(-50%,0);transform: translate(-50%,0);">不定宽</span><br></div>
+
+<h2 id="文字水平居中"><a href="#文字水平居中" class="headerlink" title="文字水平居中"></a>文字水平居中</h2><p>对于单行文字来说，直接使用<code>text-align: center</code>即可。<br>多行文字可以看作一个块级元素参考margin法和定位法。</p>
+<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><h2 id="定位法-1"><a href="#定位法-1" class="headerlink" title="定位法"></a>定位法</h2><p>和水平居中类似，只是把<code>left:50%</code>换成了<code>top:50%</code>，负边距和<code>transform</code>属性进行对应更改即可。</p>
+<p>优点：能在各浏览器下工作，结构简单明了，不需增加额外的标签。</p>
+<h3 id="demo1-1"><a href="#demo1-1" class="headerlink" title="demo1:"></a>demo1:</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="comment">/* 核心 */</span></div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">margin-top</span>: -<span class="number">50px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="position: relative"><br>    <span class="md-main" style="position: absolute;top: 50%;margin-top: -50px;"></span><br></div>
+
+<p>运用css3中的clac()属性能简化部分代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="comment">/* 核心 */</span></div><div class="line">  <span class="attribute">top</span>: <span class="built_in">calc</span>(50% - 50px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="position: relative"><br>    <span class="md-main" style="position: absolute;top: calc(50% - 50px);"></span><br></div>
+
+<h3 id="demo2-1"><a href="#demo2-1" class="headerlink" title="demo2"></a>demo2</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">  <span class="comment">// 注意此时md-main不设置height为100px</span></div><div class="line">  -webkit-<span class="attribute">transform</span>: translate(<span class="number">0</span>,-<span class="number">50%</span>);</div><div class="line">  -ms-<span class="attribute">transform</span>: translate(<span class="number">0</span>,-<span class="number">50%</span>);</div><div class="line">  -o-<span class="attribute">transform</span>: translate(<span class="number">0</span>,-<span class="number">50%</span>);</div><div class="line">  <span class="attribute">transform</span>: translate(<span class="number">0</span>,-<span class="number">50%</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="position: relative"><br>    <span class="md-main" style="position: absolute;top:50%;height: auto;-webkit-transform: translate(0,-50%);-ms-transform: translate(0,-50%);-o-transform: translate(0,-50%);transform: translate(0,-50%);">不定高</span><br></div>
+
+<h2 id="单行文本垂直居中"><a href="#单行文本垂直居中" class="headerlink" title="单行文本垂直居中"></a>单行文本垂直居中</h2><p>需要满足两个条件：</p>
+<ul>
+<li>元素内容是单行，并且其高度是固定不变的。</li>
+<li>将其<code>line-height</code>设置成和<code>height</code>的值一样</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>这是一段文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">span</span>&#123;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">300px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div style="width: 400px;height: 300px;border: 1px solid #000;"><span style="line-height: 300px;">这是一段文字</span></div>
+
+<p>以上是一些常规办法，接下来是利用CSS3新特性实现的示例。</p>
+<h1 id="视窗单位的解决办法（垂直居中）"><a href="#视窗单位的解决办法（垂直居中）" class="headerlink" title="视窗单位的解决办法（垂直居中）"></a>视窗单位的解决办法（垂直居中）</h1><p>如果想避免使用绝对定位，我们仍然可以利用<code>translate()</code>方法，其值刚好是元宽度和高度的一半。但是，我们如何不使用top和left将元素从top和left移动50%的偏移量呢？</p>
+<p>首先想到的是给margin属性一个百分数，像这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">50%</span> auto <span class="number">0</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下所示：</p>
+<div class="md-warp"><br>    <span class="md-main" style="margin: 50% auto;transform: translateY(-50%);"></span><br></div>
+
+<p>我们发现并没有出现预想的结果，这是因为<code>margin</code>的百分比计算是相对于父容器的<code>width</code>来计算的，甚至包括<code>margin-top</code>和<code>margin-bottom</code>。</p>
+<p>我们如果仍然想让元素在视窗中居中，还是有救的。CSS3定义了一种新的单位，称为相对视窗长度单位。</p>
+<blockquote>
+<p>以下摘自w3cplus<br><code>vw</code>是相对于视窗的宽度。与你预期刚好相反,<code>1vw</code>相当于视窗宽度的<code>1%</code>，而不是<code>100%</code><br>与<code>vw</code>相似的是，<code>1vh</code>相当于视窗高度的<code>1%</code><br>如果视窗的宽度小于高度，<code>1vmin</code>等于<code>1vw</code>，反之，如果视窗宽度大于高度，<code>1vmin</code>等于<code>1vh</code><br>如果视窗的宽度大于高度，<code>1vmax</code>等于<code>1vw</code>，反之，如果视窗宽度小于高度，<code>1vmax</code>等于<code>1vh</code></p>
+</blockquote>
+<p>在上个示例的基础上，我们需要给<code>margin</code>设置<code>vh</code>单位:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">50vh</span> auto <span class="number">0</span>;</div><div class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：这种方法最大的局限是只能适用于元素在<strong>视窗</strong>中垂直居中，如果是在局部的某个地方就无能为力了。</p>
+<h1 id="Flexbox的解决方案"><a href="#Flexbox的解决方案" class="headerlink" title="Flexbox的解决方案"></a>Flexbox的解决方案</h1><p>如果不考虑浏览器的兼容性，Flexbox无疑是最好的解决方案，因为它的出现就是为了解决这样的问题。</p>
+<p>完成这项工作只需要两个样式，在需要水平垂直居中的父元素上设置<code>display:flex</code>和在水平垂直居中的元素上设置<code>margin:auto</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">display</span>:flex;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">margin</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<div class="md-warp" style="display:flex;"><br>    <span class="md-main" style="margin: auto;"></span><br></div>
+
+<p>Flexbox的实现文本的水平垂直居中同样很简单。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">display</span>:flex;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">  <span class="attribute">margin</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<div class="md-warp" style="display:flex;"><br>    <span class="md-main" style="display: flex;align-items: center;justify-content: center;margin: auto;">我是字啊</span><br></div>
+
+<p>补充：</p>
+<h1 id="inline-block配合伪类的解决方案"><a href="#inline-block配合伪类的解决方案" class="headerlink" title="inline-block配合伪类的解决方案"></a>inline-block配合伪类的解决方案</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-warp</span><span class="selector-pseudo">:before</span>&#123;</div><div class="line">  <span class="attribute">content</span>:<span class="string">''</span>;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">height</span>:<span class="number">100%</span>;</div><div class="line">  <span class="attribute">vertical-align</span>:middle;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">  <span class="attribute">vertical-align</span>:middle;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>引自<a href="http://demo.doyoe.com/css/alignment/" target="_blank" rel="external">http://demo.doyoe.com/css/alignment/</a><br>首先要了解垂直方向的对齐排版需使用 vertical-align ，并且只应用于inline level, inline-block level 及 table-cells 元素上；其次 vertical-align 的对齐就基于每个 line box（行框） 的，简单的说，inline level元素按照 Normal flow 水平排版出一行就会形成一个line box，其高度由内容形成，如果换行，则又是另一个line box，所有一段文本可能会分布在多个line box里，这些不重叠的line box被称作为a vertical stack of line boxes（一个垂直堆叠的线框集合）这些。<br>换句话说，我们的垂直居中是要在每个line box中进行处理。而上例中我们想让一行文本在名叫demo的高100px的容器里垂直居中，这时有个问题就是demo容器并非该行文本的line box，所以就算定义vertical-laign为middle也无法让该行文本在demo容器中垂直居中。我们知道line box的高度是由内容形成的，这时我们可以额外创建一个与该行文本处于同一line box的元素，同时将新增元素的高度定义为与demo容器相同，此时line box的高度将与demo一致，文本将会在line box内垂直居中，即同样实现了在demo容器中垂直居中。</p>
+</blockquote>
+<h1 id="绝对垂直居中"><a href="#绝对垂直居中" class="headerlink" title="绝对垂直居中"></a>绝对垂直居中</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.md-warp</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.md-main</span>&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>常用在弹出层的定位中。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
+<li>绝对定位通常不是一个很好的选择，因为它对整体的布局影响相当的大。</li>
+<li>在一些浏览器中，可能会导致元素出现略微的模糊，那是因为元素有可能被放置在半个像素位置上。我们可以通过<code>transform-style:preserve-3d</code>来解决，但这是一个Hack手段，不能保证它不会过时。</li>
+</ul>
+<p>以上各种方法稍加组合即可同时实现水平和垂直居中，这些就是平时用到较多的一些居中的方法，希望大家看完之后有收获:)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/02/2016-12-02/" rel="next" title="移动端实现内滚动的4种方案">
+                <i class="fa fa-chevron-left"></i> 移动端实现内滚动的4种方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/25/2017-01-25/" rel="prev" title="翻译计划-从sass到PostCSS">
+                翻译计划-从sass到PostCSS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/15/2016-12-15/"
+           data-title="把简单做好也不简单-css水平垂直居中" data-url="http://xdlrt.github.io/2016/12/15/2016-12-15/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#水平居中"><span class="nav-number">1.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#margin法"><span class="nav-number">1.1.</span> <span class="nav-text">margin法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">1.1.1.</span> <span class="nav-text">demo:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位法"><span class="nav-number">1.2.</span> <span class="nav-text">定位法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo1"><span class="nav-number">1.2.1.</span> <span class="nav-text">demo1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo2"><span class="nav-number">1.2.2.</span> <span class="nav-text">demo2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字水平居中"><span class="nav-number">1.3.</span> <span class="nav-text">文字水平居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垂直居中"><span class="nav-number">2.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定位法-1"><span class="nav-number">2.1.</span> <span class="nav-text">定位法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo1-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">demo1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo2-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">demo2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单行文本垂直居中"><span class="nav-number">2.2.</span> <span class="nav-text">单行文本垂直居中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视窗单位的解决办法（垂直居中）"><span class="nav-number">3.</span> <span class="nav-text">视窗单位的解决办法（垂直居中）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flexbox的解决方案"><span class="nav-number">4.</span> <span class="nav-text">Flexbox的解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline-block配合伪类的解决方案"><span class="nav-number">5.</span> <span class="nav-text">inline-block配合伪类的解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绝对垂直居中"><span class="nav-number">6.</span> <span class="nav-text">绝对垂直居中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="春招,实习," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="以下基本是我在面试中遇到的所有问题，给大家做一个参考。除2月13和14日为现场面试以外，其余均为电话面试。我的本意是不让大家背答案，所以没有把面试公司的名字写出来，只是想给不知道如何准备面试的同学一些启发。我面的几家大厂基本不会问框架，但是很多公司预期比较单一，比如需要你会哪些技术栈，所以根据对应的公司准备是最好的，不要盲目刷面试题。">
+<meta name="keywords" content="春招,实习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无他，唯手熟尔-前端实习面试题篇">
+<meta property="og:url" content="http://xdlrt.github.io/2017/03/19/2017-03-19/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="以下基本是我在面试中遇到的所有问题，给大家做一个参考。除2月13和14日为现场面试以外，其余均为电话面试。我的本意是不让大家背答案，所以没有把面试公司的名字写出来，只是想给不知道如何准备面试的同学一些启发。我面的几家大厂基本不会问框架，但是很多公司预期比较单一，比如需要你会哪些技术栈，所以根据对应的公司准备是最好的，不要盲目刷面试题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无他，唯手熟尔-前端实习面试题篇">
+<meta name="twitter:description" content="以下基本是我在面试中遇到的所有问题，给大家做一个参考。除2月13和14日为现场面试以外，其余均为电话面试。我的本意是不让大家背答案，所以没有把面试公司的名字写出来，只是想给不知道如何准备面试的同学一些启发。我面的几家大厂基本不会问框架，但是很多公司预期比较单一，比如需要你会哪些技术栈，所以根据对应的公司准备是最好的，不要盲目刷面试题。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2017/03/19/2017-03-19/"/>
+
+
+  <title> 无他，唯手熟尔-前端实习面试题篇 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                无他，唯手熟尔-前端实习面试题篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-19T10:34:20+08:00" content="2017-03-19">
+              2017-03-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/19/2017-03-19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/2017-03-19/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下基本是我在面试中遇到的所有问题，给大家做一个参考。除2月13和14日为现场面试以外，其余均为电话面试。我的本意是不让大家背答案，所以没有把面试公司的名字写出来，只是想给不知道如何准备面试的同学一些启发。我面的几家大厂基本不会问框架，但是很多公司预期比较单一，比如需要你会哪些技术栈，所以根据对应的公司准备是最好的，不要盲目刷面试题。<br><a id="more"></a><br>作者：Icarus<br>原文链接：<a href="https://xdlrt.github.io/2017/03/19/2017-03-19">无他，唯手熟尔-前端实习面试题篇</a><br>前端部分高频的问题还是重基础，如：</p>
+<ul>
+<li>对CSS规范的了解和CSS3动画的实现</li>
+<li>原型、继承、闭包、事件的了解和应用</li>
+<li>跨平台的浏览器兼容问题</li>
+<li>跨域的实践和方法</li>
+<li>对前端技术的发展是否有了解</li>
+</ul>
+<h1 id="2017-02-13"><a href="#2017-02-13" class="headerlink" title="2017.02.13"></a>2017.02.13</h1><h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><p>手写类继承<br>手写数组去重<br>如何遍历对象的属性<br><!-- for in /hasOwnProperty --><br>new关键字的过程<br>判断变量类型，如何判断变量是函数<br>如何判断一个变量是数组<br>call和apply的作用，区别<br>手写jsonp实现，发送和回调接收<br>js实现css的:hover效果<br>解释事件代理，事件流模型<br>数据统计，比ajax更简单的方法<br><!-- new image对象，src会发送请求 --></p>
+<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><p>display属性的值和介绍<br>响应式布局的方法，并详细解释<br><!-- 宽度百分比，rem，flex --><br>box-sizing的属性值及区别<br>css3实现动画<br>移动端调试的方法<br>移动端和PC和微信兼容性问题</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>有几种Doctype，Doctype的作用<br>严格模式和混杂模式如何区分，有何意义</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>gulp-connect原理<br>为什么要跨域，跨域是什么<br>是否了解viewport<br>unicode，utf8，gbk编码的了解，乱码的解决<br>前端性能优化</p>
+<h2 id="主观题"><a href="#主观题" class="headerlink" title="主观题"></a>主观题</h2><p>为什么选择前端<br>介绍实习经历<br>职业规划和岗位的match程度<br>实习时间保证</p>
+<h1 id="2017-02-14"><a href="#2017-02-14" class="headerlink" title="2017.02.14"></a>2017.02.14</h1><h2 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h2><p>手写once函数，传入函数参数只执行一次（闭包）<br>手写debouce函数<br>分域名请求图片的原因和好处<br><!-- 因为浏览器http请求有最大并发，避开这个策略/负载均衡 --><br>移动端的适配，rem+媒体查询/meta头设置<br>box-sizing解释<br>跨域的N种方法<br>性能优化<br>css动画和js动画的区别<br>实习经历介绍</p>
+<h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><p>实现拖拽的功能，自己的思路，pc的思路和移动端思路<br>手写原生ajax，封装成类promise<br>对es6的了解<br>手写生成10个20-50之间的随机数，存在数组中，常见排序方法，数组乱序方法<br><!-- 乱序arr.sort(function(a,b){ return Math.random()>.5 ? -1 : 1;}); --><br>对技术选型的思考<br>click在ios上有300ms延迟，原因及如何解决<br>linux和服务器部署<br>HTTP请求的方式，HEAD方式？<br>es6的了解,let和const的区别<br>严格模式介绍<br>异步加载js方法</p>
+<h1 id="2017-02-16"><a href="#2017-02-16" class="headerlink" title="2017.02.16"></a>2017.02.16</h1><h2 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h2><p>自我介绍<br>专业成绩和课程<br>计算机网络的分层概述<br>浏览器输入url到完整显示出页面经历的过程，遇到link或者script标签的表现<br>项目中遇到的难点和印象深刻的地方<br>无限加载监听scroll如何限制频率<br>解决文件缓存文件名添加md5戳，如css文件内的路径怎么解决缓存<br>让你设计一个自动化工具，解决各种文件和各个文件之间的依赖关系<br>setTimeout,setInterval,requestAnimation之间的区别</p>
+<h2 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h2><p>如何实现组件化，点击加载组件<br>是否使用过require.js等组件化工具<br>你觉得自己薄弱的地方在哪，为什么想要提高这部分能力<br>性能优化<br>优化HTTP请求需要全部打包还是拆分，如何拆分？<br>你的项目经验是由你主导还是只是参与<br>介绍一下项目中遇到的难点和解决办法<br>介绍一下你的专业，为什么会选择学前端<br>平时做一些动效比较多还是实现一些复杂交互比较多<br>从哪些地方获取前端相关的咨询</p>
+<h2 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h2><p>自我介绍<br>介绍一下你的项目经验<br>拆分文件的大小和个数<br>js简单合并还是按需加载、按模块加载<br>遇到问题如何解决<br>最近半年技术栈有没有更新<br>谈谈在项目中哪些部分是由你推动并落地的，不局限技术和产品<br>你认为自己薄弱的地方，准备怎么去改进<br>你学习的方法和过程是怎样的</p>
+<h1 id="2017-02-22"><a href="#2017-02-22" class="headerlink" title="2017.02.22"></a>2017.02.22</h1><p>自我介绍<br>为什么学前端<br>介绍代表自己水平的项目<br>如何监控JS对象属性变更<br>JS实现继承的多种方法<br>外边距折叠<br>BFC的了解和用途<br>HTTP协议的了解，控制缓存的部分有哪些<br>一个图片url访问后直接下载怎样实现<br>一个图片列表，一张一张加载，检测到上一张加载完成后再切换下一张<br>跨域的方法<br>formdata的了解<br>认为自己哪方面比较擅长但是没问到</p>
+<h1 id="2017-02-28"><a href="#2017-02-28" class="headerlink" title="2017.02.28"></a>2017.02.28</h1><p>自我介绍<br>侧重于CSS还是js<br>介绍一下HTML的语义化<br>了解无障碍吗<br>是否使用过sass/less做一下介绍<br>是否了解CSS原生变量<br>平时用chrome开发会用到什么功能，做介绍<br>介绍一下盒模型，box-sizing属性<br>长度单位，em和rem的区别<br>是否了解css动画<br>画一条0.5px的直线<br>实现一个秒针绕一点转动的效果，transform-origin<br>选择器的优先级，伪类选择器的优先级<br>伪类和伪元素的对比，应用<br>对ES6的了解<br><strong>proto</strong> 和 prototype的联系<br>如何实现一个私有变量，用getName方法可以访问，不能直接访问<br>setTimeout和setInterval的了解，倒计时使用哪一个<br><!-- setInterval内存开销大，倒计时不精确 --><br>promise的三种状态<br>setTimeout和promise的执行顺序<br>对ajax的了解，原生实现，XMLHTTPRequest兼容性<br>跨域原因、方法<br>call，apply，bind<br>事件委托，addEventListener参数、兼容性<br>DOM事件流模型<br>div中两个button，div上事件代理，如何判断点击的是哪个button<br>检测数组的方法<br>vue双向绑定实现原理、父子组件通信方法<br>浏览器缓存的了解<br>HTTP状态码</p>
+<h1 id="2017-03-01"><a href="#2017-03-01" class="headerlink" title="2017.03.01"></a>2017.03.01</h1><p>自我介绍<br>有没有github<br>喜欢写一些什么类型的文章<br>对前后端分离的理解，前端mock数据<br>gulp和webpack的对比，会自己写配置文件吗<br>webpack常用到哪些功能<br>介绍sass<br>对ES6的了解<br>对css动画和canvas有了解吗<br>css动画提高性能的方法<br>实现一个弹窗组件，需要暴露的api和参数<br>js的垃圾回收机制</p>
+<h1 id="2017-03-02"><a href="#2017-03-02" class="headerlink" title="2017.03.02"></a>2017.03.02</h1><p>localStorage和Cookie/sessionStorage<br>对webSocket的了解，和ajax轮询的区别<br>flex布局的了解<br>响应式布局的了解，如何实现<br>垂直居中的方法<br>你知道box-sizing的哪些属性值<br>有哪些伪类、伪元素，有什么区别，使用时有什么注意事项，去掉一个属性伪类就不存在了？<br>是否了解css动画<br>transition和animation的区别，是否可暂停<br>margin和translate的百分比根据什么计算<br>width:200px的无高度div，设置padding-top:60%高度是多少<br>是否了解svg<br>评价一下自己的css和js的能力<br>数组有哪些方法<br>介绍一下原型链<br>是否了解伪数组<br>了解document.ready和window.onload的方法<br>是否了解同源策略<br>svn和git的区别<br>是否了解git flow<br>性能优化的方法</p>
+<h1 id="2017-03-03"><a href="#2017-03-03" class="headerlink" title="2017.03.03"></a>2017.03.03</h1><p>介绍一下px、pt、em<br>有没有实现过复杂的动画<br>介绍一下box-sizing<br>说一下对语义化的理解<br>说一下基本数据类型有哪些<br>说一些对垃圾回收机制和闭包的了解<br>iframe的缺点<br>jQuery链式调用的原理<br>移动端遇到过的兼容性问题？<br>响应式布局的方法<br>接触过的技术？<br>介绍一下bootstrap的栅格系统是如何实现的<br>jQuery的$(‘xxx’)做了什么事情<br>原型链的介绍<br>继承事件类的方法<br>字符串去重的方法<br>性能优化的问题<br>原生ajax的介绍，readystate的取值，如何设置发送和返回值是json格式<br>自己实现一个事件委托功能</p>
+<h1 id="2017-03-03-1"><a href="#2017-03-03-1" class="headerlink" title="2017.03.03"></a>2017.03.03</h1><p>自我介绍<br>如何看待前端技术的发展<br>介绍一下自己对个人发展的期望<br>如何看待前端社区的更新速度<br>点击a标签之后发生的事情<br>性能优化<br>是否了解cdn压缩，gzip<br>是否了解SQL，RX.js<br>在业界有没有什么大牛级的偶像，想不想成为其中的一个</p>
+<h1 id="2017-03-07"><a href="#2017-03-07" class="headerlink" title="2017.03.07"></a>2017.03.07</h1><p>自我介绍<br>博客<br>觉得自己更偏向于css还是js<br>了解flex布局吗<br>js看过的书<br>如果让你来讲js你会怎么写提纲<br>变量定义，是否了解变量提升<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(a)</span></span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="string">"123"</span>;</div><div class="line">  <span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;&#125;;</div><div class="line">  <span class="comment">// 会调用哪个a</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对后端语言有了解吗<br>解释一下原型链，原型链末端是什么<br>解释一下闭包<br>ES6的class和ES3/5有什么区别<br>讲一下你最有收获的项目<br>是怎么解决遇到的问题的<br>angular和jQuery的优缺点对比</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/春招/" rel="tag">#春招</a>
+          
+            <a href="/tags/实习/" rel="tag">#实习</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/2017-03-13/" rel="next" title="工欲善其事必先利其器-前端实习简历篇">
+                <i class="fa fa-chevron-left"></i> 工欲善其事必先利其器-前端实习简历篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/15/2017-04-15/" rel="prev" title="翻译计划-用node.js开发一个可交互的命令行应用">
+                翻译计划-用node.js开发一个可交互的命令行应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/19/2017-03-19/"
+           data-title="无他，唯手熟尔-前端实习面试题篇" data-url="http://xdlrt.github.io/2017/03/19/2017-03-19/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-02-13"><span class="nav-number">1.</span> <span class="nav-text">2017.02.13</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js"><span class="nav-number">1.1.</span> <span class="nav-text">js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">1.2.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">1.3.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">1.4.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主观题"><span class="nav-number">1.5.</span> <span class="nav-text">主观题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-02-14"><span class="nav-number">2.</span> <span class="nav-text">2017.02.14</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一面"><span class="nav-number">2.1.</span> <span class="nav-text">一面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二面"><span class="nav-number">2.2.</span> <span class="nav-text">二面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-02-16"><span class="nav-number">3.</span> <span class="nav-text">2017.02.16</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一面-1"><span class="nav-number">3.1.</span> <span class="nav-text">一面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二面-1"><span class="nav-number">3.2.</span> <span class="nav-text">二面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三面"><span class="nav-number">3.3.</span> <span class="nav-text">三面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-02-22"><span class="nav-number">4.</span> <span class="nav-text">2017.02.22</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-02-28"><span class="nav-number">5.</span> <span class="nav-text">2017.02.28</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-03-01"><span class="nav-number">6.</span> <span class="nav-text">2017.03.01</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-03-02"><span class="nav-number">7.</span> <span class="nav-text">2017.03.02</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-03-03"><span class="nav-number">8.</span> <span class="nav-text">2017.03.03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-03-03-1"><span class="nav-number">9.</span> <span class="nav-text">2017.03.03</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2017-03-07"><span class="nav-number">10.</span> <span class="nav-text">2017.03.07</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

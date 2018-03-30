@@ -1,0 +1,710 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo教程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="hexo是一个非常轻量且快速的博客生成框架，可以使用markdown便捷的生成文章。本文主要介绍windows下如何搭建hexo3.0+环境并发布至github。默认读者具有命令行使用经验和一定的web编程基础。">
+<meta name="keywords" content="hexo教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用hexo极速搭建博客">
+<meta property="og:url" content="http://xdlrt.github.io/2016/02/16/2016-02-16/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="hexo是一个非常轻量且快速的博客生成框架，可以使用markdown便捷的生成文章。本文主要介绍windows下如何搭建hexo3.0+环境并发布至github。默认读者具有命令行使用经验和一定的web编程基础。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用hexo极速搭建博客">
+<meta name="twitter:description" content="hexo是一个非常轻量且快速的博客生成框架，可以使用markdown便捷的生成文章。本文主要介绍windows下如何搭建hexo3.0+环境并发布至github。默认读者具有命令行使用经验和一定的web编程基础。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2016/02/16/2016-02-16/"/>
+
+
+  <title> 用hexo极速搭建博客 | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用hexo极速搭建博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-16T11:19:54+08:00" content="2016-02-16">
+              2016-02-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/16/2016-02-16/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/16/2016-02-16/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>hexo是一个非常轻量且快速的博客生成框架，可以使用markdown便捷的生成文章。<br>本文主要介绍windows下如何搭建hexo3.0+环境并发布至github。默认读者具有命令行使用经验和一定的web编程基础。<br><a id="more"></a></p>
+<p>作者：Icarus<br>原文链接：<a href="https://xdlrt.github.io/2016/02/16/2016-02-16">用hexo极速搭建博客</a></p>
+<p>hexo搭建完成后只需要三步就可以完成博文的更新。<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo</span> n <span class="comment">#新建</span></div><div class="line">hexo g <span class="comment">#生成</span></div><div class="line">hexo d <span class="comment">#发布</span></div></pre></td></tr></table></figure></p>
+<p>下面介绍windows下如何搭建hexo3.1.1环境并发布至github</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>到<a href="http://nodejs.org/" target="_blank" rel="external">node.js</a>官网下载node.js并安装。我使用的是win8.1 x64下的4.2.4版本。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>git客户端很多，我使用的是git官方提供的工具，下载速度可能较慢。</p>
+<h2 id="安装sublime-非必须"><a href="#安装sublime-非必须" class="headerlink" title="安装sublime(非必须)"></a>安装sublime(非必须)</h2><p>作为一个小前端，sublime作为编辑器实在是不能再好用，不过这个只是作为文本编辑器使用，大家可以根据喜好自由选择工具，切记不要使用windows自带的记事本。</p>
+<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><p>我们使用Github官方提供的Github Pages这一服务来作为静态博客的服务器。申请Github账户和与git通过ssh建立连接网上有很多详细的教程，此处不再赘述。<br><a href="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">GitHub Help - Generating SSH Keys</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>node.js和git安装好后，建议使用git提供的命令行窗口进行操作。<br><strong>windows自带的cmd会报错。</strong><br>执行如下命令可安装hexo：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo</div></pre></td></tr></table></figure></p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>执行init命令初始化hexo到你指定的目录。<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init <span class="params">&lt;folder&gt;</span> <span class="meta">#folder为你指定的目录</span></div></pre></td></tr></table></figure></p>
+<p><strong>或者cd至指定目录，执行hexo  init</strong></p>
+<p>至此，hexo的安装工作已经完成。</p>
+<h2 id="hexo必备插件"><a href="#hexo必备插件" class="headerlink" title="hexo必备插件"></a>hexo必备插件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-generator-index --save <span class="comment">#索引生成器</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-generator-archive --save <span class="comment">#归档生成器</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-generator-category --save <span class="comment">#分类生成器</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-generator-tag --save <span class="comment">#标签生成器</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-server --save <span class="comment">#本地服务</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-deployer-git --save <span class="comment">#hexo通过git发布（必装）</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-marked@0.2.7--save <span class="comment">#渲染器</span></span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install hexo-renderer-stylus@0.3.0 --save <span class="comment">#渲染器</span></span></div></pre></td></tr></table></figure>
+<h1 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h1><p>cd至之前初始化的目录，执行如下命令，即可生成静态页面至public目录<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo g</span></div></pre></td></tr></table></figure></p>
+<h1 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h1><p>执行如下命令，启动本地服务，进行预览。<br>必须安装hexo-server，不然无法启动本地服务器<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo s</span></div></pre></td></tr></table></figure></p>
+<p>浏览器输入 localhost:4000即可访问默认的hexo博客效果。<br><strong>注意hosts文件中localhost是否被占用以及4000端口可能被福昕阅读器占用</strong></p>
+<h1 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h1><p>编辑hexo根目录下的_config.yml文件，找到最下面的deploy<br>hexo2和hexo3此处配置不一样，我使用的是hexo3.1.1为如下格式。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">deploy</span>:</div><div class="line">  <span class="attribute">type</span>: git</div><div class="line">  repo：<span class="attribute">https</span>:<span class="comment">//github.com/xdlrt/xdlrt.github.io.git #你的GitHub Pages的https链接</span></div><div class="line">  branch：master</div></pre></td></tr></table></figure></p>
+<p>保存配置文件后，执行如下命令：<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo d</span></div></pre></td></tr></table></figure></p>
+<p><strong>注意yml格式文件冒号后面必须加一个空格</strong><br>执行完毕后访问xdlrt.github.io即可看到部署在github上的默认博客。第一次发布可能会有10分钟的延迟。</p>
+<p><strong>至此，hexo已经成功帮我们生成了一个博客，非常的方便</strong></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="meta">#新建文章</span></div><div class="line">hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="meta">#新建页面</span></div><div class="line">hexo generate <span class="meta">#生成静态页面至public目录</span></div><div class="line">hexo <span class="keyword">server</span> <span class="meta">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">hexo deploy <span class="meta">#将.deploy目录部署到GitHub</span></div><div class="line">hexo help  <span class="meta"># 查看帮助</span></div><div class="line">hexo version  <span class="meta">#查看Hexo的版本</span></div></pre></td></tr></table></figure>
+<h2 id="简写："><a href="#简写：" class="headerlink" title="简写："></a>简写：</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo n == hexo new</div><div class="line">hexo g == hexo generate</div><div class="line">hexo s == hexo server</div><div class="line">hexo d == hexo deploy</div></pre></td></tr></table></figure>
+<p>坑：<br>1.有时会出现首页只有一篇文章的情况，这个时候需要hexo g渲染两次，原因不明。<br>2.标题中不能含有[]否则无法编译</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h2><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客|不如</a><br><a href="https://segmentfault.com/a/1190000003088603" target="_blank" rel="external">最新版Hexo配置</a><br><a href="http://www.jianshu.com/p/73779eacb494" target="_blank" rel="external">hexo静态博客使用指南</a><br><a href="http://forsweet.github.io/hexo/用Hexo搭建Github博客/" target="_blank" rel="external">用hexo3搭建博客</a><br><a href="http://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html" target="_blank" rel="external">如何查看某个端口被谁占用</a><br><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT-an elegant theme for hexo</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo教程/" rel="tag">#hexo教程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/17/2016-02-17/" rel="prev" title="hexo配置文件初识及主题更换">
+                hexo配置文件初识及主题更换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/16/2016-02-16/"
+           data-title="用hexo极速搭建博客" data-url="http://xdlrt.github.io/2016/02/16/2016-02-16/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.1.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Git"><span class="nav-number">1.2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装sublime-非必须"><span class="nav-number">1.3.</span> <span class="nav-text">安装sublime(非必须)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github"><span class="nav-number">2.</span> <span class="nav-text">Github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">4.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo必备插件"><span class="nav-number">4.1.</span> <span class="nav-text">hexo必备插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成静态页面"><span class="nav-number">5.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地启动"><span class="nav-number">6.</span> <span class="nav-text">本地启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布"><span class="nav-number">7.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">8.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令："><span class="nav-number">8.1.</span> <span class="nav-text">常用命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简写："><span class="nav-number">8.2.</span> <span class="nav-text">简写：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.3.</span> <span class="nav-text">参考资料:</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

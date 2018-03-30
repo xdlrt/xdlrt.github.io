@@ -1,0 +1,752 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="大家应该非常熟悉jQuery的css()方法,那么如何在不引用jQuery的情况下同样实现这个功能呢?本文就介绍使用原生JS来获取样式的方法.">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我们来翻翻元素样式的族谱-getComputedStyle">
+<meta property="og:url" content="http://xdlrt.github.io/2017/01/30/2017-01-30/index.html">
+<meta property="og:site_name" content="小居">
+<meta property="og:description" content="大家应该非常熟悉jQuery的css()方法,那么如何在不引用jQuery的情况下同样实现这个功能呢?本文就介绍使用原生JS来获取样式的方法.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xdlrt.github.io/images/2017-01-30/3.png">
+<meta property="og:image" content="http://xdlrt.github.io/images/2017-01-30/1.png">
+<meta property="og:image" content="http://xdlrt.github.io/images/2017-01-30/2.png">
+<meta property="og:image" content="http://xdlrt.github.io/images/2017-01-30/5.png">
+<meta property="og:updated_time" content="2017-10-29T13:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我们来翻翻元素样式的族谱-getComputedStyle">
+<meta name="twitter:description" content="大家应该非常熟悉jQuery的css()方法,那么如何在不引用jQuery的情况下同样实现这个功能呢?本文就介绍使用原生JS来获取样式的方法.">
+<meta name="twitter:image" content="http://xdlrt.github.io/images/2017-01-30/3.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xdlrt.github.io/2017/01/30/2017-01-30/"/>
+
+
+  <title> 我们来翻翻元素样式的族谱-getComputedStyle | 小居 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小居</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                我们来翻翻元素样式的族谱-getComputedStyle
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-30T11:43:00+08:00" content="2017-01-30">
+              2017-01-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/折腾/" itemprop="url" rel="index">
+                    <span itemprop="name">折腾</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/30/2017-01-30/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/30/2017-01-30/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>大家应该非常熟悉jQuery的css()方法,那么如何在不引用jQuery的情况下同样实现这个功能呢?本文就介绍使用原生JS来获取样式的方法.<br><a id="more"></a><br>作者：Icarus<br>原文链接：<a href="https://xdlrt.github.io/2017/01/30/2017-01-30">我们来翻翻元素样式的族谱-getComputedStyle</a></p>
+<h1 id="getComputedStyle是什么"><a href="#getComputedStyle是什么" class="headerlink" title="getComputedStyle是什么"></a>getComputedStyle是什么</h1><p><br></p>
+<blockquote>
+<p>The Window.getComputedStyle() method gives the values of all the CSS properties of an element after applying the active stylesheets and resolving any basic computation those values may contain.</p>
+</blockquote>
+<p>Window.getComputedStyle()方法可以获取当前元素所有最终使用的CSS属性值.返回的是一个CSS样式声明对象(object CSSStyleDeclaration),只读.也就是说,获取到的不仅仅是我们自定义的样式,它包含了所有作用在当前元素上的css属性及属性值.</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> style = <span class="built_in">window</span>.getComputedStyle(element[, pseudoElt]);</div></pre></td></tr></table></figure>
+<p>其中element是必需的参数,代表获取样式的元素.pseudoElt是伪类参数,在Gecko2.0之前是必填项,但在现代浏览已经不是了,如果不是伪类的话,设置为null即可.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> style = <span class="built_in">window</span>.getComputedStyle(element, <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><h3 id="不包含伪类"><a href="#不包含伪类" class="headerlink" title="不包含伪类"></a>不包含伪类</h3><p>假设页面上存在一个id为id的元素,使用getComputedStyle方法获取到的元素样式如下所示:<br><img src="/images/2017-01-30/3.png" alt="example"></p>
+<h3 id="包含伪类"><a href="#包含伪类" class="headerlink" title="包含伪类"></a>包含伪类</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css"> <span class="selector-tag">h3</span><span class="selector-pseudo">::after</span> &#123;</span></div><div class="line"><span class="undefined">   content: 'rocks!';</span></div><div class="line"><span class="undefined"> &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>generated content<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="keyword">var</span> h3       = <span class="built_in">document</span>.querySelector(<span class="string">'h3'</span>),</span></div><div class="line"><span class="actionscript">      result   = getComputedStyle(h3, <span class="string">':after'</span>).content;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="built_in">console</span>.log(result); <span class="comment">// returns 'rocks!'</span></span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p><img src="/images/2017-01-30/1.png" alt="Browser compatibility-1"><br><img src="/images/2017-01-30/2.png" alt="Browser compatibility-2"></p>
+<p>其中问号部分代表暂无测试,是否兼容暂不确定.</p>
+<p>由上图可知,getComputedStyle的兼容性很不错,基本支持所有的现代浏览器.当然IE浏览器自有他的脾气,在IE9以下有另一套功能相似的API,暂且不提.</p>
+<h1 id="获取特定属性值"><a href="#获取特定属性值" class="headerlink" title="获取特定属性值"></a>获取特定属性值</h1><p>在上面的栗子中,我们可以看到getComputedStyle返回的是样式声明对象,包含了元素所有的样式值,那么我们如何获取到想要的属性值呢?有两种方法可以实现这一需求:</p>
+<ul>
+<li>window.getPropertyValue()</li>
+<li>键值访问</li>
+</ul>
+<h2 id="getPropertyValue"><a href="#getPropertyValue" class="headerlink" title="getPropertyValue"></a>getPropertyValue</h2><p>getPropertyValue方法可以直接获取CSS样式申明对象上的属性值,例如:<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>).getPropertyValue(<span class="string">'属性名'</span>);</div></pre></td></tr></table></figure></p>
+<p>可以非常方便的获取到我们想要的属性值.需要注意:不支持驼峰命名,属性名按照css的写法,如<code>background-color</code>:<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>).getPropertyValue(<span class="string">'background-color'</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="兼容性-1"><a href="#兼容性-1" class="headerlink" title="兼容性"></a>兼容性</h3><p>除IE9以下浏览器,其余现代浏览器均支持.</p>
+<h2 id="键值访问"><a href="#键值访问" class="headerlink" title="键值访问"></a>键值访问</h2><p>通过键值访问来获取css属性较为繁琐,可能需要进行额外的浏览器检测,例如<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.getComputedStyle(element, <span class="keyword">null</span>).<span class="keyword">float</span> <span class="comment">//错误!</span></div></pre></td></tr></table></figure></p>
+<p>这种写法是错误的,原因是float是js的一个保留字,不能直接使用.IE下对应的是 styleFloat,firefox,chorme,safari下对应的则是cssFloat.相较而言更建议使用getPropertyValue来获取具体属性值.</p>
+<h1 id="IE9以下的替代方法"><a href="#IE9以下的替代方法" class="headerlink" title="IE9以下的替代方法"></a>IE9以下的替代方法</h1><h2 id="getComputedStyle和currentStyle"><a href="#getComputedStyle和currentStyle" class="headerlink" title="getComputedStyle和currentStyle"></a>getComputedStyle和currentStyle</h2><p>currentStyle是IE浏览器特有的的一个属性,<code>element.currentStyle</code>返回的同样是所有元素当前应用的最终CSS属性值.但是其中获取到的属性名会存在差异,如上提及的styleFloat和cssFloat.</p>
+<p>不过,currentStyle属性不支持伪类样式获取,这是与getComputedStyle方法的重要差异,也是jQuery中css()方法无法获取伪类元素属性的原因.</p>
+<p>假设页面上有一个id为test的元素,示例如下:<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> style = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>).currentStyle;</div></pre></td></tr></table></figure></p>
+<h2 id="getPropertyValue和getAttribute"><a href="#getPropertyValue和getAttribute" class="headerlink" title="getPropertyValue和getAttribute"></a>getPropertyValue和getAttribute</h2><p>在IE浏览器中的getAttribute方法提供了与getPropertyValue方法类似的功能,配合currentStyle使用,可以访问CSS样式对象的属性,用法与getPropertyValue类似:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">element</span><span class="selector-class">.currentStyle</span><span class="selector-class">.getAttribute</span>(<span class="string">'float'</span>);</div></pre></td></tr></table></figure></p>
+<p>可以注意到,使用getAttribute同样不需要进行浏览器检测.但是有一点需要注意:在IE7+的浏览器中,getAttribute获取属性名可以使用驼峰式命名法,IE6必须使用驼峰式命名方法,如:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// IE7,8两者均可,IE6必须使用驼峰命名法</span></div><div class="line"><span class="selector-tag">element</span><span class="selector-class">.currentStyle</span><span class="selector-class">.getAttribute</span>(<span class="string">'background-color'</span>);</div><div class="line"><span class="selector-tag">element</span><span class="selector-class">.currentStyle</span><span class="selector-class">.getAttribute</span>(<span class="string">'backgroundColor'</span>);</div></pre></td></tr></table></figure>
+<h1 id="getComputedStyle和style的区别"><a href="#getComputedStyle和style的区别" class="headerlink" title="getComputedStyle和style的区别"></a>getComputedStyle和style的区别</h1><p>我们使用element.style也可以获取元素的CSS样式声明对象,但是其与getComputedStyle方法存在一些差异.</p>
+<h2 id="只读与可写"><a href="#只读与可写" class="headerlink" title="只读与可写"></a>只读与可写</h2><p>上面提到过getComputedStyle方法是只读的,只能获取样式,不能设置;而element.style能读能写,八面玲珑.</p>
+<h2 id="获取的对象范围"><a href="#获取的对象范围" class="headerlink" title="获取的对象范围"></a>获取的对象范围</h2><p>getComputedStyle方法获取的是最终应用在元素上的所有CSS属性对象,即使没有编写任何样式代码,也会获取默认的所有样式的属性和属性值;<code>element.style</code>只能获取元素style属性中的CSS样式.<br>可能这样说不太好理解,我们回顾一下CSS样式表的表现形式:</p>
+<ul>
+<li>内联样式 (inline Style): 是写在HTML标签的style属性里面的,内嵌样式只对该标签有效.</li>
+<li>内部样式 (internal Style Sheet): 是写在HTML文档的style标签里面的,内部样式只对当前页面有效.</li>
+<li>外部样式表 (External Style Sheet): 如果很多网页需要用到同样的样式,将样式写在一个以.CSS为后缀的CSS文件里,然后在每个需要用到这些样式的网页里引用这个CSS文件.也就是说,getComputedStyle获取到的是所有最终在元素上应用的样式属性,而<code>element.style</code>仅仅获取的是我们人为编写的样式.<br>我们来做一个测试,对于一个光秃秃的没有任何样式设置的元素p,getComputedStyle方法返回对象中length属性值和<code>element.style</code>的区别.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">var</span> elem = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"><span class="comment">// 0</span></div><div class="line">elem.style.length</div><div class="line"><span class="comment">// 261 - chrome 55.0.2883.87</span></div><div class="line"><span class="comment">// 249 - firefox 50.0</span></div><div class="line"><span class="comment">// 233 - safari 5.1.1</span></div><div class="line"><span class="built_in">window</span>.getComputedStyle(elem, <span class="literal">null</span>).length</div></pre></td></tr></table></figure>
+<p>很容易看出两者的区别.</p>
+<h1 id="getComputedStyle与defaultView"><a href="#getComputedStyle与defaultView" class="headerlink" title="getComputedStyle与defaultView"></a>getComputedStyle与defaultView</h1><p><br></p>
+<blockquote>
+<p>From mdn<br>In many code samples online, getComputedStyle is used from the document.defaultView object. In nearly all cases, this is needless, as getComputedStyle exists on the window object as well. It’s likely the defaultView pattern was some combination of (1) folks not wanting to write a spec for window and (2) making an API that was also usable in Java. However, there is a single case where the defaultView’s method must be used: when using Firefox 3.6 to access framed styles.</p>
+</blockquote>
+<p><code>window.getComputedStyle</code>还有另一种写法,就是 <code>document.defaultView.getComputedStyle</code>.<br>实际上,使用defaultView基本上是没有必要的,getComputedStyle本身就存在window对象之中.使用defaultView可能一是人们不太乐意在window上专门写个东西,二是让API在Java中也可用.<br>不过有个特殊情况,在FireFox3.6上不使用defaultView方法就搞不定的,就是访问框架(frame)的样式.不过FireFox3.6已经退出历史舞台,不用过于在意.</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p><img src="/images/2017-01-30/5.png" alt="summary"></p>
+<ul>
+<li><code>element.style</code><br>可读可写,但只能获取到自定义style属性</li>
+<li><code>window.getComputedStyle</code>/<code>document.defaultView.getComputedStyle</code><br>只读,非IE浏览器及IE9+获取所有作用样式,使用<code>getPropertyValue</code>来获取特定属性.</li>
+<li><code>currentStyle</code><br>只读,IE6-8获取所有作用样式,使用<code>getAttribute</code>来获取特定属性.</li>
+</ul>
+<p>这篇博客主要介绍了getComputedStyle的前世今生,真正要实现jQuery中兼容IE及其它现代浏览器的css()方法还需要额外做一些兼容性的处理.限于篇幅,欲知后事如何,且听下回分解.</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle#defaultView" target="_blank" rel="external">Window.getComputedStyle()-MDN</a></li>
+<li><a href="http://www.cnblogs.com/coco1s/p/5210667.html" target="_blank" rel="external">原生JS getComputedStyle等方法解析</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">获取元素CSS值之getComputedStyle方法熟悉</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/25/2017-01-25/" rel="next" title="翻译计划-从sass到PostCSS">
+                <i class="fa fa-chevron-left"></i> 翻译计划-从sass到PostCSS
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/05/2017-02-05/" rel="prev" title="手把手带你用原生js实现css属性的set和get">
+                手把手带你用原生js实现css属性的set和get <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+  
+
+
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/30/2017-01-30/"
+           data-title="我们来翻翻元素样式的族谱-getComputedStyle" data-url="http://xdlrt.github.io/2017/01/30/2017-01-30/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Icarus" />
+          <p class="site-author-name" itemprop="name">Icarus</p>
+          <p class="site-description motion-element" itemprop="description">前端|伪文青|工科男</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xdlrt" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/5361470927/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://zhuanlan.zhihu.com/damonare" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://gold.xitu.io/user/579afae879bc440054687b50" target="_blank" title="掘金">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  掘金
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://damonare.github.io/" title="damonare" target="_blank">damonare</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#getComputedStyle是什么"><span class="nav-number">1.</span> <span class="nav-text">getComputedStyle是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举个栗子"><span class="nav-number">1.2.</span> <span class="nav-text">举个栗子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不包含伪类"><span class="nav-number">1.2.1.</span> <span class="nav-text">不包含伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含伪类"><span class="nav-number">1.2.2.</span> <span class="nav-text">包含伪类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性"><span class="nav-number">1.3.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取特定属性值"><span class="nav-number">2.</span> <span class="nav-text">获取特定属性值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getPropertyValue"><span class="nav-number">2.1.</span> <span class="nav-text">getPropertyValue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">兼容性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值访问"><span class="nav-number">2.2.</span> <span class="nav-text">键值访问</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IE9以下的替代方法"><span class="nav-number">3.</span> <span class="nav-text">IE9以下的替代方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getComputedStyle和currentStyle"><span class="nav-number">3.1.</span> <span class="nav-text">getComputedStyle和currentStyle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getPropertyValue和getAttribute"><span class="nav-number">3.2.</span> <span class="nav-text">getPropertyValue和getAttribute</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getComputedStyle和style的区别"><span class="nav-number">4.</span> <span class="nav-text">getComputedStyle和style的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#只读与可写"><span class="nav-number">4.1.</span> <span class="nav-text">只读与可写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取的对象范围"><span class="nav-number">4.2.</span> <span class="nav-text">获取的对象范围</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getComputedStyle与defaultView"><span class="nav-number">5.</span> <span class="nav-text">getComputedStyle与defaultView</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Icarus</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
