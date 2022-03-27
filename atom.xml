@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一颗小树</title>
+  
+  <subtitle>Product Developer</subtitle>
+  <link href="https://yeshu.cloud/atom.xml" rel="self"/>
+  
+  <link href="https://yeshu.cloud/"/>
+  <updated>2022-03-20T06:34:26.000Z</updated>
+  <id>https://yeshu.cloud/</id>
+  
+  <author>
+    <name>也树</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #5 技术对生产力的的变革是不可阻挡的</title>
+    <link href="https://yeshu.cloud/posts/a9b1d85f/"/>
+    <id>https://yeshu.cloud/posts/a9b1d85f/</id>
+    <published>2022-03-20T06:34:26.000Z</published>
+    <updated>2022-03-20T06:34:26.000Z</updated>
+    
+    
+    <summary type="html">技术对生产力的的变革是不可阻挡的。保持自己对未来新趋势和新技术的敏感性。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一颗小树 #4 暴风雨的意义</title>
+    <link href="https://yeshu.cloud/posts/deb6e8c9/"/>
+    <id>https://yeshu.cloud/posts/deb6e8c9/</id>
+    <published>2022-03-13T07:22:45.000Z</published>
+    <updated>2022-03-13T07:22:45.000Z</updated>
+    
+    
+    <summary type="html">当暴风雨过去，你不会记得自己是如何度过的，你甚至不确定暴风雨是否真正结束，但你将不再是当初走进暴风雨里的那个人。这就是暴风雨的意义。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一颗小树 #3 投资成功，是我们变成一个更好的人之后自然的结果</title>
+    <link href="https://yeshu.cloud/posts/40d27d6a/"/>
+    <id>https://yeshu.cloud/posts/40d27d6a/</id>
+    <published>2022-03-06T11:47:41.000Z</published>
+    <updated>2022-03-06T11:47:41.000Z</updated>
+    
+    
+    <summary type="html">在投资里对自己诚实很重要，因为你的对手只有你自己，在学习和实践投资的过程中，你会不断地发现自己的弱点，正视并战胜或接纳它们，在其它方面也会一样受益。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一颗小树 #2 持续学习来应对这个复杂多变的世界</title>
+    <link href="https://yeshu.cloud/posts/37d54dfc/"/>
+    <id>https://yeshu.cloud/posts/37d54dfc/</id>
+    <published>2022-02-27T04:34:50.000Z</published>
+    <updated>2022-02-27T04:34:50.000Z</updated>
+    
+    
+    <summary type="html">我在生活中会遇到非常多的问题，我喜欢通过学习相关领域的知识来解决它们。如果在这个过程中我能够用学到的东西帮助到其他人，我会收获非常多的成就感和价值感。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一颗小树 #1 任天堂和上岭村</title>
+    <link href="https://yeshu.cloud/posts/5e8a0c47/"/>
+    <id>https://yeshu.cloud/posts/5e8a0c47/</id>
+    <published>2022-02-21T05:01:25.000Z</published>
+    <updated>2022-02-21T05:01:25.000Z</updated>
+    
+    
+    <summary type="html">在我的心里，我是一个玩家。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一颗小树 #0 这是写给你们的第一封信</title>
+    <link href="https://yeshu.cloud/posts/b2d20f70/"/>
+    <id>https://yeshu.cloud/posts/b2d20f70/</id>
+    <published>2022-02-21T04:57:01.000Z</published>
+    <updated>2022-02-21T04:57:01.000Z</updated>
+    
+    
+    <summary type="html">公众号周更了六周，收获了一些关注和支持，也让我重新思考如何更好地写下去。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>游戏改变世界</title>
+    <link href="https://yeshu.cloud/posts/69e81900/"/>
+    <id>https://yeshu.cloud/posts/69e81900/</id>
+    <published>2022-02-13T09:02:58.000Z</published>
+    <updated>2022-02-13T09:02:58.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;奖励的意义是改善我们坚持做事的过程。一件事的最终目的，才是激励，也是我们能坚持下来的内在动力。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>把自己给开源了</title>
+    <link href="https://yeshu.cloud/posts/d3a9a34/"/>
+    <id>https://yeshu.cloud/posts/d3a9a34/</id>
+    <published>2022-02-06T15:17:26.000Z</published>
+    <updated>2022-02-06T15:17:26.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;用文字或视频记录自己的生活和想法，让我突然有种感觉，像是把自己给“开源”了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>新年快乐</title>
+    <link href="https://yeshu.cloud/posts/2b9cc7eb/"/>
+    <id>https://yeshu.cloud/posts/2b9cc7eb/</id>
+    <published>2022-01-30T09:19:57.000Z</published>
+    <updated>2022-01-30T09:19:57.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;从记忆里牵出几根线头，就有了下面这些文字。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>构建自己的不为清单</title>
+    <link href="https://yeshu.cloud/posts/2aaa7b2a/"/>
+    <id>https://yeshu.cloud/posts/2aaa7b2a/</id>
+    <published>2022-01-23T14:59:10.000Z</published>
+    <updated>2022-01-23T14:59:10.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;避免去做那些错误的事情，比做对的事情更容易。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>有爱和被爱</title>
+    <link href="https://yeshu.cloud/posts/5af9ba64/"/>
+    <id>https://yeshu.cloud/posts/5af9ba64/</id>
+    <published>2022-01-16T12:45:02.000Z</published>
+    <updated>2022-01-16T12:45:02.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;让爱我的人更爱我，而不是让更多人知道我。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>做了一点微小的工作</title>
+    <link href="https://yeshu.cloud/posts/87e90636/"/>
+    <id>https://yeshu.cloud/posts/87e90636/</id>
+    <published>2022-01-09T15:07:17.000Z</published>
+    <updated>2022-01-09T15:07:17.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;重启个人博客&amp;#x2F;微不足道的开源工作&amp;#x2F;阅读感悟&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>小树的 2021 年终总结</title>
+    <link href="https://yeshu.cloud/posts/4378702d/"/>
+    <id>https://yeshu.cloud/posts/4378702d/</id>
+    <published>2022-01-04T12:26:22.000Z</published>
+    <updated>2022-01-04T12:26:22.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;魔幻的 2021 过去了，和大家聊聊自己这一年来的经历和感受。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小树的 2020 年终总结</title>
+    <link href="https://yeshu.cloud/posts/347f40bb/"/>
+    <id>https://yeshu.cloud/posts/347f40bb/</id>
+    <published>2021-01-04T02:01:57.000Z</published>
+    <updated>2021-01-04T02:01:57.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一些关于 2020 的记忆。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>与其感慨路难行，不如马上出发</title>
+    <link href="https://yeshu.cloud/posts/ad1d0424/"/>
+    <id>https://yeshu.cloud/posts/ad1d0424/</id>
+    <published>2020-07-05T15:34:35.000Z</published>
+    <updated>2020-07-05T15:34:35.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;失踪人口回归，分享一些现状和思考，还有一些下阶段的规划。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里前端也切图？不，人工智能帮你做</title>
+    <link href="https://yeshu.cloud/posts/fd9d5608/"/>
+    <id>https://yeshu.cloud/posts/fd9d5608/</id>
+    <published>2020-03-23T16:05:40.000Z</published>
+    <updated>2020-03-23T16:05:40.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前端智能化有哪些作用？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://yeshu.cloud/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何写好简历，拿到大厂 offer 的敲门砖</title>
+    <link href="https://yeshu.cloud/posts/2b0ba94e/"/>
+    <id>https://yeshu.cloud/posts/2b0ba94e/</id>
+    <published>2020-02-06T06:42:34.000Z</published>
+    <updated>2020-02-06T06:42:34.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;随着各大互联网公司的实习生招聘纷纷火热开展，如何拿到心仪的 offer 就成了摆在大家面前的一个现实问题。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="思考" scheme="https://yeshu.cloud/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="招聘" scheme="https://yeshu.cloud/tags/%E6%8B%9B%E8%81%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>任时光匆匆流去 | 2019 年终总结</title>
+    <link href="https://yeshu.cloud/posts/668eabdc/"/>
+    <id>https://yeshu.cloud/posts/668eabdc/</id>
+    <published>2020-01-24T13:58:42.000Z</published>
+    <updated>2020-01-24T13:58:42.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2019 是正式参加工作的第二年，时间消失起来就像火药引线被点燃一般让人来不及反应。看到一句很有认同感的话：“写作是和自己对话，对话越多，内心就会越平和越坚定。”去年的写作荒废了不少，就趁年终总结，多想一点，多说一点。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="年终总结" scheme="https://yeshu.cloud/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>聊聊在阿里远程办公那点事儿</title>
+    <link href="https://yeshu.cloud/posts/db023dc7/"/>
+    <id>https://yeshu.cloud/posts/db023dc7/</id>
+    <published>2020-01-07T12:18:15.000Z</published>
+    <updated>2020-01-07T12:18:15.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;想针对最近几天的延迟返工通知，来谈谈我对远程办公的一些看法和实践。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在 D2 做主持人是怎样一种体验？</title>
+    <link href="https://yeshu.cloud/posts/ff391b9f/"/>
+    <id>https://yeshu.cloud/posts/ff391b9f/</id>
+    <published>2019-12-16T04:03:18.000Z</published>
+    <updated>2019-12-16T04:03:18.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;兴奋且紧张。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+</feed>

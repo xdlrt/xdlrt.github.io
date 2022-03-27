@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yeshu.cloud","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前面两部分把重点放在了 MobX 基础模块的构建上。用这些模块我们可以开始解决一些现实场景的问题了。这篇文章将会通过一系列的示例来应用我们已经了解的概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能 MobX 模式（part 3）- 用例教程">
+<meta property="og:url" content="https://yeshu.cloud/posts/2d45190f/">
+<meta property="og:site_name" content="一颗小树">
+<meta property="og:description" content="前面两部分把重点放在了 MobX 基础模块的构建上。用这些模块我们可以开始解决一些现实场景的问题了。这篇文章将会通过一系列的示例来应用我们已经了解的概念。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-30T10:28:19.000Z">
+<meta property="article:modified_time" content="2017-07-30T10:28:19.000Z">
+<meta property="article:author" content="也树">
+<meta property="article:tag" content="MobX">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yeshu.cloud/posts/2d45190f/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yeshu.cloud/posts/2d45190f/","path":"posts/2d45190f/","title":"高性能 MobX 模式（part 3）- 用例教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>高性能 MobX 模式（part 3）- 用例教程 | 一颗小树</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?33fa00efe9f4f2a652c14b5521ab4215"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一颗小树" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一颗小树</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Product Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section">关于</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section">归档<span class="badge">58</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E6%A6%82%E8%BF%B0%EF%BC%88TLDR%EF%BC%89%EF%BC%9F"><span class="nav-text">没有概述（TLDR）？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%81%9A%E5%87%BA%E4%B8%80%E4%BA%9B%E8%BD%AC%E5%8F%98"><span class="nav-text">思维做出一些转变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1%EF%BC%9A%E4%B8%BA%E9%87%8D%E8%A6%81%E7%9A%84%E5%8A%A8%E4%BD%9C%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-text">示例1：为重要的动作发送数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2%EF%BC%9A%E4%BD%9C%E4%B8%BA%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%E6%9D%A5%E8%A7%A6%E5%8F%91%E6%93%8D%E4%BD%9C"><span class="nav-text">示例2：作为工作流的一部分来触发操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-1"><span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B3%EF%BC%9A%E8%A1%A8%E5%8D%95%E5%86%85%E5%AE%B9%E5%8F%98%E5%8C%96%E6%97%B6%E6%98%BE%E7%A4%BA%E9%AA%8C%E8%AF%81%E4%BF%A1%E6%81%AF"><span class="nav-text">示例3：表单内容变化时显示验证信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B4%EF%BC%9A%E8%BF%BD%E8%B8%AA%E6%98%AF%E5%90%A6%E6%89%80%E6%9C%89%E5%B7%B2%E6%B3%A8%E5%86%8C%E7%9A%84%E7%BB%84%E4%BB%B6%E5%AE%8C%E6%88%90%E5%8A%A0%E8%BD%BD"><span class="nav-text">示例4：追踪是否所有已注册的组件完成加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-2"><span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E8%BD%AC%E5%8F%98%E8%BF%87%E6%9D%A5%E4%BA%86%E5%90%97%EF%BC%9F"><span class="nav-text">思维转变过来了吗？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="也树"
+      src="https://img.alicdn.com/imgextra/i3/O1CN01G2hVxU1bdYDAN8Yiq_!!6000000003488-2-tps-192-192.png">
+  <p class="site-author-name" itemprop="name">也树</p>
+  <div class="site-description" itemprop="description">In progress to be a product maker.</div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdlrt" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdlrt" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yeshu_in_future" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yeshu_in_future" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xdlrt0111@163.com" title="E-Mail → mailto:xdlrt0111@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div id="contribution" itemprop="calendar" style="margin-top: 8px;"></div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xdlrt" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yeshu.cloud/posts/2d45190f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.alicdn.com/imgextra/i3/O1CN01G2hVxU1bdYDAN8Yiq_!!6000000003488-2-tps-192-192.png">
+      <meta itemprop="name" content="也树">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一颗小树">
+      <meta itemprop="description" content="In progress to be a product maker.">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="高性能 MobX 模式（part 3）- 用例教程 | 一颗小树">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          高性能 MobX 模式（part 3）- 用例教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-07-30 18:28:19" itemprop="dateCreated datePublished" datetime="2017-07-30T18:28:19+08:00">2017-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BF%BB%E8%AF%91%E8%AE%A1%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">翻译计划</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>前面两部分把重点放在了 MobX 基础模块的构建上。用这些模块我们可以开始解决一些现实场景的问题了。这篇文章将会通过一系列的示例来应用我们已经了解的概念。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>译者：阿里云前端-也树</p>
+</blockquote>
+<p>原文链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.pixelingene.com/2016/10/effectivea-mobx-patterns-part-1/">Part 1 - Shaping the observables</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.pixelingene.com/2016/10/effective-mobx-patterns-part-2/">Part 2 - Reacting to changes</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.pixelingene.com/2016/10/effective-mobx-patterns-part-3/">Part 3 - A Cookbook of use cases</a></li>
+</ul>
+<p>当然了，这不会是一个冗长的列表，而是可以让你尝试转变思维去应用 MobX。所有示例都没有使用 @decorator 的语法来实现。这样可以让你在 Chrome 控制台、Node命令行环境或者是像 Webstrom 这样支持临时文件的 IDE 中尝试。</p>
+<h2 id="没有概述（TLDR）？"><a href="#没有概述（TLDR）？" class="headerlink" title="没有概述（TLDR）？"></a>没有概述（TLDR）？</h2><p>这是一篇长文。很抱歉，没有概述。这里有四个示例，我觉得第二个示例之后，后面的阅读起来会更快也更容易理解。:-)</p>
+<ol>
+<li>为重要的动作发送数据分析</li>
+<li>作为工作流的一部分来触发操作</li>
+<li>表单内容变化时显示验证信息</li>
+<li>追踪是否所有已注册的组件完成加载</li>
+</ol>
+<h2 id="思维做出一些转变"><a href="#思维做出一些转变" class="headerlink" title="思维做出一些转变"></a>思维做出一些转变</h2><p>当你学习某个库或框架背后的理论知识并且尝试解决你自己的问题时，你大概会先初始化一个空白项目。像我这样的一般人还有甚至说最棒的一些开发者都会这样。</p>
+<p>我们需要的是从简单到复杂的示例，从而使我们的思维方式成型。只有当我们在实际应用中，我们才能开始思考自己问题的解决方法。</p>
+<p>对于 MobX 来说，你最先需要理解的是你有一个响应式的对象数据表。在这个树形结构上，某些部分会依赖另一些部分。当这个树形结构发生突变，为了反应这些变化，有联系的部分就会响应并且更新。</p>
+<blockquote>
+<p>思维的转变在于想象整个系统是由一系列的突变和一系列相应的反应作用组成的。</p>
+</blockquote>
+<p>作为响应式的变化的结果，产生的作用可以是能产出输出的任何东西。让我们去探索一些真实的示例并且看看我们如何使用 MobX 对它们进行建模和描述。</p>
+<h2 id="示例1：为重要的动作发送数据分析"><a href="#示例1：为重要的动作发送数据分析" class="headerlink" title="示例1：为重要的动作发送数据分析"></a>示例1：为重要的动作发送数据分析</h2><p><strong>问题：</strong> 我们在应用中有某些一次性的操作，需要在服务器记录下来。当这些动作被触发并且发送数据分析时，我们想要去追踪它们。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>第一步是去给状态建模。我们的操作是受限的，同时我们只在乎它什么时候第一次被触发。我们可以通过一个<code>动作名称-布尔值</code>的 map 结构建立模型。下面是我们观察的状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actionMap = <span class="title function_">observable</span>(&#123;</span><br><span class="line">    <span class="attr">login</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">logout</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">forgotPassword</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">changePassword</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">loginFailed</span>: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们需要对发生在这些动作状态上的变化做出响应。既然他们在整个生命周期中只发生一次，我们就不准备使用像 <code>autorun()</code> 和 <code>reaction()</code> 这样长期运行的作用函数。我们同样也不想这些动作在执行后保留产生的作用。那么，留着我们的就只有一个选择了：<code>when</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(actionMap)</span><br><span class="line">    .<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">when</span>(</span><br><span class="line">            <span class="function">() =&gt;</span> actionMap[key],</span><br><span class="line">            <span class="function">() =&gt;</span> <span class="title function_">reportAnalyticsForAction</span>(key)</span><br><span class="line">        );</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reportAnalyticsForAction</span>(<span class="params">actionName</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Reporting: &#x27;</span>, actionName);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ... JSON API Request ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们简单的遍历了我们 <code>actionMap</code> 中的 key 并且给每个 key 都设置了一个 <code>when()</code> 方法来处理副作用。这些副作用在追踪函数（第一个参数）返回 true 的时候执行。在执行作用函数（第二个参数）之后，<code>when()</code> 方法会自动销毁。所以不会存在应用中发送多次报告的问题。</p>
+<p>我们还需要一个 MobX 的 action 来改变被观察的状态。<strong>记住：</strong>永远不要直接修改被观察的变量，使用 <code>action()</code> 来做这件事。</p>
+<p>对我们这个问题来说，代码会像下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> markActionComplete = <span class="title function_">action</span>(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    actionMap[name] = <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">markActionComplete</span>(<span class="string">&#x27;login&#x27;</span>);</span><br><span class="line"><span class="title function_">markActionComplete</span>(<span class="string">&#x27;logout&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">markActionComplete</span>(<span class="string">&#x27;login&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [LOG] Reporting:  login</span></span><br><span class="line"><span class="comment">// [LOG] Reporting:  logout</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，即使我触发了两次 login 的 action，也不会有报告发生。完美，这就是我们需要的行为表现。</p>
+<p>成功的两点原因：</p>
+<ol>
+<li>login 标志位已经被置为 true，所以值是没有发生变化的</li>
+<li><code>when()</code> 方法的副作用已经被销毁，所以也不会再有追踪发生</li>
+</ol>
+<h2 id="示例2：作为工作流的一部分来触发操作"><a href="#示例2：作为工作流的一部分来触发操作" class="headerlink" title="示例2：作为工作流的一部分来触发操作"></a>示例2：作为工作流的一部分来触发操作</h2><p><strong>问题：</strong> 我们在一个工作流中包含了许多状态。每一个状态都是某些任务的映射，当工作流达到这个状态时，这些任务会被执行。</p>
+<h3 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h3><p>从上面的描述中来看，唯一需要被观察的是工作流中的状态。每种状态都有对应的任务需要执行，这些任务通过简单的映射关系储存。通过这些信息我们可以为我们的工作流建立模型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Workflow</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">taskMap</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">taskMap</span> = taskMap;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span> = <span class="title function_">observable</span>(&#123;</span><br><span class="line">            <span class="attr">previous</span>: <span class="literal">null</span>,</span><br><span class="line">            <span class="attr">next</span>: <span class="literal">null</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">transitionTo</span> = <span class="title function_">action</span>(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">previous</span> = <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">next</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">next</span> = name;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">monitorWorkflow</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">monitorWorkflow</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">/* ... */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Usage</span></span><br><span class="line"><span class="keyword">const</span> workflow = <span class="keyword">new</span> <span class="title class_">Workflow</span>(&#123;</span><br><span class="line">    <span class="title function_">start</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running START&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">process</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running PROCESS&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">approve</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running APPROVE&#x27;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">finalize</span>(<span class="params">workflow</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running FINALIZE&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            workflow.<span class="title function_">transitionTo</span>(<span class="string">&#x27;end&#x27;</span>);</span><br><span class="line">        &#125;, <span class="number">500</span>);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="title function_">end</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Running END&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注意我们储存了一个叫 state 的实例变量，它可以追踪工作流现在和之前的状态。我们同样传入了 state 到 task 的映射关系，储存在 taskMap 中。</p>
+<p>监听工作流是这里有趣的部分。在这个例子中，我们没有像之前示例中有一次性的操作。一个工作流通常是在整个应用的生命周期中长期运转的。这里需要的是 <code>autorun()</code> 或者 <code>reaction()</code>。</p>
+<p>状态对应的任务只会在你过渡到这个状态时触发。所以在我们触发任何副作用（任务）之前，我们需要等待 <code>this.state.next</code> 的变化。等待一个变化意味着我们需要使用 <code>reaction()</code>，因为它只会在追踪的被观察变量发生变化时被触发。所以我们的监听函数代码会像下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Workflow</span> &#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_">monitorWorkflow</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">reaction</span>(</span><br><span class="line">            <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">next</span>,</span><br><span class="line">            <span class="function">(<span class="params">nextState</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> task = <span class="variable language_">this</span>.<span class="property">taskMap</span>[nextState];</span><br><span class="line">                <span class="keyword">if</span> (task) &#123;</span><br><span class="line">                    <span class="title function_">task</span>(<span class="variable language_">this</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>reaction()</code> 的第一个参数是追踪函数，在这里就是简单的返回 <code>this.state.next</code>。当追踪函数的返回值发生变化，就会触发作用函数。作用函数接受当前的状态，从 <code>this.taskMap</code> 中找出对应的任务并执行。</p>
+<p>注意，我们也把工作流的实例传入到任务中。这样就可以把工作流过渡到其它状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">workflow.<span class="title function_">transitionTo</span>(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line"></span><br><span class="line">workflow.<span class="title function_">transitionTo</span>(<span class="string">&#x27;finalize&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [LOG] Running START</span></span><br><span class="line"><span class="comment">// [LOG] Running FINALIZE</span></span><br><span class="line"><span class="comment">/* ... after 500ms ... */</span></span><br><span class="line"><span class="comment">// [LOG] Running END</span></span><br></pre></td></tr></table></figure>
+
+<p>有趣的是，像 <code>this.state.next</code> 并且使用 <code>reaction()</code> 来触发副作用的这种储存简单观察变量的技术，还可以被用来做这些：</p>
+<ul>
+<li>通过 react-router 管理路由</li>
+<li>在演示的应用中导航</li>
+<li>基于一种模式切换不同的视图</li>
+</ul>
+<h2 id="示例3：表单内容变化时显示验证信息"><a href="#示例3：表单内容变化时显示验证信息" class="headerlink" title="示例3：表单内容变化时显示验证信息"></a>示例3：表单内容变化时显示验证信息</h2><p><strong>问题：</strong> 一堆文本框需要被验证是一个经典了 Web 表单的使用场景。当它们验证通过，你可以允许表单进行提交。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>让我们给一个需要验证表单字段的简单 FormData 类建立模型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FormData</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">extendObservable</span>(<span class="variable language_">this</span>, &#123;</span><br><span class="line">            <span class="attr">firstName</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="attr">lastName</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="attr">email</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="attr">acceptTerms</span>: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">            <span class="attr">errors</span>: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">            <span class="keyword">get</span> <span class="title function_">valid</span>() &#123; <span class="comment">// 这里会变成 compute() 方法的属性</span></span><br><span class="line">                <span class="keyword">return</span> (<span class="variable language_">this</span>.<span class="property">errors</span> === <span class="literal">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setupValidation</span>(); <span class="comment">// 我们会在下面看到</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>extendObservable()</code> API是我们以前没有见过的。通过应用它到我们类的实例（this）上，我们通过 ES5 的等价方式实现了 <code>@observable</code> 装饰类的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FormData</span> &#123;</span><br><span class="line">    @observable firstName = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们需要监听所有字段的变化，并且执行某些验证逻辑。如果验证逻辑执行通过，我们可以标记这个实体是可用的并且允许提交。可用性本身是通过一个计算属性 valid 来被追踪的。</p>
+<p>既然验证逻辑需要在 FromData 的整个生命周期中执行，我们将会使用 <code>autorun()</code> 方法。我们也可以使用 <code>reaction()</code> 方法，但是我们希望立即执行验证而不是等待数据发生第一次变化。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FormData</span> &#123;</span><br><span class="line">    <span class="title function_">setupValidation</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">autorun</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// Dereferencing observables for tracking</span></span><br><span class="line">            <span class="keyword">const</span> &#123;firstName, lastName, email, acceptTerms&#125; = <span class="variable language_">this</span>;</span><br><span class="line">            <span class="keyword">const</span> props = &#123;</span><br><span class="line">                firstName,</span><br><span class="line">                lastName,</span><br><span class="line">                email,</span><br><span class="line">                acceptTerms</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">runValidation</span>(props, &#123;<span class="comment">/* ... */</span>&#125;)</span><br><span class="line">                .<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">errors</span> = result;</span><br><span class="line">                &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">runValidation</span>(<span class="params">propertyMap, rules</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123;firstName, lastName, email, acceptTerms&#125; = propertyMap;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> isValid = (firstName !== <span class="string">&#x27;&#x27;</span> &amp;&amp; lastName !== <span class="string">&#x27;&#x27;</span> &amp;&amp; email !== <span class="string">&#x27;&#x27;</span> &amp;&amp; acceptTerms === <span class="literal">true</span>);</span><br><span class="line">            <span class="title function_">resolve</span>(isValid ? <span class="literal">null</span> : &#123;<span class="comment">/* ... map of errors ... */</span>&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，<code>autorun()</code> 方法会在被追踪的观察变量发生变化时自动触发。注意为了让 MobX 恰当的追踪你的观察变量，你需要使用<a target="_blank" rel="noopener" href="https://cn.mobx.js.org/best/react.html">间接引用（dereferencing）</a>。</p>
+<p><code>runValidation()</code> 是同步触发的，这就是我们为什么返回一个 promise 对象。在上面的例子中这不重要，但是在实际场景中你可能会因为一些特殊的验证给服务器发送请求。当结果返回的时候我们会设置观察变量 error 的值，它反过来也会更新计算属性 <code>valid</code>。</p>
+<p>如果你的验证逻辑性能开销很大，你甚至可以使用 <code>autorunAsync()</code>，它有一个参数可以对验证逻辑的执行在短暂延迟后采取防抖措施。</p>
+<p>现在让我们的代码跑起来。我们要通过 <code>autorun()</code> 创建一个简单的控制台日志器并且追踪计算属性 <code>valid</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">autorun</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 追踪这个变量，autorun() 可以在每一个文本框发生变化的时候执行</span></span><br><span class="line">    <span class="keyword">const</span> validation = instance.<span class="property">errors</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Valid = <span class="subst">$&#123;instance.valid&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">if</span> (instance.<span class="property">valid</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;--- Form Submitted ---&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 让我们改变一些字段</span></span><br><span class="line">instance.<span class="property">firstName</span> = <span class="string">&#x27;Pavan&#x27;</span>;</span><br><span class="line">instance.<span class="property">lastName</span> = <span class="string">&#x27;Podila&#x27;</span>;</span><br><span class="line">instance.<span class="property">email</span> = <span class="string">&#x27;pavan@pixelingene.com&#x27;</span>;</span><br><span class="line">instance.<span class="property">acceptTerms</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<p>输出的日志为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Valid = false</span><br><span class="line">Valid = false</span><br><span class="line">Valid = false</span><br><span class="line">Valid = false</span><br><span class="line">Valid = false</span><br><span class="line">Valid = true</span><br><span class="line">--- Form Submitted ---</span><br></pre></td></tr></table></figure>
+
+<p>因为 <code>autorun()</code> 会立即执行，你会看到最开始会有两条额外的日志，一条是因为 <code>instance.errors</code>，另一条是因为 <code>instance.valid</code>。剩下的四条是每次字段发生变化时触发的。</p>
+<p>每个字段的改变会触发 <code>runValidation()</code> 方法，这个方法每次会在内部返回一个新的 error 对象。这会导致引用的 <code>instance.errors</code> 发生变化并且触发 <code>autorun()</code> 方法来打印 <code>valid</code> 的值。最后，当我们设置了所有字段的值， <code>instance.errors</code> 变成了 <code>null</code>（再次改变引用的值）并且打印出最终的 <code>Valid = true</code>。</p>
+<p>所以简单来说，我们通过让表单字段被观察来进行表单验证。同时添加一个额外的 <code>errors</code> 属性和一个 <code>valid</code> 计算属性来保证对可用性的追踪。<code>autorun</code> 通过把所有事情绑在一起来控制它们。</p>
+<h2 id="示例4：追踪是否所有已注册的组件完成加载"><a href="#示例4：追踪是否所有已注册的组件完成加载" class="headerlink" title="示例4：追踪是否所有已注册的组件完成加载"></a>示例4：追踪是否所有已注册的组件完成加载</h2><p><strong>问题：</strong> 有一系列已注册的组件，我们想要在它们全部完成加载之前时保持追踪。每一个组件都会暴露出一个 <code>load()</code> 方法，这个方法返回一个 promise 对象。如果这个 promise 对象进入 resolve 状态，我们就把这个组件标记为已加载。如果 promise 进入 reject 状态，我们把这个组件标记为加载失败。当所有的组件完成加载，我们会报告整个系列的组件完成加载或失败。</p>
+<h3 id="解决办法-2"><a href="#解决办法-2" class="headerlink" title="解决办法"></a>解决办法</h3><p>让我们先来看一下我们面对的组件。我们创建一系列的组件，它们会随机的报告它们的加载状态。注意，有一些是异步的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> components = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;first&#x27;</span>,</span><br><span class="line">        <span class="title function_">load</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="title class_">Math</span>.<span class="title function_">random</span>() &gt; <span class="number">0.5</span> ? <span class="title function_">resolve</span>(<span class="literal">true</span>) : <span class="title function_">reject</span>(<span class="literal">false</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;second&#x27;</span>,</span><br><span class="line">        <span class="title function_">load</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                    <span class="title class_">Math</span>.<span class="title function_">random</span>() &gt; <span class="number">0.5</span> ? <span class="title function_">resolve</span>(<span class="literal">true</span>) : <span class="title function_">reject</span>(<span class="literal">false</span>);</span><br><span class="line">                &#125;, <span class="number">1000</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;third&#x27;</span>,</span><br><span class="line">        <span class="title function_">load</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                    <span class="title class_">Math</span>.<span class="title function_">random</span>() &gt; <span class="number">0.25</span> ? <span class="title function_">resolve</span>(<span class="literal">true</span>) : <span class="title function_">reject</span>(<span class="literal">false</span>);</span><br><span class="line">                &#125;, <span class="number">500</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>第二部是为 <code>Tracker</code> 类设计观察变量的状态。组件的 <code>load()</code> 方法不会以一个特定的顺序完成。所以我们需要一个可观察的数组去保存每一个组件的 <code>loaded</code> 状态。我们也要追踪每一个组件的 <code>reported</code> 状态。</p>
+<p>当所有的组件已经发送报告（reported），我们可以发布所有组件最终的 <code>loaded</code> 状态。下面的代码创建了观察变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tracker</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">components</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">components</span> = components;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">extendObservable</span>(<span class="variable language_">this</span>, &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 创建一个组件状态的可观察数组,</span></span><br><span class="line">            <span class="comment">// 每个组件都有</span></span><br><span class="line">            <span class="attr">states</span>: components.<span class="title function_">map</span>(<span class="function">(<span class="params">&#123;name&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    name,</span><br><span class="line">                    <span class="attr">reported</span>: <span class="literal">false</span>,</span><br><span class="line">                    <span class="attr">loaded</span>: <span class="literal">undefined</span></span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;),</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 所有组件完成报告时，获得的计算属性</span></span><br><span class="line">            <span class="keyword">get</span> <span class="title function_">reported</span>() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">states</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">flag, state</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> flag &amp;&amp; state.<span class="property">reported</span>;</span><br><span class="line">                &#125;, <span class="literal">true</span>);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 所有组件完成加载时，获得的计算属性</span></span><br><span class="line">            <span class="keyword">get</span> <span class="title function_">loaded</span>() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">states</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">flag, state</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> flag &amp;&amp; !!state.<span class="property">loaded</span>;</span><br><span class="line">                &#125;, <span class="literal">true</span>);</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 一个标记 reported 和 loaded 的 action 方法</span></span><br><span class="line">            <span class="attr">mark</span>: <span class="title function_">action</span>(<span class="function">(<span class="params">name, loaded</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> state = <span class="variable language_">this</span>.<span class="property">states</span>.<span class="title function_">find</span>(<span class="function"><span class="params">state</span> =&gt;</span> state.<span class="property">name</span> === name);</span><br><span class="line"></span><br><span class="line">                state.<span class="property">reported</span> = <span class="literal">true</span>;</span><br><span class="line">                state.<span class="property">loaded</span> = loaded;</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们再次使用了 <code>extendObservable()</code> 方法来设置我们可观察的状态。<code>reported</code> 和 <code>loaded</code> 计算属性追踪何时组件完成它们的加载。<code>mark()</code> 是我们用来改变观察变量状态的 action 方法。</p>
+<p>顺便说一下，无论在你需要从你的观察变量中提取值的任何地方，使用计算属性是最佳实践。把计算属性当做生产值的一种观察变量。计算属性值也会被缓存，可以表现的更好。另一方面 <code>autorun</code> 和 <code>reaction</code> 不会产出值，而是为创建副作用提供必要的一层包裹。</p>
+<p>为了开始追踪，我们在 <code>Tracker</code>类中新建一个 <code>track()</code> 属性。这会触发每个组件的 <code>load()</code> 方法并且等待返回 Promise 对象的结果。基于这些 <code>track()</code> 方法会标记每一个组件的加载状态。</p>
+<p>当所有组件都完成报告（reported），追踪者会报告最终的 <code>loaded</code> 状态。我们在这里使用 <code>when()</code> 方法，因为我们要等待 <code>this.reported</code> 变成 true。这个副作用仅仅需要触发一次，是个 <code>when()</code> 方法绝佳的适用场景。</p>
+<p>下面的代码实现了上面我们描述的过程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tracker</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* ... */</span> </span><br><span class="line"></span><br><span class="line">    <span class="title function_">track</span>(<span class="params">done</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">when</span>(</span><br><span class="line">            <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="property">reported</span>,</span><br><span class="line">            <span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="title function_">done</span>(<span class="variable language_">this</span>.<span class="property">loaded</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">components</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">&#123;name, load&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">load</span>()</span><br><span class="line">                .<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="title function_">mark</span>(name, <span class="literal">true</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">                .<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="title function_">mark</span>(name, <span class="literal">false</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">setupLogger</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">autorun</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> loaded = <span class="variable language_">this</span>.<span class="property">states</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">&#123;name, loaded&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;name&#125;</span>: <span class="subst">$&#123;loaded&#125;</span>`</span>;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(loaded.<span class="title function_">join</span>(<span class="string">&#x27;,&#x27;</span>));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>setupLogger()</code> 方法不是真正的真正的解决办法，只是用来打印报告的。这是获取我们的解决方案是否工作的一个好办法。</p>
+<p>现在我们要做如下的尝试：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> t = <span class="keyword">new</span> <span class="title class_">Tracker</span>(components);</span><br><span class="line">t.<span class="title function_">setupLogger</span>();</span><br><span class="line">t.<span class="title function_">track</span>(<span class="function">(<span class="params">loaded</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;All Components Loaded = &#x27;</span>, loaded);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>输出的日志显示我们的方法按照我们的预期执行。当组件报告的时候，我们打印当前每个组件的 <code>loaded</code> 状态。当所有的组件都完成报告时，<code>this.reported</code> 变为 true，我们就会看到 <code>All Components Loaded</code>的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">first: undefined, second: undefined, third: undefined</span><br><span class="line">first: true, second: undefined, third: undefined</span><br><span class="line">first: true, second: undefined, third: true</span><br><span class="line">All Components Loaded =  false</span><br><span class="line">first: true, second: false, third: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="思维转变过来了吗？"><a href="#思维转变过来了吗？" class="headerlink" title="思维转变过来了吗？"></a>思维转变过来了吗？</h2><p>希望上边一系列的示例让你对 MobX 有了新的思考。</p>
+<blockquote>
+<p>MobX 就是在一个可观察的数据表中产生的副作用。</p>
+</blockquote>
+<ol>
+<li>设计可观察的状态</li>
+<li>创建 action 方法来改变可观察的状态</li>
+<li>放入追踪函数（when, autorun, reaction）去响应可观察状态的变化</li>
+</ol>
+<p>上面这个步骤可以适用于更复杂的场景，比如你需要在某些事情发生变化后追踪某些事情，只需要重复进行步骤1-3即可。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="也树 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/metamask.jpg" alt="也树 比特币">
+        <span>比特币</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>也树
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yeshu.cloud/posts/2d45190f/" title="高性能 MobX 模式（part 3）- 用例教程">https://yeshu.cloud/posts/2d45190f/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/yeshu_in_future">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/MobX/" rel="tag"># MobX</a>
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/29d6d901/" rel="prev" title="高性能 MobX 模式（part 2）- 响应变化">
+                  <i class="fa fa-chevron-left"></i> 高性能 MobX 模式（part 2）- 响应变化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8f2ec77c/" rel="next" title="利用Dawn工程化工具实践MobX数据流管理方案">
+                  利用Dawn工程化工具实践MobX数据流管理方案 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">也树</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div style="display: none;">
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280780050'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1280780050%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"about":true,"tags":true,"categories":true,"url":"https://yeshu.cloud/posts/2d45190f/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
