@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-03-27T07:46:29.000Z</updated>
+  <updated>2022-04-03T12:51:44.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #7 从小孩子身上学到的事</title>
+    <link href="https://yeshu.cloud/posts/69efe499/"/>
+    <id>https://yeshu.cloud/posts/69efe499/</id>
+    <published>2022-04-03T12:51:44.000Z</published>
+    <updated>2022-04-03T12:51:44.000Z</updated>
+    
+    
+    <summary type="html">儿时的经历塑造了现在的我，回想小时候让我热切的瞬间，也往往能让我对现在的决策做出更符合本心的选择。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #6 和自己的产品一起成长</title>
@@ -342,23 +359,6 @@
     
     
     <category term="年终总结" scheme="https://yeshu.cloud/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>聊聊在阿里远程办公那点事儿</title>
-    <link href="https://yeshu.cloud/posts/db023dc7/"/>
-    <id>https://yeshu.cloud/posts/db023dc7/</id>
-    <published>2020-01-07T12:18:15.000Z</published>
-    <updated>2020-01-07T12:18:15.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;想针对最近几天的延迟返工通知，来谈谈我对远程办公的一些看法和实践。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
