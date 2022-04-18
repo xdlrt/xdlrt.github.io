@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-04-10T02:35:52.000Z</updated>
+  <updated>2022-04-17T12:40:41.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #9 疫情之下 重建内心的秩序</title>
+    <link href="https://yeshu.cloud/posts/4551bc8a/"/>
+    <id>https://yeshu.cloud/posts/4551bc8a/</id>
+    <published>2022-04-17T12:40:41.000Z</published>
+    <updated>2022-04-17T12:40:41.000Z</updated>
+    
+    
+    <summary type="html">很多当时被放大的负面情绪，都是来源于那个瞬间的不合理。把时间拉长看，合理的部分还是更多。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #8 不要倒在黎明前</title>
@@ -338,25 +355,6 @@
     
     <category term="技术" scheme="https://yeshu.cloud/categories/%E6%8A%80%E6%9C%AF/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>如何写好简历，拿到大厂 offer 的敲门砖</title>
-    <link href="https://yeshu.cloud/posts/2b0ba94e/"/>
-    <id>https://yeshu.cloud/posts/2b0ba94e/</id>
-    <published>2020-02-06T06:42:34.000Z</published>
-    <updated>2020-02-06T06:42:34.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;随着各大互联网公司的实习生招聘纷纷火热开展，如何拿到心仪的 offer 就成了摆在大家面前的一个现实问题。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="思考" scheme="https://yeshu.cloud/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="招聘" scheme="https://yeshu.cloud/tags/%E6%8B%9B%E8%81%98/"/>
     
   </entry>
   
