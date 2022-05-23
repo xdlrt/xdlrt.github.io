@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-05-15T09:10:00.000Z</updated>
+  <updated>2022-05-22T14:29:28.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #14 让自己成为问题的终结者</title>
+    <link href="https://yeshu.cloud/posts/3e44b454/"/>
+    <id>https://yeshu.cloud/posts/3e44b454/</id>
+    <published>2022-05-22T14:29:28.000Z</published>
+    <updated>2022-05-22T14:29:28.000Z</updated>
+    
+    
+    <summary type="html">成为别人解决方案的一部分，而不是问题。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #13 别忘记你的热爱</title>
@@ -331,23 +348,6 @@
     
     
     <summary type="html">&lt;p&gt;让爱我的人更爱我，而不是让更多人知道我。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>做了一点微小的工作</title>
-    <link href="https://yeshu.cloud/posts/87e90636/"/>
-    <id>https://yeshu.cloud/posts/87e90636/</id>
-    <published>2022-01-09T15:07:17.000Z</published>
-    <updated>2022-01-09T15:07:17.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;重启个人博客&amp;#x2F;微不足道的开源工作&amp;#x2F;阅读感悟&lt;/p&gt;</summary>
     
     
     
