@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-06-12T09:09:37.000Z</updated>
+  <updated>2022-06-19T09:38:14.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #18 只规划每天最重要的三件事</title>
+    <link href="https://yeshu.cloud/posts/e640efaa/"/>
+    <id>https://yeshu.cloud/posts/e640efaa/</id>
+    <published>2022-06-19T09:38:14.000Z</published>
+    <updated>2022-06-19T09:38:14.000Z</updated>
+    
+    
+    <summary type="html">精美的东西都是脆弱的，计划总是赶不上变化，遇到变化很容易打乱整个计划和节奏，一旦开始出现问题导致无法按照原计划进行，那种挫败感对自己做事情的信心会造成巨大的打击，整个计划难以为继。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #17 裁员潮下的反思</title>
@@ -331,23 +348,6 @@
     
     
     <summary type="html">&lt;p&gt;奖励的意义是改善我们坚持做事的过程。一件事的最终目的，才是激励，也是我们能坚持下来的内在动力。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://yeshu.cloud/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>把自己给开源了</title>
-    <link href="https://yeshu.cloud/posts/d3a9a34/"/>
-    <id>https://yeshu.cloud/posts/d3a9a34/</id>
-    <published>2022-02-06T15:17:26.000Z</published>
-    <updated>2022-02-06T15:17:26.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;用文字或视频记录自己的生活和想法，让我突然有种感觉，像是把自己给“开源”了。&lt;/p&gt;</summary>
     
     
     
