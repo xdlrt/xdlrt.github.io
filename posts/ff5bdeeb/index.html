@@ -20,30 +20,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yeshu.cloud","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。">
+    <meta name="description" content="不要太焦虑，也不要急于求成，像种一棵树一样，种下去，陪着它长大。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于css3中box-shadow的研究">
-<meta property="og:url" content="https://yeshu.cloud/posts/c9627354/">
+<meta property="og:title" content="一颗小树 #19 慢慢来比较快">
+<meta property="og:url" content="https://yeshu.cloud/posts/ff5bdeeb/">
 <meta property="og:site_name" content="一颗小树">
-<meta property="og:description" content="最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。">
+<meta property="og:description" content="不要太焦虑，也不要急于求成，像种一棵树一样，种下去，陪着它长大。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yeshu.cloud/images/2016-03-06/2016-03-06-1.png">
-<meta property="article:published_time" content="2016-03-06T15:10:45.000Z">
-<meta property="article:modified_time" content="2016-03-06T15:10:45.000Z">
+<meta property="og:image" content="https://api.star-history.com/svg?repos=qax-os/excelize&type=Date">
+<meta property="article:published_time" content="2022-06-26T13:15:20.000Z">
+<meta property="article:modified_time" content="2022-06-26T13:15:20.000Z">
 <meta property="article:author" content="也树">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="一颗小树,yeshu,也树,小树,xdlrt,Icarus">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yeshu.cloud/images/2016-03-06/2016-03-06-1.png">
+<meta name="twitter:image" content="https://api.star-history.com/svg?repos=qax-os/excelize&type=Date">
 
 
-<link rel="canonical" href="https://yeshu.cloud/posts/c9627354/">
+<link rel="canonical" href="https://yeshu.cloud/posts/ff5bdeeb/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yeshu.cloud/posts/c9627354/","path":"posts/c9627354/","title":"关于css3中box-shadow的研究"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yeshu.cloud/posts/ff5bdeeb/","path":"posts/ff5bdeeb/","title":"一颗小树 #19 慢慢来比较快"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>关于css3中box-shadow的研究 | 一颗小树</title>
+<title>一颗小树 #19 慢慢来比较快 | 一颗小树</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-text">兼容性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-text">用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E8%AF%A6%E8%A7%A3"><span class="nav-text">属性值详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h-shadow-v-shadow"><span class="nav-text">h-shadow,v-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#blur"><span class="nav-text">blur</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spread"><span class="nav-text">spread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#color"><span class="nav-text">color</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inset"><span class="nav-text">inset</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%85%A2%E6%85%A2%E6%9D%A5%EF%BC%8C%E6%AF%94%E8%BE%83%E5%BF%AB"><span class="nav-text">慢慢来，比较快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E4%BA%A7%E5%93%81%E7%BB%86%E8%8A%82"><span class="nav-text">记录一个产品细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E6%8E%A8%E8%8D%90"><span class="nav-text">内容推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="nav-text">碎碎念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%80%E6%9C%9F%E6%8E%A8%E8%8D%90"><span class="nav-text">往期推荐</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,7 +188,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yeshu.cloud/posts/c9627354/">
+    <link itemprop="mainEntityOfPage" href="https://yeshu.cloud/posts/ff5bdeeb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://img.alicdn.com/imgextra/i3/O1CN01G2hVxU1bdYDAN8Yiq_!!6000000003488-2-tps-192-192.png">
@@ -201,12 +201,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="关于css3中box-shadow的研究 | 一颗小树">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="一颗小树 #19 慢慢来比较快 | 一颗小树">
+      <meta itemprop="description" content="不要太焦虑，也不要急于求成，像种一棵树一样，种下去，陪着它长大。">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          关于css3中box-shadow的研究
+          一颗小树 #19 慢慢来比较快
         </h1>
 
         <div class="post-meta-container">
@@ -217,7 +217,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2016-03-06 23:10:45" itemprop="dateCreated datePublished" datetime="2016-03-06T23:10:45+08:00">2016-03-06</time>
+      <time title="创建时间：2022-06-26 21:15:20" itemprop="dateCreated datePublished" datetime="2022-06-26T21:15:20+08:00">2022-06-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -225,13 +225,14 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+          <a href="/categories/newsletter/" itemprop="url" rel="index"><span itemprop="name">newsletter</span></a>
         </span>
     </span>
 
   
 </div>
 
+            <div class="post-description">不要太焦虑，也不要急于求成，像种一棵树一样，种下去，陪着它长大。</div>
         </div>
       </header>
 
@@ -239,34 +240,58 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>最近做的项目是在公众号中开发类App的页面，用到了许多App中的设计元素，一个让我惊艳的css3属性：box-shadow出现在我的眼前，它可以非常方便的设置阴影，让网页中的元素变得立体感十足，非常美观，于是对此属性进行一番深入研究。</p>
-<span id="more"></span>
-<h1 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h1><p>兼容性对于前端来说是老生常谈却又不可忽视的一个重要属性，就算一个属性功能再强大，如果兼容性无法满足需求，再去写很多的hack，反而得不偿失了。<br>查询结果如下图所示(点击查看大图)：<br><img data-src="/images/2016-03-06/2016-03-06-1.png" alt=""><br>除去可怜的IE8和operaMini以外的其他现代浏览器基本全部都支持了这一属性。<br>那还等什么？大胆的用吧！</p>
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>工欲善其事，必先利其器。先别急着用到项目中，先来研究一下这个属性的各种属性和示例，之后用起来也就会更加的得心应手。<br>首先是box-shadow的css语法格式:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset;</span><br></pre></td></tr></table></figure>
-<p>tips：向<strong>边框</strong>添加一个或多个阴影,该属性是由逗号分隔的阴影列表，每个阴影由 2-4 个长度值、可选的颜色值以及可选的 inset 关键词来规定。</p>
-<p><strong>这个属性是与border有关的，针对的是盒模型的边框。</strong></p>
-<h2 id="属性值详解"><a href="#属性值详解" class="headerlink" title="属性值详解"></a>属性值详解</h2><h3 id="h-shadow-v-shadow"><a href="#h-shadow-v-shadow" class="headerlink" title="h-shadow,v-shadow"></a>h-shadow,v-shadow</h3><p>这两个属性是必需的，省略长度的值是0。用来设置阴影偏移量，即以盒模型的左上角为原点，分别以上边框向右和左边框向下为x和y轴的正方向。允许负值。</p>
-<h3 id="blur"><a href="#blur" class="headerlink" title="blur"></a>blur</h3><p>属性可选。指定模糊半径，半径越大模糊效果越明显。此属性不允许负值，但可以为0，此时阴影无模糊效果。</p>
-<h3 id="spread"><a href="#spread" class="headerlink" title="spread"></a>spread</h3><p>属性可选。指定阴影拓展的尺寸，该值可为0，此时不拓展，为正时向外拓展，为负时像内拓展。</p>
-<h3 id="color"><a href="#color" class="headerlink" title="color"></a>color</h3><p>属性可选。指定阴影颜色。</p>
-<h3 id="inset"><a href="#inset" class="headerlink" title="inset"></a>inset</h3><p>属性可选。默认值为外阴影，设定为inset后，阴影变为盒子内。</p>
-<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>光说不练假把式，是骡子是马demo出来遛遛。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 盒子统一样式设置</span><br><span class="line">width:200px;</span><br><span class="line">height:50px;</span><br><span class="line">border:10px solid #00f;</span><br></pre></td></tr></table></figure>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px #000">box-shadow:10px 10px #000 只偏移没有模糊效果</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:-10px 10px #000">box-shadow:-10px 10px #000 水平偏移为负</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000">box-shadow:10px 10px 5px #000 模糊半径为5px</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 0 10px #000">box-shadow:10px 10px 0 10px #000 向外拓展10px</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 0 -10px #000">box-shadow:10px 10px 0 -10px #000 向内收缩10px</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000 inset">box-shadow:10px 10px 5px #000 inset 阴影变为内阴影</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:10px 10px 5px #000,-10px -20px 5px #000;">box-shadow:10px 10px 5px #000,-10px -20px 5px #000; 设置两个阴影</div>
-<div style="width:200px;height:50px;border:10px solid #00f;box-shadow:0 0 10px 10px #000">box-shadow:0 0 10px 10px #000 无偏移时可设置四周阴影</div>
-
-<br>
-
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>一层层的把box-shadow属性剥开来看，理解加深了不少，也深深感到css的强大。</p>
-<p>Keep moving forward!Learn and write more.</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/cssref/pr_box-shadow.asp">CSS3 box-shadow 属性</a><br><a target="_blank" rel="noopener" href="https://blogread.cn/it/article/7212?f=sr">css3：box-shadow边框阴影属性值详解</a></p>
+        <blockquote>
+<p><em>你好，我是小树。这是我为你写的第 19 封信。每期都会同步更新在微信公众号<a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?query=a_warm_tree">一颗小树</a>和<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">竹白专栏</a>。现在有 63 位朋友订阅了这封信，也欢迎你<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">邮件订阅</a>，第一时间收到更新推送。</em></p>
+</blockquote>
+<h3 id="慢慢来，比较快"><a href="#慢慢来，比较快" class="headerlink" title="慢慢来，比较快"></a>慢慢来，比较快</h3><p>这周换了个工位，和旁边的同事 A 聊起他在维护的开源项目 <a target="_blank" rel="noopener" href="https://github.com/qax-os/excelize">Excelize</a>。这个项目是 Go 语言编写的用于操作 Office Excel 文档基础库，可以使用它来读取、写入 Excel 文档。截止目前在 Github 上有 12k star，妥妥的优质项目。</p>
+<p><a target="_blank" rel="noopener" href="https://star-history.com/#qax-os/excelize&Date"><img data-src="https://api.star-history.com/svg?repos=qax-os/excelize&type=Date" alt="Star History Chart"></a></p>
+<p>这个项目让我感触最深的有几个方面：</p>
+<ol>
+<li>自 17 年从零开始，几乎从未间断地以一己之力维护至今</li>
+<li>详尽的项目文档，也是一个字一个字敲出来的，甚至针对不同的语言，文档中的插图也是单独制作的</li>
+<li>项目的 star 增长是一条健康的、昂扬向上的指数曲线</li>
+<li>同事热情依然不减，最近正在为这个项目录制双语的教程视频</li>
+</ol>
+<p>想要在工作之余做成这些事情，耐心、细心、恒心缺一不可。</p>
+<p>这让我想到从进入互联网行业以来面对的另一种叙事，我们的目标时效更短，拿到结果需要更快，即使我们承认这样一个行业或者领域是需要持续不断耕耘的，也会被这种叙事所裹挟，而不断去做短期主义的事情。</p>
+<p>当然，这样的大环境其实不是我能改变的，但是对于自己要持续终身的学习和成长，不妨用更长期的视角来看待它。</p>
+<p>首先，尝试去找到自己的兴趣和自己热忱的事业。</p>
+<p>其次，为它营造一个好的环境，让自己可以持续做下去，不断滋养这份兴趣。</p>
+<p>最后，从创造本身获取成就感，从外界的反馈中获取价值感，也许会让你的人生之树开出另外一条茁壮的枝干。</p>
+<p>但最重要的是要记住，在这件事情上，<strong>不要太焦虑，也不要急于求成，像种一棵树一样，种下去，陪着它长大。</strong></p>
+<h3 id="记录一个产品细节"><a href="#记录一个产品细节" class="headerlink" title="记录一个产品细节"></a>记录一个产品细节</h3><p>最近在做数据验证相关的工作，在输入提示这个功能上，发现一些体验细节。</p>
+<p>腾讯文档的表格：输入提示为「默认文案」时，会用 placeholder 来表示，但确定时数据会以当前语言落盘，这会导致无法支持动态国际化，默认文案生成也忽中忽英的。规则条件变化时，也没办法跟随变化，导致信息和实际条件不一致。</p>
+<p>飞书文档做的要好一些，应该是增加了一个字段记录当前用户是否实际修改过文案，修改过就不会再帮用户生成，否则会根据条件动态生成，国际化做的也比较完备。</p>
+<p>文档这样的产品，体验和口碑，可能就是这样一点一点积累起来，或者消磨掉的吧。</p>
+<h3 id="内容推荐"><a href="#内容推荐" class="headerlink" title="内容推荐"></a>内容推荐</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Z2YJQHLdtF1utOkbWk4NLQ">无题</a></p>
+<p>语言是思维和感受的投影，它无法表达我们所有的体验和感受，也不够准确；<br>语言会反过来影响、塑造我们的思维方式。 </p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/POPhFXRBOsLxIsJzjTiwaA">很容易感到疲惫，怎么办？</a></p>
+<p>下面分享一些有用的技巧和方法，希望能给你一些启发，帮助你充实自己的「能量账户」。</p>
+<ol>
+<li>记录日常的感受和想法</li>
+<li>动手完成一些小的挑战</li>
+<li>建立正向的社交联系</li>
+<li>尝试积极的回忆和沉浸</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZLXKJ2SaqBTDNTHz27bCmA">京东的供应链地图</a></p>
+<p>来看看京东用 15 年时间，组织超 42 万人，花费上千亿元形成的核心竞争力。</p>
+<p>苹果 CEO 库克推崇的《与时间竞争》一书中写道：“时间是商业竞争的秘密武器。”多数企业恐惧时间，他们相信只有争分夺秒才能跑赢竞争；少数企业敬畏时间，他们相信一件事得持续做十年、二十年，才能做好。</p>
+<p><a target="_blank" rel="noopener" href="https://remover.zmo.ai/">Remover</a></p>
+<p>一个帮助你擦除图片上任何不想要的内容的小工具。</p>
+<p><a target="_blank" rel="noopener" href="https://www.tldraw.com/">tldraw</a></p>
+<p>一个简洁的在线绘图工具。</p>
+<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>爱奇艺的说唱综艺开始了，终于又有音乐类的综艺可以看了，让夏天再热烈一点吧！</p>
+<p>谢谢你的关注，我们下期再见。👋🏻</p>
+<hr>
+<h3 id="往期推荐"><a href="#往期推荐" class="headerlink" title="往期推荐"></a>往期推荐</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/posts/2150489357008764928">一颗小树 #18 只规划每天最重要的三件事</a></li>
+<li><a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/posts/2147950874084626432">一颗小树 #17 裁员潮下的反思</a></li>
+<li><a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/posts/2145411619529281536">一颗小树 #16 纪录片的力量在于真实</a></li>
+</ul>
+<p>你也可以在这里找到我：<a target="_blank" rel="noopener" href="https://okjk.co/3Vsn5T">即刻</a>、<a target="_blank" rel="noopener" href="https://twitter.com/yeshu_in_future">Twitter</a>、微信公众号<a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?query=a_warm_tree">一颗小树</a>。</p>
+<blockquote>
+<p>这里是小树的 <a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">newsletter</a>。 每周一发布，欢迎<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">订阅</a>。<br>如果你觉得这篇文章对你有用，欢迎分享给更多好友。</p>
+</blockquote>
 
     </div>
 
@@ -298,7 +323,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://yeshu.cloud/posts/c9627354/" title="关于css3中box-shadow的研究">https://yeshu.cloud/posts/c9627354/</a>
+      <a href="https://yeshu.cloud/posts/ff5bdeeb/" title="一颗小树 #19 慢慢来比较快">https://yeshu.cloud/posts/ff5bdeeb/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -343,22 +368,16 @@
   </div>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/CSS/" rel="tag"># CSS</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/f8952dbc/" rel="prev" title="第一篇博文及标签、分类页的建立">
-                  <i class="fa fa-chevron-left"></i> 第一篇博文及标签、分类页的建立
+                <a href="/posts/e640efaa/" rel="prev" title="一颗小树 #18 只规划每天最重要的三件事">
+                  <i class="fa fa-chevron-left"></i> 一颗小树 #18 只规划每天最重要的三件事
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/80f1303b/" rel="next" title="emmet,让你的html飞起来">
-                  emmet,让你的html飞起来 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -413,7 +432,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.2.0/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"about":true,"tags":true,"categories":true,"url":"https://yeshu.cloud/posts/c9627354/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"about":true,"tags":true,"categories":true,"url":"https://yeshu.cloud/posts/ff5bdeeb/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
