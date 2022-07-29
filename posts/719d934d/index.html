@@ -241,7 +241,8 @@
         <blockquote>
 <p><em>你好，我是小树。这是我为你写的第 24 封信。每期都会同步更新在微信公众号<a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?query=a_warm_tree">一颗小树</a>和<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">竹白专栏</a>。现在有 79 位朋友订阅了这封信，也欢迎你<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">邮件订阅</a>，第一时间收到更新推送。</em></p>
 </blockquote>
-<h3 id="代码重构的一点心得"><a href="#代码重构的一点心得" class="headerlink" title="代码重构的一点心得"></a>代码重构的一点心得</h3><h4 id="第一步：掌握所有相关逻辑"><a href="#第一步：掌握所有相关逻辑" class="headerlink" title="第一步：掌握所有相关逻辑"></a>第一步：掌握所有相关逻辑</h4><p>这里的关键是：「掌握」和「所有」。</p>
+<h3 id="代码重构的一点心得"><a href="#代码重构的一点心得" class="headerlink" title="代码重构的一点心得"></a>代码重构的一点心得</h3><p>性能和开放是目前钉钉表格比较重要的命题，而随着我们的优化逐渐进入深水区，难免需要对已有的架构做一些手术。下面是我最近在实际开发中，对代码进行重构的一些心得的记录。</p>
+<h4 id="第一步：掌握所有相关逻辑"><a href="#第一步：掌握所有相关逻辑" class="headerlink" title="第一步：掌握所有相关逻辑"></a>第一步：掌握所有相关逻辑</h4><p>这里的关键是：「掌握」和「所有」。</p>
 <p>通常我们说的重构，是不会包含新的 feature 的，只是对已有逻辑实现层面的优化，从「实现 A」变为「实现 B」。因此，「掌握」和「所有」的意思就是要遍历重构部分的代码逻辑以及相关的影响面，具体到每一行相关的代码，要具备对这部分逻辑的掌控感，否则我们很难预测这次改动会对已有功能产生什么影响，真的出现线上问题以后，也很难快速定位。</p>
 <p>在实际操作的过程中，可以从以下几个方面入手：</p>
 <ol>
