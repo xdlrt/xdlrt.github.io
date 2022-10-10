@@ -259,7 +259,7 @@
 <p>只不过主流浏览器都不能支持time标签，没有什么特殊的显示效果。</p>
 <h3 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h3><p>之前在用a标签的时候，基本只会用到href这个属性，但在设计图中我注意到有一个超链接的说明是在浏览器的新窗口中打开，我review了很多个代码，发现没有小组实现这个，大概是因为大部分浏览器的默认行为就是在新窗口中打开。但是作为前端经常使用的工具，chrome的默认行为就是不会在新窗口中打开超链接的，所以我在查阅了W3school之后发现了a标签的另一个属性，target，其有四个特殊的取值：</p>
 <blockquote>
-<p>_self    默认。在相同的框架中打开被链接文档。<br>_blank    在新窗口中打开被链接文档。<br>_parent    在父框架集中打开被链接文档。<br>_top    在整个窗口中打开被链接文档。</p>
+<p>_self	默认。在相同的框架中打开被链接文档。<br>_blank	在新窗口中打开被链接文档。<br>_parent	在父框架集中打开被链接文档。<br>_top	在整个窗口中打开被链接文档。</p>
 </blockquote>
 <p>这里我将<code>_blank</code>设置为target属性的值，即可实现在新窗口中打开链接。</p>
 <h3 id="colspan"><a href="#colspan" class="headerlink" title="colspan"></a>colspan</h3><p>这是一个在table中会用到的属性，在完成任务的表格时，最后一行的第二个单元格和第三个单元格需要合并，这可犯了难，因为现在很少用到table布局，只好求助W3school，发现了td标签的colspan属性，规定了单元格可横跨的列数。</p>

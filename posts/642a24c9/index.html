@@ -265,6 +265,8 @@
 上述方式最小化了在两个遥远目录下不断切换的的问题，但是同样增加了很多烦恼。当你的应用有非常多模块的时候，你最终会可能会创建几十个 <code>containers</code> 和 <code>components</code> 目录。<br>所以我们讨论如何组织目录和文件的时候，和组件是否被拆分为展示型和容器型是无关的。也就是说，我们会把所有的组件都放在 <code>components</code> 目录下，除了页面。<blockquote>
 <p>即使在目录上拆分它们是不必要的，了解它们之间的差异性依然是有必要的。如果你对这个话题还有疑问，建议阅读这篇文章：<a target="_blank" rel="noopener" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">Presentational and Container Components</a>。</p>
 </blockquote>
+</li>
+</ul>
 <h2 id="拆分和组合代码"><a href="#拆分和组合代码" class="headerlink" title="拆分和组合代码"></a>拆分和组合代码</h2><p>在 <code>components</code> 目录下，我们通过模块&#x2F;特性(module&#x2F;feature)的结构来组织文件。<br>在对用户进行增删改查的过程中，我们只会有一个 <code>User</code> 模块。所以我们的目录结构会像下面这样：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">└─ components</span><br><span class="line">  └─ User</span><br><span class="line">    ├─ Form.jsx</span><br><span class="line">    └─ List.jsx</span><br></pre></td></tr></table></figure>
 <p>每当一个组件会有不止一个文件的时候，我们会将这个组件和它对应的文件放在同一个文件夹下，并且使用同一个名字来命名。举个例子：现在我们有一个 <code>Form.css</code> 文件包含了 <code>Form.jsx</code> 的样式，这时我们的目录结构会像这样：</p>
@@ -275,8 +277,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyComponent</span> = (<span class="params"></span>) =&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure>
 <p>组件的命名在应用中应当清晰且唯一，这样可以让它们可以轻松被找到并且避免可能的困惑。<br>当应用在运行时发生错误或者通过 React 开发者工具调试时，组件的名字是非常方便易用的，因为错误发生的地方往往都伴随着组件的名字。<br>我们采用基于路径的组件命名方式，即根据相对于 <code>components</code> 文件目录的相对路径来命名，如果在此文件夹以外，则使用相对于 <code>src</code> 目录的路径。举个例子，组件的路径如果是 <code>components/User/List.jsx</code>，那么它就被命名为 <code>UserList</code>。<br>如果文件名和文件目录名相同，我们不需要重复这个名字。也就是说，<code>components/User/Form/Form.jsx</code> 会命名为 <code>UserForm</code> 而不是 <code>UserFormForm</code>。<br>这样的命名方式有以下几点好处：</p>
 <h3 id="便于在项目中搜索文件"><a href="#便于在项目中搜索文件" class="headerlink" title="便于在项目中搜索文件"></a>便于在项目中搜索文件</h3><p>如果你的编辑器支持模糊搜索，只需要搜索 UserForm 就可以让你找到对应的文件：</p>
-</li>
-</ul>
 <p><img data-src="/images/structuring-projects-and-naming-components-in-react/2.jpeg"></p>
 <p>如果你想要在目录树中搜索文件，可以很容易地通过组件的名字定位到它：</p>
 <p><img data-src="/images/structuring-projects-and-naming-components-in-react/3.jpeg"></p>
