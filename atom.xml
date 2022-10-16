@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-10-08T13:05:43.000Z</updated>
+  <updated>2022-10-16T10:52:01.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #34 初探多维表格</title>
+    <link href="https://yeshu.cloud/posts/5acd195c/"/>
+    <id>https://yeshu.cloud/posts/5acd195c/</id>
+    <published>2022-10-16T10:52:01.000Z</published>
+    <updated>2022-10-16T10:52:01.000Z</updated>
+    
+    
+    <summary type="html">多维表格的底色是 APaaS 平台，关键是解决业务数字化的问题，协作能力是锦上添花，以数据库的思维方式来思考。</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #33 回不去的名字叫家乡</title>
@@ -331,23 +348,6 @@
     
     
     <summary type="html">我们看到的世界是很小的，但我希望这个世界是美好的。</summary>
-    
-    
-    
-    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一颗小树 #14 让自己成为问题的终结者</title>
-    <link href="https://yeshu.cloud/posts/3e44b454/"/>
-    <id>https://yeshu.cloud/posts/3e44b454/</id>
-    <published>2022-05-22T14:29:28.000Z</published>
-    <updated>2022-05-22T14:29:28.000Z</updated>
-    
-    
-    <summary type="html">成为别人解决方案的一部分，而不是问题。</summary>
     
     
     
