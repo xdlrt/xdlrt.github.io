@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yeshu.cloud","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="数字化从来都不是少数人的权利，而是千行百业共同进步。每一个人、每一个组织、每一家企业都应该享受到数字化的红利。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一颗小树 #37 基于多维表格的可转债投资系统">
+<meta property="og:url" content="https://yeshu.cloud/posts/1ef380cf/">
+<meta property="og:site_name" content="一颗小树">
+<meta property="og:description" content="数字化从来都不是少数人的权利，而是千行百业共同进步。每一个人、每一个组织、每一家企业都应该享受到数字化的红利。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/1.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/feishu-1.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/feishu-2.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/feishu-3.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/feishu-4.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/feishu-5.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/2.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/3.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/4.png">
+<meta property="og:image" content="https://yeshu.cloud/images/newsletter-37/5.png">
+<meta property="article:published_time" content="2022-11-06T12:28:20.000Z">
+<meta property="article:modified_time" content="2022-11-06T12:28:20.000Z">
+<meta property="article:author" content="也树">
+<meta property="article:tag" content="一颗小树,yeshu,也树,小树,xdlrt,Icarus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yeshu.cloud/images/newsletter-37/1.png">
+
+
+<link rel="canonical" href="https://yeshu.cloud/posts/1ef380cf/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yeshu.cloud/posts/1ef380cf/","path":"posts/1ef380cf/","title":"一颗小树 #37 基于多维表格的可转债投资系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一颗小树 #37 基于多维表格的可转债投资系统 | 一颗小树</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?33fa00efe9f4f2a652c14b5521ab4215"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一颗小树" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一颗小树</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Product Developer</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">归档<span class="badge">90</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-text">设计表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-text">输入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91"><span class="nav-text">处理业务逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%84%9F%E6%83%B3"><span class="nav-text">一些感想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="nav-text">碎碎念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%80%E6%9C%9F%E6%8E%A8%E8%8D%90"><span class="nav-text">往期推荐</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="也树"
+      src="https://img.alicdn.com/imgextra/i3/O1CN01G2hVxU1bdYDAN8Yiq_!!6000000003488-2-tps-192-192.png">
+  <p class="site-author-name" itemprop="name">也树</p>
+  <div class="site-description" itemprop="description">In progress to be a product maker.</div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdlrt" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdlrt" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yeshu_in_future" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yeshu_in_future" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xdlrt0111@163.com" title="E-Mail → mailto:xdlrt0111@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+<div id="contribution" itemprop="calendar" style="margin-top: 8px;"></div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xdlrt" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yeshu.cloud/posts/1ef380cf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://img.alicdn.com/imgextra/i3/O1CN01G2hVxU1bdYDAN8Yiq_!!6000000003488-2-tps-192-192.png">
+      <meta itemprop="name" content="也树">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一颗小树">
+      <meta itemprop="description" content="In progress to be a product maker.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一颗小树 #37 基于多维表格的可转债投资系统 | 一颗小树">
+      <meta itemprop="description" content="数字化从来都不是少数人的权利，而是千行百业共同进步。每一个人、每一个组织、每一家企业都应该享受到数字化的红利。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一颗小树 #37 基于多维表格的可转债投资系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-06 20:28:20" itemprop="dateCreated datePublished" datetime="2022-11-06T20:28:20+08:00">2022-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/newsletter/" itemprop="url" rel="index"><span itemprop="name">newsletter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">数字化从来都不是少数人的权利，而是千行百业共同进步。每一个人、每一个组织、每一家企业都应该享受到数字化的红利。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p><em>你好，我是小树。这是我为你写的第 37 封信。每期都会同步更新在微信公众号<a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?query=a_warm_tree">一颗小树</a>和<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">竹白专栏</a>。现在有 129 位朋友订阅了这封信，也欢迎你<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">邮件订阅</a>，第一时间收到更新推送。</em></p>
+</blockquote>
+<p>书接上回<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/M27pTinwH0jV28NjhLfaHw">初探多维表格</a>，继上次基础的产品功能体验之后，打算利用多维表格解决一个实际问题，更深入的感受产品带来的便利。</p>
+<p>最终决定实现一套基于可转债双低策略的业务系统，提高决策的效率。</p>
+<p>希望了解策略本身可以查看毛老师的<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/aQ1E1HpbV7utegAOweY-cw">如何搭建一个双低转债投资系统</a>。</p>
+<p>本文接下来的重点是讲述利用飞书多维表格构建业务系统的核心思路，不包含太多技术细节。</p>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>作为投资策略，决定需要购买的品种是最关键的环节之一，在投资系统中，我们对目标标的的定义如下：</p>
+<blockquote>
+<p>集思录曾经定义过一个双低值的概念：<br>可转债的双低值 &#x3D; 可转债价格 + 溢价率 * 100<br>当排序后双低值越小的品种，越值得买入。这是我的出手标准。<br>由于我个人是风险厌恶者。可交换债、已经发了强赎公告、剩余时间小于 1 年，这三个条件只要满足一个，也会都剔除掉，留足安全边际。</p>
+</blockquote>
+<p>因此，我们的需求如下：</p>
+<ol>
+<li>获取可转债的数据，包括但不限于：代码、可转债名称、可转债双低值、可转债类型、到期时间、强赎公告信息。</li>
+<li>支持过滤可交换债、到期时间小于 1 年以及发布强赎公告的债券</li>
+<li>支持双低值由小到大排序</li>
+</ol>
+<p>最终得到的数据结果，就是值得买入的优先级。</p>
+<h3 id="设计表结构"><a href="#设计表结构" class="headerlink" title="设计表结构"></a>设计表结构</h3><p>参照需求 1 中的数据字段，可以直接转换成飞书多维表格的列类型。这里用到了多行文本、数字、单选和日期类型。</p>
+<p>效果如下：</p>
+<p><img data-src="/images/newsletter-37/1.png"></p>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><p>我们选取了比较权威和全面的集思录数据，由于需要登录之后才能获取完整的可转债数据，最后选择了基于 Node.js 的自动化测试框架，来实现模拟登录和获取页面数据。</p>
+<p>最后综合考虑运行成本和稳定度，通过 Playwright + Github Actions 的组合，实现了定时拉取集思录数据。</p>
+<p>由于策略本身不依赖行情的实时性，因此每天只会拉取一次。</p>
+<p>数据爬虫的具体实现方式这里不再赘述。</p>
+<h3 id="输入数据"><a href="#输入数据" class="headerlink" title="输入数据"></a>输入数据</h3><p>接下来是我们的重头戏，我们拉取到可转债的数据之后，应该如何输入到飞书多维表格中呢？</p>
+<p>最初我希望通过自动化流程来实现输入，但由于拉取的数据本身不会持久到数据库中，没办法通过客户端定时调用实现，并且自动化流程中的操作还没办法很好地解析数组类型的数据，最终此路不通。</p>
+<p>除了自动化流程以外，飞书还具有 HTTP 方式调用服务端 API 的开放能力。</p>
+<p><img data-src="/images/newsletter-37/feishu-1.png"></p>
+<p>使用此能力，流程相对更繁琐，需要具备一定的开发能力。</p>
+<p>流程如下：</p>
+<ol>
+<li><p>在飞书中加入&#x2F;创建企业，目前没有限制，可以自己建一个</p>
+</li>
+<li><p>在开发者后台创建企业自建应用<br><img data-src="/images/newsletter-37/feishu-2.png"></p>
+</li>
+<li><p>应用后台 -&gt; 权限管理中开通 bitable:app 权限，为多维表格的服务端 API 提供权限<br><img data-src="/images/newsletter-37/feishu-3.png"></p>
+</li>
+<li><p>为应用创建新版本，提交企业管理员审核，自建企业会方便一些，可以自行审核通过，审核通过后发布即可<br><img data-src="/images/newsletter-37/feishu-4.png"></p>
+</li>
+<li><p>在多维表格文件中，从右上角的「…」找到更多 -&gt; 添加文档应用，添加将刚才发布的应用<br><img data-src="/images/newsletter-37/feishu-5.png"></p>
+</li>
+</ol>
+<p>至此，就具备了通过服务端 API 实现此文件内容增删改查的能力。</p>
+<p>搭建系统的核心逻辑如下：</p>
+<p><img data-src="/images/newsletter-37/2.png"></p>
+<h3 id="处理业务逻辑"><a href="#处理业务逻辑" class="headerlink" title="处理业务逻辑"></a>处理业务逻辑</h3><p>由于暂时没有找到强赎公告相关数据，我们当前需要做两步操作：</p>
+<ol>
+<li>数据筛选：剔除可交换债，过滤出剩余年限大于 1 年的可转债</li>
+</ol>
+<p><img data-src="/images/newsletter-37/3.png"></p>
+<ol start="2">
+<li>数据排序：根据可转债的双低值，从小到大进行排序</li>
+</ol>
+<p><img data-src="/images/newsletter-37/4.png"></p>
+<p>如果我们希望进一步增加安全边际，可以再筛选出现价小于 100 的可转债。最终效果如下：</p>
+<p><img data-src="/images/newsletter-37/5.png"></p>
+<p>至此，我们就获得了最适合此策略投资的可转债。</p>
+<h3 id="一些感想"><a href="#一些感想" class="headerlink" title="一些感想"></a>一些感想</h3><p>可转债投资是一个简单但很典型的业务场景，如果按照惯常的开发方式，我们需要解决无数细节问题，如前后端开发、公网访问和用户鉴权等。</p>
+<p>整个流程下来，除了不小的时间投入，也会产生持续的运维成本。</p>
+<p>但通过多维表格，一站式解决了数据库、UI和业务逻辑的能力，叠加可以内置的应用能力以及服务端 API，极大地拓展了多维表格的场景，让它能够和已有的业务系统和数据串联起来，具备强大的协同效应。</p>
+<p>整个系统花费半天时间，并且完全免费。当然，真实的企业场景也会需要付费，但综合成本要低的多。</p>
+<p>低成本享受数字化红利，是未来互联网的一个重要命题，我也在持续学习中。</p>
+<p>最后，用不穷在<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/C1e00XvF2k5TevmonCj_KA">钉钉总裁叶军：企业数字化，CEO的第一战略</a>采访中的话来结束吧：“数字化帮助企业在不确定性中寻找确定性，这是时代的进步。钉钉认为数字化从来都不是少数人的权利，而是千行百业共同进步。每一个人、每一个组织、每一家企业都应该享受到数字化的红利。钉钉要做好数字经济时代的服务者。”</p>
+<h3 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h3><p>公司自动售货机里的特价三得利乌龙茶断货了，难过…</p>
+<p>谢谢你的关注，我们下期再见。👋🏻</p>
+<hr>
+<h3 id="往期推荐"><a href="#往期推荐" class="headerlink" title="往期推荐"></a>往期推荐</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/M27pTinwH0jV28NjhLfaHw">一颗小树 #34 初探多维表格</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Xk4U-9x5dsz2vjOoxPfLZQ">一颗小树 #32 生活需要留白</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/O-0ExGALEZAkhVJKBOV9Pw">一颗小树 #31 Figma 的成功之道</a></li>
+</ul>
+<p>你也可以在这里找到我：<a target="_blank" rel="noopener" href="https://okjk.co/3Vsn5T">即刻</a>、<a target="_blank" rel="noopener" href="https://twitter.com/yeshu_in_future">Twitter</a>、微信公众号<a target="_blank" rel="noopener" href="https://weixin.sogou.com/weixin?query=a_warm_tree">一颗小树</a>。</p>
+<blockquote>
+<p>这里是小树的 <a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">newsletter</a>。 每周一发布，欢迎<a target="_blank" rel="noopener" href="https://xiaoshu.zhubai.love/">订阅</a>。<br>如果你觉得这篇文章对你有用，欢迎分享给更多好友。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="也树 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>也树
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://yeshu.cloud/posts/1ef380cf/" title="一颗小树 #37 基于多维表格的可转债投资系统">https://yeshu.cloud/posts/1ef380cf/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/yeshu_in_future">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/61c2ed95/" rel="prev" title="一颗小树 #36 飞盘初体验">
+                  <i class="fa fa-chevron-left"></i> 一颗小树 #36 飞盘初体验
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">也树</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<div style="display: none;">
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1280780050'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1280780050%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"about":true,"tags":true,"categories":true,"url":"https://yeshu.cloud/posts/1ef380cf/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
