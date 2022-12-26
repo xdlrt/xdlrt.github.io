@@ -6,7 +6,7 @@
   <link href="https://yeshu.cloud/atom.xml" rel="self"/>
   
   <link href="https://yeshu.cloud/"/>
-  <updated>2022-12-18T09:22:56.000Z</updated>
+  <updated>2022-12-25T09:52:27.000Z</updated>
   <id>https://yeshu.cloud/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一颗小树 #44 构建高质量信源</title>
+    <link href="https://yeshu.cloud/posts/4c3e624d/"/>
+    <id>https://yeshu.cloud/posts/4c3e624d/</id>
+    <published>2022-12-25T09:52:27.000Z</published>
+    <updated>2022-12-25T09:52:27.000Z</updated>
+    
+    
+    <summary type="html">生活已经挺艰难了，有时候也不用太为难自己，要张弛有度，刷刷小视频也是很快乐的:)</summary>
+    
+    
+    
+    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一颗小树 #43 我的 2022 书单</title>
@@ -331,23 +348,6 @@
     
     
     <summary type="html">这里最让我羡慕的，还是大家没有被疫情伤害过的笑容。</summary>
-    
-    
-    
-    <category term="newsletter" scheme="https://yeshu.cloud/categories/newsletter/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>一颗小树 #24 代码重构的一点心得</title>
-    <link href="https://yeshu.cloud/posts/719d934d/"/>
-    <id>https://yeshu.cloud/posts/719d934d/</id>
-    <published>2022-07-29T12:15:36.000Z</published>
-    <updated>2022-07-29T12:15:36.000Z</updated>
-    
-    
-    <summary type="html">磨刀不误砍柴工。</summary>
     
     
     
